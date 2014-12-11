@@ -1,36 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   check_errors.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/12/10 17:09:51 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/11 21:13:11 by bmbarga          ###   ########.fr       */
+/*   Created: 2014/11/06 17:15:13 by bmbarga           #+#    #+#             */
+/*   Updated: 2014/12/11 20:52:04 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-/*
-**	1- recuperer les donner sur l'entree standard
-**	2- checker les cas sensibles d'erreur
-**	3- rechercher le chemin le plus rapide
-**	4- affichage du resultat.
-*/
-
-int		main(int ac, char **av)
+static void	fun_error_init(t_ferr *f)
 {
-	int	fd;
-
-	if (ac == 1)
-		fd = 0;	
+	if (f)
+	{
+		f[0] = f_malloc;
+		f[1] = f_nul;
+	}
 	else
 	{
-		if ((fd = open(av[0], O_RDONLY)) == -1)
-			check_errors(MALLOC, "fd", "main.c");
-		if (ac > 2)
-			ft_putendl("lem-in cant treat on more than 1 file");
+		ft_putendl("Error : f :: check_errors.c :: set to NULL ");
+		exit(-1);
 	}
-	return (0);
+}
+
+void		check_errors(int code, char *file_name, char *var_name)
+{
+	int	i;
+	t_ferr	fun_error[NUL + 1];
+
+	i = -1;
+	fun_error_init(fun_error);
+	ERR ERR_VAR(var_name) ERR_SP ERR_FILE(file_name) ERR_SP
+	while (++i < (NUL + 1))
+		if (i == code)
+			fun_error[i]();
+	exit(0);
 }
