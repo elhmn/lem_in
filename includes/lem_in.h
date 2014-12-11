@@ -1,30 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/12/10 17:09:51 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/11 18:28:51 by bmbarga          ###   ########.fr       */
+/*   Created: 2014/12/11 18:13:52 by bmbarga           #+#    #+#             */
+/*   Updated: 2014/12/11 18:29:36 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem_in.h"
+#ifndef LEM_IN_H
+# define LEM_IN_H
 
-/*
-**	1- recuperer les donner sur l'entree standard
-**	2- checker les cas sensibles d'erreur
-**	3- rechercher le chemin le plus rapide
-**	4- affichage du resultat.
-*/
-
-int		main(int ac, char **av)
-{
-	if (ac)
-	{
-		av = av;
-		printf("je suis con\n");
-	}
-	return (0);
-}
+# include <stdlib.h>
+# include <stdio.h>
+# include <unistd.h>
+# include <fcntl.h>
+# include <sys/types.h>
+# include <sys/uio.h>
+#endif
