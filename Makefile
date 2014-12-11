@@ -6,7 +6,7 @@
 #    By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/12/09 11:28:14 by bmbarga           #+#    #+#              #
-#    Updated: 2014/12/11 18:30:04 by bmbarga          ###   ########.fr        #
+#    Updated: 2014/12/11 18:34:51 by bmbarga          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,3 +45,5 @@ clean:
 
 fclean: clean
 	rm -rf $(NAME)
+
+re: fclean all
