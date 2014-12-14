@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lib.h                                              :+:      :+:    :+:   */
+/*   ft_memalloc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/12/11 20:42:02 by bmbarga           #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2014/12/14 01:08:16 by bmbarga          ###   ########.fr       */
-=======
-/*   Updated: 2014/12/11 20:44:52 by bmbarga          ###   ########.fr       */
->>>>>>> 79fd08cf1376cd5f6086389554095c382d48d8e2
+/*   Created: 2013/11/21 02:05:25 by bmbarga           #+#    #+#             */
+/*   Updated: 2014/04/27 20:04:57 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIB_H
-# define LIB_H
+#include <stdlib.h>
+#include <string.h>
+#include "libft.h"
 
-/*
-** lib1.c
-*/
+void	*ft_memalloc(size_t size)
+{
+	char	*ptr;
 
-void	ft_putendl(char *str);
-void	ft_putstr(char *str);
-void	ft_putchar(int c);
-<<<<<<< HEAD
-
-=======
->>>>>>> 79fd08cf1376cd5f6086389554095c382d48d8e2
-#endif
+	ptr = (char*)malloc(sizeof(*ptr) * size);
+	if (!ptr)
+		return (NULL);
+	ft_memset(ptr, 0, size);
+	return ((void*)ptr);
+}

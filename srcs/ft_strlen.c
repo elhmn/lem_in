@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lib.h                                              :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/12/11 20:42:02 by bmbarga           #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2014/12/14 01:08:16 by bmbarga          ###   ########.fr       */
-=======
-/*   Updated: 2014/12/11 20:44:52 by bmbarga          ###   ########.fr       */
->>>>>>> 79fd08cf1376cd5f6086389554095c382d48d8e2
+/*   Created: 2013/11/19 12:22:35 by bmbarga           #+#    #+#             */
+/*   Updated: 2014/04/27 20:09:06 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIB_H
-# define LIB_H
+#include <string.h>
 
-/*
-** lib1.c
-*/
+size_t	ft_strlen(const char *s)
+{
+	size_t	len;
 
-void	ft_putendl(char *str);
-void	ft_putstr(char *str);
-void	ft_putchar(int c);
-<<<<<<< HEAD
-
-=======
->>>>>>> 79fd08cf1376cd5f6086389554095c382d48d8e2
-#endif
+	len = 0;
+	while (s && s[len])
+		len++;
+	return (len);
+}
