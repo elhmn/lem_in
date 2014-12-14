@@ -6,11 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/10 17:09:51 by bmbarga           #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2014/12/14 03:27:49 by bmbarga          ###   ########.fr       */
-=======
-/*   Updated: 2014/12/11 21:13:11 by bmbarga          ###   ########.fr       */
->>>>>>> 79fd08cf1376cd5f6086389554095c382d48d8e2
+/*   Updated: 2014/12/14 03:47:56 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,24 +26,23 @@
 
 int		main(int ac, char **av)
 {
-<<<<<<< HEAD
-
+//	int	fd;
+//
 	if (ac)	
 	{
 		ft_putendl(av[1]);
 		ft_putendl("lem-in cant treat on more than 1 file");
-=======
-	int	fd;
-
+	}
+	/*
 	if (ac == 1)
-		fd = 0;	
+		fd = 0;
 	else
 	{
 		if ((fd = open(av[0], O_RDONLY)) == -1)
 			check_errors(MALLOC, "fd", "main.c");
 		if (ac > 2)
 			ft_putendl("lem-in cant treat on more than 1 file");
->>>>>>> 79fd08cf1376cd5f6086389554095c382d48d8e2
 	}
+	*/
 	return (0);
 }

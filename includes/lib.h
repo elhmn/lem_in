@@ -6,11 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/11 20:42:02 by bmbarga           #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2014/12/14 01:08:16 by bmbarga          ###   ########.fr       */
-=======
-/*   Updated: 2014/12/11 20:44:52 by bmbarga          ###   ########.fr       */
->>>>>>> 79fd08cf1376cd5f6086389554095c382d48d8e2
+/*   Updated: 2014/12/14 03:44:49 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +20,4 @@
 void	ft_putendl(char *str);
 void	ft_putstr(char *str);
 void	ft_putchar(int c);
-<<<<<<< HEAD
-
-=======
->>>>>>> 79fd08cf1376cd5f6086389554095c382d48d8e2
 #endif
