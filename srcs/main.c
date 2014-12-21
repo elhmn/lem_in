@@ -25,8 +25,9 @@
 
 int		main(int ac, char **av)
 {
-	av = av;
-	if (ac)	
-		ft_putendl("je suis con");
+	if (ac)
+	{
+
+	}
 	return (0);
 }
