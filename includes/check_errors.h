@@ -20,13 +20,15 @@
 
 # define ERR_MALLOC		ft_putendl("malloc");
 # define ERR_NULL		ft_putendl("set to NULL");
+# define ERR_READ		ft_putendl("cant read");
 
 typedef void	(*t_ferr)(void);
 
 enum	e_code
 {
 	MALLOC,
-	NUL
+	NUL,
+	READ
 };
 
 /*
@@ -35,6 +37,7 @@ enum	e_code
 
 void		f_malloc(void);
 void		f_nul(void);
+void		f_read(void);
 
 /*
 ** check_errors.c

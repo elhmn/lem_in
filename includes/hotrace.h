@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lib.h                                              :+:      :+:    :+:   */
+/*   hotrace.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jblanche <jblanche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/12/11 20:42:02 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/14 03:44:49 by bmbarga          ###   ########.fr       */
+/*   Created: 2013/12/13 21:38:42 by jblanche          #+#    #+#             */
+/*   Updated: 2013/12/15 22:00:39 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIB_H
-# define LIB_H
+#ifndef HOTRACE_H
+# define HOTRACE_H
+# define MOD_SIZE 1024
 
-/*
-** lib1.c
-*/
+enum  e_hash_size
+{
+	h1_size = 5500000000000,
+	h2_size = 100000,
+	h3_size = 10000
+};
 
-void	ft_putendl(char *str);
-void	ft_putstr(char *str);
-void	ft_putchar(int c);
-
-void	ft_putnbr(int c);
-int		ft_atoi(char *str);
-int		ft_isdigit(char str);
+unsigned long		hash1(char *str);
+unsigned long		hash2(char *str);
+unsigned long		hash3(char *str);
 #endif

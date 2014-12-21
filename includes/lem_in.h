@@ -21,43 +21,70 @@
 # include <sys/uio.h>
 # include "lib.h"
 # include "check_errors.h"
+# include "get_next_line.h"
+# include "hotrace.h"
+
 
 /*
 ** enum de commande
 */
 
-enum	e_com
+enum	e_props
 {
 	START,
 	END
 };
 
+enum	e_data_type
+{
+	ANTS_NBR,
+	ROOMS,
+	TUBES
+};
+
+typedef	unsigned long	t_ulong;
+
+typedef struct		s_list
+{
+	void			*content;
+	size_t			content_size;
+	struct s_list	*next;
+
+}					t_list;
+
+typedef	struct		s_hash
+{
+	t_ulong			h1;
+//	t_ulong			h2;
+	char			*name;
+}					t_hash;
+
+typedef struct	s_coord
+{
+	int			x;
+	int			y;
+}				t_coord;
+
+
+typedef struct	s_nod
+{
+	char		*name;
+	t_coord		*coord;
+	t_hash		*links;
+	int			props; //proprites du noeuds
+}				t_nod;
+
 typedef struct	s_lemin
 {
 	int		ant_nbr;
-	//nbr de cases;
-	//liste de cases et de leurs coordonnees;
+	t_list	**hashtab; //table de hash stocke list de noeuds correspondant a un hash donnee.
+	int		data_type;
 }				t_lemin;
 
-//typedef struct	s_room
-//{
-//	char 	*name;
-//	t_room	**room;
-//}				t_room;
+/*
+** get_data.c
+*/
 
-//typedef	struct	s_data
-//{
-//	char	*data;
-//	int		com; /*commande*/
-//}				t_data;
-	//liste des commandes;
-	//liste des coups ou chaine dans l'ordre;
-//}				t_lemin
-
-typedef	struct	s_data
-{
-	char	*data;
-	int		com; /*commande*/
-}				t_data;
-
+void	treat_line(t_lemin *lemin, char *str);
+int		get_data(t_lemin *lemin);
 #endif

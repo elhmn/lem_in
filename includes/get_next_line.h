@@ -13,7 +13,7 @@
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 # define MY_EOF -1
-# define BUFF_SIZE 10
+# define BUFF_SIZE 4
 
 int		get_next_line(int const fd, char **line);
 enum	e_str

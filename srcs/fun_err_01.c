@@ -21,3 +21,8 @@ void		f_nul(void)
 {
 	ERR_NULL
 }
+
+void		f_read(void)
+{
+	ERR_READ
+}

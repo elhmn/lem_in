@@ -1,34 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lib1.c                                             :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/12/11 20:39:32 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/11 21:10:54 by bmbarga          ###   ########.fr       */
+/*   Created: 2013/11/21 01:16:44 by bmbarga           #+#    #+#             */
+/*   Updated: 2013/11/29 09:29:15 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem_in.h"
+#include <string.h>
+#include "lib.h"
 
-void	ft_putchar(int c)
+static void	ft_put_aux_nbr(int n)
 {
-	write(1, &c, 1);
-}
-
-void	ft_putstr(char *str)
-{
-	if (str)
-		while (*str)
-			write(1, str++, 1);
-}
-
-void	ft_putendl(char *str)
-{
-	if (str)
+	if (n >= 10)
 	{
-		ft_putstr(str);
-		ft_putstr("\n");	
+		ft_put_aux_nbr(n / 10);
+		ft_put_aux_nbr(n % 10);
 	}
+	else
+		ft_putchar(n + 48);
+}
+
+void		ft_putnbr(int n)
+{
+	if (n < 0)
+	{
+		ft_putchar('-');
+		ft_put_aux_nbr(n * -1);
+	}
+	else
+		ft_put_aux_nbr(n);
 }

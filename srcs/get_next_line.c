@@ -86,6 +86,8 @@ int			get_next_line(int const fd, char **line)
 	str[BUFF][BUFF_SIZE] = '\0';
 	if ((ret = aux_get_next_line(buf_tmp, str, line, fd)) == -1)
 		return (-1);
+	if (buf_tmp[BUFF_SIZE] == MY_EOF && str[STR][0] == '\0')
+		return (0);
 	*line = str[STR];
 	return (1);
 }

@@ -11,6 +11,8 @@
 /* ************************************************************************** */
 
 #include "lem_in.h"
+#include "init.h"
+#include "debug.h"
 
 /*
 **	1- recuperer les donnees sur l'entree standard
@@ -25,9 +27,18 @@
 
 int		main(int ac, char **av)
 {
+	t_lemin		*lemin;
+
+	av = av;
+	lemin = NULL;
+	lemin = init_lemin(lemin);
+	debug_lemin(lemin);
 	if (ac)
 	{
-
+		get_data(lemin);
+	//	debug_lemin(lemin);
+		//treat data
+		//print_data
 	}
 	return (0);
 }
