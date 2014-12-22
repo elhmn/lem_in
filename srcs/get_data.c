@@ -24,7 +24,7 @@ void	treat_line(t_lemin *lemin, char *str)
 	// si ligne vide && autre cond d arret
 	if (str && *str == '\0')
 		check_errors(NUL, "str", "get_data.c");
-	if (lemin->data_type == ANTS_NBR && str)
+	if (lemin->data_type == ANTS_NBR)
 	{
 		lemin->ant_nbr = ft_atoi(str);
 		lemin->data_type = ROOMS;
