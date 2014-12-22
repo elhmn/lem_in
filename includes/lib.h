@@ -20,8 +20,12 @@
 void	ft_putendl(char *str);
 void	ft_putstr(char *str);
 void	ft_putchar(int c);
+int		tab_len(char **tab);
 
 void	ft_putnbr(int c);
 int		ft_atoi(char *str);
 int		ft_isdigit(char str);
+char	*ft_strchr(const char *str, int c);
+int		is_number(char *str);
+char	**ft_strsplit(char const *s, char c);
 #endif

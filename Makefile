@@ -16,7 +16,7 @@ SRC = main.c get_data.c lib_1.c check_errors.c fun_err_01.c \
 	  get_next_line.c ft_memset.c ft_memalloc.c ft_memmove.c \
 	  ft_strchr.c ft_strjoin.c ft_strsub.c ft_strcpy.c ft_strnew.c \
 	  ft_memcpy.c ft_strcat.c ft_strlen.c init_1.c debug_1.c hash.c \
-	  ft_putnbr.c ft_atoi.c ft_isdigit.c
+	  ft_putnbr.c ft_atoi.c ft_isdigit.c ft_strsplit.c
 
 OBJ = $(SRC:.c=.o)
 

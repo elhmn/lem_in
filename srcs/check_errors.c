@@ -27,6 +27,13 @@ static void	fun_error_init(t_ferr *f)
 	}
 }
 
+void		error(char *str)
+{
+	ft_putstr("ERROR");
+	ft_putendl(str);
+	exit(0);
+}
+
 void		check_errors(int code, char *file_name, char *var_name)
 {
 	int	i;

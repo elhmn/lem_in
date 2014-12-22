@@ -44,5 +44,5 @@ void		f_read(void);
 */
 
 void	check_errors(int code, char *file_name, char *var_name);
-
+void	error(char *str);
 #endif

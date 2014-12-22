@@ -32,11 +32,10 @@ int		main(int ac, char **av)
 	av = av;
 	lemin = NULL;
 	lemin = init_lemin(lemin);
-	debug_lemin(lemin);
 	if (ac)
 	{
 		get_data(lemin);
-	//	debug_lemin(lemin);
+		debug_lemin(lemin); /***************/
 		//treat data
 		//print_data
 	}

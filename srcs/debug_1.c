@@ -20,7 +20,7 @@ void print_type(char *str, void *data, int type)
 void	debug_lemin(t_lemin *lemin)
 {
 	if (!lemin)
-		check_errors(NUL, "lemin", "debug1");
+		error(" :: lemin");
 	print_type("lemin->ant_nbr", &(lemin->ant_nbr), INT);
 	print_type("lemin->data_type", &(lemin->data_type), INT);
 	//print hashtab

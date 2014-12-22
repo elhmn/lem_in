@@ -20,3 +20,32 @@ void	ft_putendl(char *str)
 		ft_putstr("\n");	
 	}
 }
+
+int		tab_len(char **tab)
+{
+	int		l;
+
+	l = 0;
+	if (tab)
+	{
+		while (*tab && **tab)
+		{
+			l++;
+			tab++;
+		}
+	}
+	return (l);
+}
+
+int		is_number(char *str)
+{
+	if (str)
+	{
+		while (*str && ft_isdigit(*str))
+			str++;
+		if (*str)
+			return (0);
+		return (1);
+	}
+	return (0);
+}

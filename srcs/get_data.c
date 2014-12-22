@@ -17,27 +17,58 @@
 **	les noeuds seront stocker dans une table de hash (hotrace)
 */
 
+void	get_ants(t_lemin *lemin, char *str)
+{
+	if (!is_number(str))
+		error(" :: str isnt number");
+	lemin->ant_nbr = ft_atoi(str);
+	lemin->data_type = ROOMS;
+}
+
+void	get_rooms(t_lemin *lemin, char *str)
+{
+	char	**split;
+
+	split = NULL;
+	lemin = lemin;
+	if (!ft_strchr(str, ' ') || *str == 'L')
+		error(" :: str is not a room");
+	if (!(split = ft_strsplit(str, ' ')) || tab_len(split) != 3)
+		error(" :: split to NULL || split != 3 elems");
+/*	ft_putstr("split len = [");
+	ft_putnbr(tab_len(split));
+	ft_putendl("]");
+	ft_putendl(*(split + 0));
+	ft_putendl(*(split + 1));
+	ft_putendl(*(split + 2));
+*/
+	// stocker le bordel dans la table de hash
+}
+
+/*
+void	get_tubes(t_lemin *lemin, char *str)
+{
+
+
+}
+*/
+
 void	treat_line(t_lemin *lemin, char *str)
 {
 	if (!lemin)
-		check_errors(NUL, "lemin", "get_data.c");
-	// si ligne vide && autre cond d arret
+		error(" :: lemin");
 	if (str && *str == '\0')
-		check_errors(NUL, "str", "get_data.c");
-	if (lemin->data_type == ANTS_NBR)
-	{
-		lemin->ant_nbr = ft_atoi(str);
-		lemin->data_type = ROOMS;
-	}
-	if (lemin->data_type == ROOMS)
-	{
-
-	}
-	if (lemin->data_type == TUBES)
-	{
-
-	}
-	debug_lemin(lemin);
+		error(" :: ligne vide || str set to NULL");
+	//checker que c'est bien un nbr > minint< maxint
+	if (*str == '#');
+	else if (lemin->data_type == ANTS_NBR)
+		get_ants(lemin, str);
+	//checker que c'est bien une chambres
+	else if (lemin->data_type == ROOMS)
+		get_rooms(lemin, str);
+	//checker que c'est bien un tubes
+//	if (lemin->data_type == TUBES)
+//		get_tubes(lemin, str);
 }
 
 int		get_data(t_lemin *lemin)
@@ -53,6 +84,6 @@ int		get_data(t_lemin *lemin)
 		free(str);
 	}
 	if (ret == -1)
-		check_errors(READ, "get_nex_line", "get_data.c");
+		error(" :: ret = -1");
 	return (0);
 }
