@@ -21,6 +21,7 @@ void	ft_putendl(char *str);
 void	ft_putstr(char *str);
 void	ft_putchar(int c);
 int		tab_len(char **tab);
+char				*ft_strsub(char const *s, unsigned int start, size_t size);
 
 void	ft_putnbr(int c);
 int		ft_atoi(char *str);

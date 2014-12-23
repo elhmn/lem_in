@@ -44,14 +44,6 @@ enum	e_data_type
 
 typedef	unsigned long	t_ulong;
 
-typedef struct		s_list
-{
-	void			*content;
-	size_t			content_size;
-	struct s_list	*next;
-
-}					t_list;
-
 typedef	struct		s_hash
 {
 	t_ulong			h1;
@@ -65,19 +57,32 @@ typedef struct	s_coord
 	int			y;
 }				t_coord;
 
+/*
+** propriete d'un noeud
+*/
 
 typedef struct	s_nod
 {
 	char		*name;
-	t_coord		*coord;
+	t_coord		coord;
 	t_hash		*links;
 	int			props; //proprites du noeuds
 }				t_nod;
+
+
+typedef struct		s_list
+{
+	t_nod			*nod;
+	struct s_list	*next;
+
+}					t_list;
 
 typedef struct	s_lemin
 {
 	int		ant_nbr;
 	t_list	**hashtab; //table de hash stocke list de noeuds correspondant a un hash donnee.
+	int		room_nbr;
+	char	*end_name;
 	int		data_type;
 }				t_lemin;
 
@@ -87,4 +92,14 @@ typedef struct	s_lemin
 
 void	treat_line(t_lemin *lemin, char *str);
 int		get_data(t_lemin *lemin);
+void	get_rooms(t_lemin *lemin, char *str);
+void	get_ants(t_lemin *lemin, char *str);
+
+/*
+** get_data_tools.c
+*/
+
+int		is_room(char *str, t_lemin *lemin);
+void	get_room_data(char *str, t_lemin *lemin);
+void	list_addelem(t_lemin *lemin, t_nod *nod);
 #endif

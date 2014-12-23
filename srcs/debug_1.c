@@ -8,6 +8,7 @@ void print_type(char *str, void *data, int type)
 
 	t_int = (int*)data;
 	t_char = (char*)data;
+	ft_putstr("\t");
 	ft_putstr(str);
 	ft_putstr(" = [");
 	if (type == INT)
@@ -17,11 +18,57 @@ void print_type(char *str, void *data, int type)
 	ft_putendl("]");
 }
 
+void	print_hashtab(t_list **hashtab)
+{
+	int		i;
+	t_list	*tmp;
+
+	i = 0;
+	if (hashtab)
+	{
+		while (i < MOD_SIZE)
+		{
+			if (hashtab[i])
+			{
+				ft_putstr("hashtab[");
+				ft_putnbr(i);
+				ft_putstr("] :: \n");
+				tmp = hashtab[i];
+				while (tmp)
+				{
+					debug_nod(tmp->nod);
+					tmp = tmp->next;
+				}
+			}
+			i++;
+		}
+	}
+}
+
 void	debug_lemin(t_lemin *lemin)
 {
 	if (!lemin)
-		error(" :: lemin");
+		error(" :: print lemin");
+	ft_putendl(" DEBUG LEMIN :: ");
 	print_type("lemin->ant_nbr", &(lemin->ant_nbr), INT);
 	print_type("lemin->data_type", &(lemin->data_type), INT);
-	//print hashtab
+	print_type("lemin->room_nbr", &(lemin->room_nbr), INT);
+	print_type("lemin->data_type", &(lemin->data_type), INT);
+	ft_putendl("");
+	print_hashtab(lemin->hashtab);
+}
+
+void	debug_nod(t_nod *nod)
+{
+	int	ret;
+
+	if (!nod)
+		error(" :: print node");
+	ft_putendl(" DEBUG NODE :: ");
+	print_type("nod->name", nod->name, CHAR);
+	print_type("nod->coord.y", &(nod->coord.y), INT);
+	print_type("nod->coord.x", &(nod->coord.x), INT);
+	ret = hash3(nod->name);
+	print_type("hash3(nod->name)", &ret, INT);
+	ft_putendl("");
 }
