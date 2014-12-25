@@ -24,7 +24,7 @@ int		if_match(char *str, t_list **hashtab)
 					{
 						//lier les deux elements
 						print_type("str exist && str" , str, CHAR);
-					//	print_type("str + i" , str + len, CHAR);
+						//print_type("str + i" , str + len, CHAR);
 						return (len);
 					}
 					tmp = tmp->next;
@@ -49,6 +49,7 @@ int		hashtab_chr(t_list **hashtab, void *data)
 			if (if_match(str + len + 1, hashtab))
 			{
 				ft_putendl("Les deux elements matchent");
+				//lier les deux elements;
 				return (1);
 			}
 		}
