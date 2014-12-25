@@ -1,6 +1,47 @@
 #include "lem_in.h"
 #include "debug.h"
 
+void	hashtab_chr(t_list **hashtab, void *data)
+{
+	char 		*str;
+	t_list		*tmp;
+	int			i;
+	int			len;
+
+	i = -1;
+	str = (char*)data;
+	if (str && hashtab)
+	{
+		while (++i < MOD_SIZE)
+		{
+			if (hashtab[i])
+			{
+				tmp = hashtab[i];
+				while (tmp)
+				{
+					len = ft_strlen(tmp->nod->name);
+					if (!ft_strncmp(tmp->nod->name, str, len) && *(str + len) == '-')
+					{
+						print_type("str exist && str" , str, CHAR);
+						print_type("str + i" , str + i, CHAR);
+					}
+					tmp = tmp->next;
+				}
+			}
+		}
+	}
+}
+
+int		is_tube(char *str, t_lemin *lemin)
+{
+	if (str && lemin)
+	{
+		if (ft_strchr(str, '-'))
+			return (1);
+	}
+	return (0);
+}
+
 int		is_room(char *str, t_lemin *lemin)
 {
 	char	*tmp1;
@@ -16,7 +57,7 @@ int		is_room(char *str, t_lemin *lemin)
 		if (*str == ' ' && ft_isdigit(*(str - 1)))
 			str--;
 		else
-			error("is not room 1");
+			return (0);
 		while (str != tmp1 && ft_isdigit(*str))
 			str--;
 		if (*str == ' ')
@@ -25,12 +66,26 @@ int		is_room(char *str, t_lemin *lemin)
 			str--;
 		}
 		else
-			error("is not a room 2");
+			return (0);
 		if (*tmp1 == 'L')
-			error("is not a room 3");
+			error(" :: cant start with L");
 		return (1);
 	} 
 	return (0);
+}
+
+void	add_link(t_lemin *lemin, char *r1, char *r2)
+{
+//	t_ulong	h1;
+//	t_ulong	h2;
+
+	if (lemin && r1 && r2)
+	{;
+//		h1 = hash3(r1);	
+//		h2 = hash3(r2);	
+	}
+	else
+		error("");
 }
 
 void	list_addelem(t_lemin *lemin, t_nod *nod)
@@ -57,6 +112,23 @@ void	list_addelem(t_lemin *lemin, t_nod *nod)
 	}
 }
 
+void	get_props(t_lemin *lemin, t_nod *nod)
+{
+	nod->props = lemin->props;
+	if (lemin->props != -1)
+	{
+		if (lemin->props == START && lemin->start)
+			error(" :: cant get more than one start");
+		if (lemin->props == END && lemin->end)
+			error(" :: cant get more than one end");
+		if (lemin->props == START)
+			lemin->start = nod;
+		if (lemin->props == END)
+			lemin->end = nod;
+		lemin->props = -1;
+	}
+}
+
 void	get_room_data(char *str, t_lemin *lemin)
 {
 	t_nod	*nod;
@@ -76,7 +148,11 @@ void	get_room_data(char *str, t_lemin *lemin)
 	car_y = ft_strchr(car_x + 1, '\0');
 	*car_y = '\0';
 	nod->coord.y = ft_atoi(car_x + 1);
+	/************** CAN GO IN A FUNCTION  ****/
+	get_props(lemin, nod);
+	lemin->room_nbr++;
 	list_addelem(lemin, nod);
+	/********* DONT FORGET TO CHECK IF I GOT A END AND A START ***************/
 //	debug_nod(nod);
 //	ajouter un element a l'element hash du tableau
 }

@@ -35,7 +35,7 @@ int		main(int ac, char **av)
 	if (ac)
 	{
 		get_data(lemin);
-		debug_lemin(lemin); /***************/
+		//debug_lemin(lemin); /***************/
 		//treat data
 		//print_data
 	}

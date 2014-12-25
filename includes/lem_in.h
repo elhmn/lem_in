@@ -61,11 +61,13 @@ typedef struct	s_coord
 ** propriete d'un noeud
 */
 
+typedef struct s_list t_list;
+
 typedef struct	s_nod
 {
 	char		*name;
 	t_coord		coord;
-	t_hash		*links;
+	t_list		*links;
 	int			props; //proprites du noeuds
 }				t_nod;
 
@@ -82,7 +84,10 @@ typedef struct	s_lemin
 	int		ant_nbr;
 	t_list	**hashtab; //table de hash stocke list de noeuds correspondant a un hash donnee.
 	int		room_nbr;
+	int		props;
 	char	*end_name;
+	t_nod	*start;
+	t_nod	*end;
 	int		data_type;
 }				t_lemin;
 
@@ -100,6 +105,10 @@ void	get_ants(t_lemin *lemin, char *str);
 */
 
 int		is_room(char *str, t_lemin *lemin);
+int		is_tube(char *str, t_lemin *lemin);
 void	get_room_data(char *str, t_lemin *lemin);
 void	list_addelem(t_lemin *lemin, t_nod *nod);
+void	get_props(t_lemin *lemin, t_nod *nod);
+void	add_link(t_lemin *lemin, char *r1, char *r2);
+void	hashtab_chr(t_list **hashtab, void *data);
 #endif

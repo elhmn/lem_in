@@ -54,6 +54,11 @@ void	debug_lemin(t_lemin *lemin)
 	print_type("lemin->data_type", &(lemin->data_type), INT);
 	print_type("lemin->room_nbr", &(lemin->room_nbr), INT);
 	print_type("lemin->data_type", &(lemin->data_type), INT);
+	print_type("lemin->props", &(lemin->props), INT);
+	ft_putendl("lemin->start :: ");
+	debug_nod(lemin->start);
+	ft_putendl("lemin->end :: ");
+	debug_nod(lemin->end);
 	ft_putendl("");
 	print_hashtab(lemin->hashtab);
 }
@@ -66,8 +71,9 @@ void	debug_nod(t_nod *nod)
 		error(" :: print node");
 	ft_putendl(" DEBUG NODE :: ");
 	print_type("nod->name", nod->name, CHAR);
-	print_type("nod->coord.y", &(nod->coord.y), INT);
 	print_type("nod->coord.x", &(nod->coord.x), INT);
+	print_type("nod->coord.y", &(nod->coord.y), INT);
+	print_type("nod->props", &(nod->props), INT);
 	ret = hash3(nod->name);
 	print_type("hash3(nod->name)", &ret, INT);
 	ft_putendl("");

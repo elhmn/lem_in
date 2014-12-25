@@ -21,12 +21,20 @@ void	ft_putendl(char *str);
 void	ft_putstr(char *str);
 void	ft_putchar(int c);
 int		tab_len(char **tab);
-char				*ft_strsub(char const *s, unsigned int start, size_t size);
+char	*ft_strsub(char const *s, unsigned int start, size_t size);
 
 void	ft_putnbr(int c);
 int		ft_atoi(char *str);
 int		ft_isdigit(char str);
+int		ft_strcmp(const char *s1, const char *s2);
 char	*ft_strchr(const char *str, int c);
 int		is_number(char *str);
 char	**ft_strsplit(char const *s, char c);
+
+/*
+** lib2.c
+*/
+
+int		ft_strlen(char *str);
+ int ft_strncmp(const char *s1, const char *s2, size_t n);
 #endif
