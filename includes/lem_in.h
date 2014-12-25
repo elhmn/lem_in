@@ -110,5 +110,5 @@ void	get_room_data(char *str, t_lemin *lemin);
 void	list_addelem(t_lemin *lemin, t_nod *nod);
 void	get_props(t_lemin *lemin, t_nod *nod);
 void	add_link(t_lemin *lemin, char *r1, char *r2);
-void	hashtab_chr(t_list **hashtab, void *data);
+int		hashtab_chr(t_list **hashtab, void *data);
 #endif

@@ -45,7 +45,7 @@ void	get_rooms(t_lemin *lemin, char *str)
 
 void	get_tubes(t_lemin *lemin, char *str)
 {
-	char	*tmp;
+//	char	*tmp;
 //	t_list	*links;
 
 	if (lemin && str && !is_tube(str, lemin))
@@ -53,9 +53,9 @@ void	get_tubes(t_lemin *lemin, char *str)
 		ft_putendl(str);
 		error(" :: is not a tube");
 	}
-	hashtab_chr(lemin->hashtab, str);
-	tmp = ft_strchr(str, '-');
-	*tmp = '\0';
+//	hashtab_chr(lemin->hashtab, str);
+//	tmp = ft_strchr(str, '-');
+//	*tmp = '\0';
 /*
 	ft_putstr("s1 = [");
 	ft_putstr(str);

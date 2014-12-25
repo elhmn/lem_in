@@ -1,16 +1,16 @@
 #include "lem_in.h"
 #include "debug.h"
 
-void	hashtab_chr(t_list **hashtab, void *data)
-{
-	char 		*str;
-	t_list		*tmp;
-	int			i;
-	int			len;
 
+int		if_match(char *str, t_list **hashtab)
+{
+	int		i;
+	int		len;
+	t_list	*tmp;
+
+	len = 0;
 	i = -1;
-	str = (char*)data;
-	if (str && hashtab)
+	if (hashtab)
 	{
 		while (++i < MOD_SIZE)
 		{
@@ -20,23 +20,47 @@ void	hashtab_chr(t_list **hashtab, void *data)
 				while (tmp)
 				{
 					len = ft_strlen(tmp->nod->name);
-					if (!ft_strncmp(tmp->nod->name, str, len) && *(str + len) == '-')
+					if (!ft_strncmp(tmp->nod->name, str, len))
 					{
+						//lier les deux elements
 						print_type("str exist && str" , str, CHAR);
-						print_type("str + i" , str + i, CHAR);
+					//	print_type("str + i" , str + len, CHAR);
+						return (len);
 					}
 					tmp = tmp->next;
 				}
 			}
 		}
 	}
+	return (0);
+}
+
+int		hashtab_chr(t_list **hashtab, void *data)
+{
+	char 		*str;
+	int			len;
+
+	str = (char*)data;
+	if (str && hashtab)
+	{
+		// si str match avec un element de la table
+		if ((len = if_match(str, hashtab)))
+		{
+			if (if_match(str + len + 1, hashtab))
+			{
+				ft_putendl("Les deux elements matchent");
+				return (1);
+			}
+		}
+	}
+	return (0);
 }
 
 int		is_tube(char *str, t_lemin *lemin)
 {
 	if (str && lemin)
 	{
-		if (ft_strchr(str, '-'))
+		if (hashtab_chr(lemin->hashtab, str))
 			return (1);
 	}
 	return (0);
