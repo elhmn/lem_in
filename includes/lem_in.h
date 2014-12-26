@@ -100,7 +100,7 @@ void	get_rooms(t_lemin *lemin, char *str);
 void	get_ants(t_lemin *lemin, char *str);
 
 /*
-** get_data_tools.c
+** get_data_tools1.c
 */
 
 int		is_room(char *str, t_lemin *lemin);
@@ -108,6 +108,14 @@ int		is_tube(char *str, t_lemin *lemin);
 void	get_room_data(char *str, t_lemin *lemin);
 void	hashtab_addelem(t_lemin *lemin, t_nod *nod);
 void	get_props(t_lemin *lemin, t_nod *nod);
-void	add_link(t_nod *nod1, t_nod *nod2);
 int		hashtab_chr(t_list **hashtab, void *data);
+
+/*
+** get_data_tools2.c
+*/
+
+void	add_link(t_nod *nod1, t_nod *nod2);
+void	nod_addelem(t_nod *nod1, t_nod *nod2);
+t_nod	*if_match(char *str, t_list **hashtab)
+;
 #endif

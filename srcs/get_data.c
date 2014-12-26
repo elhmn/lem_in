@@ -14,7 +14,7 @@
 #include "debug.h"
 
 /*
-**	les noeuds seront stocker dans une table de hash (hotrace)
+** les noeuds seront stocker dans une table de hash (hotrace)
 */
 
 void	get_ants(t_lemin *lemin, char *str)
@@ -25,10 +25,6 @@ void	get_ants(t_lemin *lemin, char *str)
 	lemin->data_type = ROOMS;
 }
 
-/*
-** is_room permet de verifier le format nom' 'coord_x' 'coord_y
-*/
-
 void	get_rooms(t_lemin *lemin, char *str)
 {
 	lemin = lemin;
@@ -37,7 +33,6 @@ void	get_rooms(t_lemin *lemin, char *str)
 		if (!lemin->room_nbr)
 			error("no rooms");
 		lemin->data_type = TUBES;
-	//	ft_putendl("change type"); /********************/
 	}
 	if (lemin->data_type == ROOMS)
 		get_room_data(str, lemin);
@@ -45,27 +40,12 @@ void	get_rooms(t_lemin *lemin, char *str)
 
 void	get_tubes(t_lemin *lemin, char *str)
 {
-//	char	*tmp;
-//	t_list	*links;
-
 	if (lemin && str && !is_tube(str, lemin))
 	{
 		ft_putendl(str);
 		error(" :: is not a tube");
 	}
-//	hashtab_chr(lemin->hashtab, str);
-//	tmp = ft_strchr(str, '-');
-//	*tmp = '\0';
-/*
-	ft_putstr("s1 = [");
-	ft_putstr(str);
-	ft_putendl("]");
-	ft_putstr("s2 = [");
-	ft_putstr(tmp + 1);
-	ft_putendl("]");
-*/
 	lemin->data_type = TUBES;
-//	add_link(lemin, str, tmp + 1);	
 }
 
 void	treat_line(t_lemin *lemin, char *str)
@@ -89,7 +69,6 @@ void	treat_line(t_lemin *lemin, char *str)
 	}
 	else if (lemin->data_type == ANTS_NBR)
 		get_ants(lemin, str);
-	//checker que c'est bien une chambre
 	else
 	{
 		if (lemin->data_type == ROOMS)
@@ -97,7 +76,6 @@ void	treat_line(t_lemin *lemin, char *str)
 		if (lemin->data_type == TUBES)
 			get_tubes(lemin, str);
 	}
-	//checker que c'est bien un tubes
 }
 
 int		get_data(t_lemin *lemin)
