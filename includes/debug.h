@@ -12,4 +12,5 @@ void	debug_lemin(t_lemin *lemin);
 void	print_type(char *str, void *data, int type);
 void	debug_nod(t_nod *nod);
 void	print_hashtab(t_list **hashtab);
+void	debug_links(t_nod *nod);
 #endif

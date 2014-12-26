@@ -37,7 +37,7 @@ void	get_rooms(t_lemin *lemin, char *str)
 		if (!lemin->room_nbr)
 			error("no rooms");
 		lemin->data_type = TUBES;
-		ft_putendl("change type");
+	//	ft_putendl("change type"); /********************/
 	}
 	if (lemin->data_type == ROOMS)
 		get_room_data(str, lemin);

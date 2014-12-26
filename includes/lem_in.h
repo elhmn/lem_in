@@ -71,10 +71,9 @@ typedef struct	s_nod
 	int			props; //proprites du noeuds
 }				t_nod;
 
-
 typedef struct		s_list
 {
-	t_nod			*nod;
+	struct s_nod	*nod;
 	struct s_list	*next;
 
 }					t_list;
@@ -107,8 +106,8 @@ void	get_ants(t_lemin *lemin, char *str);
 int		is_room(char *str, t_lemin *lemin);
 int		is_tube(char *str, t_lemin *lemin);
 void	get_room_data(char *str, t_lemin *lemin);
-void	list_addelem(t_lemin *lemin, t_nod *nod);
+void	hashtab_addelem(t_lemin *lemin, t_nod *nod);
 void	get_props(t_lemin *lemin, t_nod *nod);
-void	add_link(t_lemin *lemin, char *r1, char *r2);
+void	add_link(t_nod *nod1, t_nod *nod2);
 int		hashtab_chr(t_list **hashtab, void *data);
 #endif

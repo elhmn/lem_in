@@ -35,6 +35,12 @@ int		main(int ac, char **av)
 	if (ac)
 	{
 		get_data(lemin);
+		ft_putendl("debug end :: "); /*****/
+		debug_nod(lemin->end);
+		debug_nod(lemin->start);
+//		ft_putendl("debug start :: "); /*****/
+//		debug_nod(lemin->start);
+//		print_hashtab(lemin->hashtab);
 		//debug_lemin(lemin); /***************/
 		//treat data
 		//print_data

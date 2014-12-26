@@ -1,8 +1,7 @@
 #include "lem_in.h"
 #include "debug.h"
 
-
-int		if_match(char *str, t_list **hashtab)
+t_nod	*if_match(char *str, t_list **hashtab)
 {
 	int		i;
 	int		len;
@@ -23,33 +22,72 @@ int		if_match(char *str, t_list **hashtab)
 					if (!ft_strncmp(tmp->nod->name, str, len))
 					{
 						//lier les deux elements
-						print_type("str exist && str" , str, CHAR);
+//						print_type("str exist && str" , str, CHAR);
 						//print_type("str + i" , str + len, CHAR);
-						return (len);
+						return (tmp->nod);
 					}
 					tmp = tmp->next;
 				}
 			}
 		}
 	}
-	return (0);
+	return (NULL);
 }
+
+void	nod_addelem(t_nod *nod1, t_nod *nod2)
+{
+	t_list	*tmp;
+	t_list	*elem;
+
+	tmp = NULL;
+	elem = NULL;
+	if (!(elem = (t_list*)malloc(sizeof(t_list))))
+		error(" :: malloc elem");
+	elem->nod = nod2;
+	elem->next = NULL;
+	if (!nod1->links)
+	{
+		nod1->links = elem;
+		tmp = nod1->links;
+	}
+	else
+	{
+		tmp = nod1->links;
+		while (tmp->next)
+			tmp = tmp->next;
+		tmp->next = elem;
+	}
+}
+
+void	add_link(t_nod *nod1, t_nod *nod2)
+{
+
+	if (nod1 && nod2)
+	{
+		nod_addelem(nod1, nod2);
+		nod_addelem(nod2, nod1);
+	}
+	else
+		error("");
+}
+
 
 int		hashtab_chr(t_list **hashtab, void *data)
 {
 	char 		*str;
+	t_nod		*nod1;
+	t_nod		*nod2;
 	int			len;
 
 	str = (char*)data;
 	if (str && hashtab)
 	{
-		// si str match avec un element de la table
-		if ((len = if_match(str, hashtab)))
+		if ((nod1 = if_match(str, hashtab)))
 		{
-			if (if_match(str + len + 1, hashtab))
+			len = ft_strlen(nod1->name);
+			if ((nod2 = if_match(str + len + 1, hashtab)))
 			{
-				ft_putendl("Les deux elements matchent");
-				//lier les deux elements;
+				add_link(nod1, nod2);
 				return (1);
 			}
 		}
@@ -99,21 +137,7 @@ int		is_room(char *str, t_lemin *lemin)
 	return (0);
 }
 
-void	add_link(t_lemin *lemin, char *r1, char *r2)
-{
-//	t_ulong	h1;
-//	t_ulong	h2;
-
-	if (lemin && r1 && r2)
-	{;
-//		h1 = hash3(r1);	
-//		h2 = hash3(r2);	
-	}
-	else
-		error("");
-}
-
-void	list_addelem(t_lemin *lemin, t_nod *nod)
+void	hashtab_addelem(t_lemin *lemin, t_nod *nod)
 {
 	t_list		*elem;
 	t_list		*tmp;
@@ -174,9 +198,10 @@ void	get_room_data(char *str, t_lemin *lemin)
 	*car_y = '\0';
 	nod->coord.y = ft_atoi(car_x + 1);
 	/************** CAN GO IN A FUNCTION  ****/
+	nod->links = NULL;
 	get_props(lemin, nod);
 	lemin->room_nbr++;
-	list_addelem(lemin, nod);
+	hashtab_addelem(lemin, nod);
 	/********* DONT FORGET TO CHECK IF I GOT A END AND A START ***************/
 //	debug_nod(nod);
 //	ajouter un element a l'element hash du tableau

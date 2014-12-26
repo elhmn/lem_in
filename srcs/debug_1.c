@@ -18,6 +18,21 @@ void print_type(char *str, void *data, int type)
 	ft_putendl("]");
 }
 
+void	debug_links(t_nod *nod)
+{
+	t_list	*tmp;
+
+	if (nod && nod->links)
+	{
+		tmp = nod->links;
+		while (tmp)
+		{
+			print_type("tmp->nod->name", tmp->nod->name, CHAR);
+			tmp = tmp->next;
+		}
+	}
+}
+
 void	print_hashtab(t_list **hashtab)
 {
 	int		i;
@@ -76,5 +91,7 @@ void	debug_nod(t_nod *nod)
 	print_type("nod->props", &(nod->props), INT);
 	ret = hash3(nod->name);
 	print_type("hash3(nod->name)", &ret, INT);
+	ft_putendl("\tDEBUG LINKS ::");
+	debug_links(nod);
 	ft_putendl("");
 }
