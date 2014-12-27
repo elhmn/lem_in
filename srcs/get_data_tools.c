@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 07:04:24 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/27 07:14:32 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/12/27 12:34:47 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,7 @@ void	get_room_data(char *str, t_lemin *lemin)
 	*car_y = '\0';
 	nod->coord.y = ft_atoi(car_x + 1);
 	nod->links = NULL;
+	nod->bool = 0;
 	get_props(lemin, nod);
 	lemin->room_nbr++;
 	hashtab_addelem(lemin, nod);

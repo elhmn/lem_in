@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/10 17:09:51 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/27 08:13:57 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/12/27 13:14:24 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,12 @@ int		main(int ac, char **av)
 	if (ac)
 	{
 		get_data(lemin);
-//		ft_putendl("debug end :: "); /*****/
-		debug_nod(lemin->end);
-//		debug_nod(lemin->start);
+		lemin->start->bool = 1;
+		pathfinder(lemin->start, lemin);
 //		ft_putendl("debug start :: "); /*****/
 //		debug_nod(lemin->start);
+//		ft_putendl("debug end :: "); /*****/
+///		debug_nod(lemin->end);
 //		print_hashtab(lemin->hashtab);
 //		debug_lemin(lemin); /***************/
 		//treat data

@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/08 16:49:17 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/11 21:09:01 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/12/27 13:52:12 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 void		f_malloc(void)
 {
-	ERR_MALLOC
+	ERR_MALLOC;
 }
 
 void		f_nul(void)
 {
-	ERR_NULL
+	ERR_NULL;
 }
 
 void		f_read(void)
 {
-	ERR_READ
+	ERR_READ;
 }

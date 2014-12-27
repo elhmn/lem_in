@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 17:15:13 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/27 07:04:11 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/12/27 13:53:39 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,16 @@ void		error(char *str)
 
 void		check_errors(int code, char *file_name, char *var_name)
 {
-	int	i;
+	int		i;
 	t_ferr	fun_error[READ + 1];
 
 	i = -1;
 	fun_error_init(fun_error);
-	ERR ERR_VAR(var_name) ERR_SP ERR_FILE(file_name) ERR_SP
+	ERR;
+	ERR_VAR(var_name);
+	ERR_SP;
+	ERR_FILE(file_name);
+	ERR_SP;
 	while (++i < (READ + 1))
 		if (i == code)
 			fun_error[i]();

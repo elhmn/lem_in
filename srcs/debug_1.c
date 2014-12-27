@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 07:04:19 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/27 07:06:15 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/12/27 12:43:20 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ void	debug_links(t_nod *nod)
 		while (tmp)
 		{
 			print_type("tmp->nod->name", tmp->nod->name, CHAR);
+			print_type("nod->bool", &(nod->bool), INT);
+			ft_putendl("");
 			tmp = tmp->next;
 		}
 	}
@@ -103,6 +105,7 @@ void	debug_nod(t_nod *nod)
 	print_type("nod->props", &(nod->props), INT);
 	ret = hash3(nod->name);
 	print_type("hash3(nod->name)", &ret, INT);
+	print_type("nod->bool", &(nod->bool), INT);
 	ft_putendl("\tDEBUG LINKS ::");
 	debug_links(nod);
 	ft_putendl("");
