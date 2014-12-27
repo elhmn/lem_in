@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   debug_1.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2014/12/27 07:04:19 by bmbarga           #+#    #+#             */
+/*   Updated: 2014/12/27 07:06:15 by bmbarga          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lem_in.h"
 #include "debug.h"
 
-void print_type(char *str, void *data, int type)
+void	print_type(char *str, void *data, int type)
 {
 	int		*t_int;
 	char	*t_char;

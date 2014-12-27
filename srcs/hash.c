@@ -6,7 +6,7 @@
 /*   By: jblanche <jblanche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/14 17:10:49 by jblanche          #+#    #+#             */
-/*   Updated: 2013/12/15 17:44:57 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/12/27 07:20:53 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,8 @@ unsigned long	hash2(char *str)
 	hash = 0;
 	while ((c = *str++))
 		hash = c + (hash << 6) + (hash << 16) - hash;
-	if (hash > 50000)
-	//	reduce(&hash);
-	hash = hash % 50000;
+	if (hash > MOD_SIZE)
+		reduce(&hash);
 	return (hash);
 }
 

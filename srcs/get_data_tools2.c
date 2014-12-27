@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_data_tools2.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2014/12/27 07:04:30 by bmbarga           #+#    #+#             */
+/*   Updated: 2014/12/27 07:20:06 by bmbarga          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lem_in.h"
 #include "debug.h"
 
-t_nod	*if_match(char *str, t_list **hashtab)
+t_nod		*if_match(char *str, t_list **hashtab)
 {
 	int		i;
 	int		len;
@@ -29,14 +41,28 @@ t_nod	*if_match(char *str, t_list **hashtab)
 	return (NULL);
 }
 
-void	nod_addelem(t_nod *nod1, t_nod *nod2)
+static void	nod_addaux(t_list *tmp, t_nod *nod1, t_nod *nod2)
+{
+	int		i;
+
+	tmp = nod1->links;
+	while (tmp->next)
+	{
+		if (!(i = ft_strcmp(tmp->nod->name, nod2->name)))
+			break ;
+		tmp = tmp->next;
+	}
+	i = ft_strcmp(tmp->nod->name, nod2->name);
+	if (i)
+		tmp->next = elem;
+}
+
+void		nod_addelem(t_nod *nod1, t_nod *nod2)
 {
 	t_list	*tmp;
 	t_list	*elem;
 	int		i;
 
-	tmp = NULL;
-	elem = NULL;
 	if (!(elem = (t_list*)malloc(sizeof(t_list))))
 		error(" :: malloc elem");
 	elem->nod = nod2;
@@ -47,23 +73,11 @@ void	nod_addelem(t_nod *nod1, t_nod *nod2)
 		tmp = nod1->links;
 	}
 	else
-	{
-		tmp = nod1->links;
-		while (tmp->next)
-		{
-			if (!(i = ft_strcmp(tmp->nod->name, nod2->name)))
-				break;
-			tmp = tmp->next;
-		}
-		i = ft_strcmp(tmp->nod->name, nod2->name);
-		if (i)
-			tmp->next = elem;
-	}
+		nod_addaux(tmp, nod1, nod2);
 }
 
-void	add_link(t_nod *nod1, t_nod *nod2)
+void		add_link(t_nod *nod1, t_nod *nod2)
 {
-
 	if (nod1 && nod2)
 	{
 		nod_addelem(nod1, nod2);
@@ -71,4 +85,21 @@ void	add_link(t_nod *nod1, t_nod *nod2)
 	}
 	else
 		error("");
+}
+
+void		get_props(t_lemin *lemin, t_nod *nod)
+{
+	nod->props = lemin->props;
+	if (lemin->props != -1)
+	{
+		if (lemin->props == START && lemin->start)
+			error(" :: cant get more than one start");
+		if (lemin->props == END && lemin->end)
+			error(" :: cant get more than one end");
+		if (lemin->props == START)
+			lemin->start = nod;
+		if (lemin->props == END)
+			lemin->end = nod;
+		lemin->props = -1;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/11 20:23:53 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/14 03:41:25 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/12/27 07:07:11 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ void	treat_line(t_lemin *lemin, char *str)
 		error(" :: lemin");
 	if (str && *str == '\0')
 		error(" :: ligne vide || str set to NULL");
-	//checker que c'est bien un nbr > minint < maxint
 	if (*str == '#')
 	{
 		if (*(str + 1) == '#')

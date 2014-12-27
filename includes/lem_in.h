@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/11 18:13:52 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/14 03:44:45 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/12/27 07:14:52 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
 # include "check_errors.h"
 # include "get_next_line.h"
 # include "hotrace.h"
-
 
 /*
 ** enum de commande
@@ -107,7 +106,6 @@ int		is_room(char *str, t_lemin *lemin);
 int		is_tube(char *str, t_lemin *lemin);
 void	get_room_data(char *str, t_lemin *lemin);
 void	hashtab_addelem(t_lemin *lemin, t_nod *nod);
-void	get_props(t_lemin *lemin, t_nod *nod);
 int		hashtab_chr(t_list **hashtab, void *data);
 
 /*
@@ -116,6 +114,6 @@ int		hashtab_chr(t_list **hashtab, void *data);
 
 void	add_link(t_nod *nod1, t_nod *nod2);
 void	nod_addelem(t_nod *nod1, t_nod *nod2);
-t_nod	*if_match(char *str, t_list **hashtab)
-;
+t_nod	*if_match(char *str, t_list **hashtab);
+void	get_props(t_lemin *lemin, t_nod *nod);
 #endif

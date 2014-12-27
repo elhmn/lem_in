@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_data_tools.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2014/12/27 07:04:24 by bmbarga           #+#    #+#             */
+/*   Updated: 2014/12/27 07:14:32 by bmbarga          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lem_in.h"
 #include "debug.h"
 
 int		hashtab_chr(t_list **hashtab, void *data)
 {
-	char 		*str;
+	char		*str;
 	t_nod		*nod1;
 	t_nod		*nod2;
 	int			len;
@@ -39,31 +51,27 @@ int		is_room(char *str, t_lemin *lemin)
 	char	*tmp1;
 
 	tmp1 = str;
-	if (str)
-	{
-		while (*str)
-			str++;
+	while (*str)
+		str++;
+	str--;
+	while (str != tmp1 && ft_isdigit(*str))
 		str--;
-		while (str != tmp1 && ft_isdigit(*str))
-			str--;
-		if (*str == ' ' && ft_isdigit(*(str - 1)))
-			str--;
-		else
-			return (0);
-		while (str != tmp1 && ft_isdigit(*str))
-			str--;
-		if (*str == ' ')
-		{
-			lemin->end_name = str;
-			str--;
-		}
-		else
-			return (0);
-		if (*tmp1 == 'L')
-			error(" :: cant start with L");
-		return (1);
-	} 
-	return (0);
+	if (*str == ' ' && ft_isdigit(*(str - 1)))
+		str--;
+	else
+		return (0);
+	while (str != tmp1 && ft_isdigit(*str))
+		str--;
+	if (*str == ' ')
+	{
+		lemin->end_name = str;
+		str--;
+	}
+	else
+		return (0);
+	if (*tmp1 == 'L')
+		error(" :: cant start with L");
+	return (1);
 }
 
 void	hashtab_addelem(t_lemin *lemin, t_nod *nod)
@@ -73,9 +81,6 @@ void	hashtab_addelem(t_lemin *lemin, t_nod *nod)
 	t_ulong		hash;
 	int			i;
 
-	i = 1;
-	if (!lemin || !nod)
-		error(" lemin || nod");
 	if (!(elem = (t_list*)malloc(sizeof(t_list))))
 		error(" :: elem malloc");
 	elem->nod = nod;
@@ -89,29 +94,12 @@ void	hashtab_addelem(t_lemin *lemin, t_nod *nod)
 		while (tmp->next)
 		{
 			if (!(i = ft_strcmp(tmp->nod->name, nod->name)))
-				break;
+				break ;
 			tmp = tmp->next;
 		}
 		i = ft_strcmp(tmp->nod->name, nod->name);
 		if (i)
 			tmp->next = elem;
-	}
-}
-
-void	get_props(t_lemin *lemin, t_nod *nod)
-{
-	nod->props = lemin->props;
-	if (lemin->props != -1)
-	{
-		if (lemin->props == START && lemin->start)
-			error(" :: cant get more than one start");
-		if (lemin->props == END && lemin->end)
-			error(" :: cant get more than one end");
-		if (lemin->props == START)
-			lemin->start = nod;
-		if (lemin->props == END)
-			lemin->end = nod;
-		lemin->props = -1;
 	}
 }
 

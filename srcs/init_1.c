@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_1.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2014/12/27 07:03:18 by bmbarga           #+#    #+#             */
+/*   Updated: 2014/12/27 07:21:23 by bmbarga          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lem_in.h"
 
 static void	new_hashtab(t_lemin *lemin)
@@ -12,7 +24,7 @@ static void	new_hashtab(t_lemin *lemin)
 		lemin->hashtab[i++] = NULL;
 }
 
-t_lemin	*init_lemin(t_lemin *lemin)
+t_lemin		*init_lemin(t_lemin *lemin)
 {
 	if (!lemin)
 	{
