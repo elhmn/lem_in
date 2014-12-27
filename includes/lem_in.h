@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/11 18:13:52 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/27 07:14:52 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/12/27 07:35:45 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,11 @@ enum	e_data_type
 	TUBES
 };
 
-typedef	unsigned long	t_ulong;
+typedef unsigned long	t_ulong;
 
 typedef	struct		s_hash
 {
 	t_ulong			h1;
-//	t_ulong			h2;
 	char			*name;
 }					t_hash;
 
@@ -67,7 +66,7 @@ typedef struct	s_nod
 	char		*name;
 	t_coord		coord;
 	t_list		*links;
-	int			props; //proprites du noeuds
+	int			props;
 }				t_nod;
 
 typedef struct		s_list
@@ -80,7 +79,7 @@ typedef struct		s_list
 typedef struct	s_lemin
 {
 	int		ant_nbr;
-	t_list	**hashtab; //table de hash stocke list de noeuds correspondant a un hash donnee.
+	t_list	**hashtab;
 	int		room_nbr;
 	int		props;
 	char	*end_name;

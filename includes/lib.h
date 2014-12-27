@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/11 20:42:02 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/14 03:44:49 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/12/27 07:34:16 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,5 @@ char	**ft_strsplit(char const *s, char c);
 */
 
 int		ft_strlen(char *str);
- int ft_strncmp(const char *s1, const char *s2, size_t n);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
 #endif

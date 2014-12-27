@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 07:04:30 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/27 07:20:06 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/12/27 07:38:49 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ t_nod		*if_match(char *str, t_list **hashtab)
 	return (NULL);
 }
 
-static void	nod_addaux(t_list *tmp, t_nod *nod1, t_nod *nod2)
+static void	nod_addaux(t_list *tmp, t_list *elem, t_nod *nod1, t_nod *nod2)
 {
 	int		i;
 
@@ -61,8 +61,8 @@ void		nod_addelem(t_nod *nod1, t_nod *nod2)
 {
 	t_list	*tmp;
 	t_list	*elem;
-	int		i;
 
+	tmp = NULL;
 	if (!(elem = (t_list*)malloc(sizeof(t_list))))
 		error(" :: malloc elem");
 	elem->nod = nod2;
@@ -73,7 +73,7 @@ void		nod_addelem(t_nod *nod1, t_nod *nod2)
 		tmp = nod1->links;
 	}
 	else
-		nod_addaux(tmp, nod1, nod2);
+		nod_addaux(tmp, elem, nod1, nod2);
 }
 
 void		add_link(t_nod *nod1, t_nod *nod2)

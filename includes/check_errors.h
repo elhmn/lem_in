@@ -6,11 +6,11 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/08 13:48:17 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/14 03:44:09 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/12/27 07:29:17 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	CHECK_ERRORS_H
+#ifndef CHECK_ERRORS_H
 # define CHECK_ERRORS_H
 
 # define ERR			ft_putstr("Error : ");
@@ -35,14 +35,14 @@ enum	e_code
 ** fun_err_01.c
 */
 
-void		f_malloc(void);
-void		f_nul(void);
-void		f_read(void);
+void				f_malloc(void);
+void				f_nul(void);
+void				f_read(void);
 
 /*
 ** check_errors.c
 */
 
-void	check_errors(int code, char *file_name, char *var_name);
-void	error(char *str);
+void				check_errors(int code, char *file_name, char *var_name);
+void				error(char *str);
 #endif

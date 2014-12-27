@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hotrace.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jblanche <jblanche@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/12/13 21:38:42 by jblanche          #+#    #+#             */
-/*   Updated: 2013/12/15 22:00:39 by bmbarga          ###   ########.fr       */
+/*   Created: 2014/12/27 07:29:44 by bmbarga           #+#    #+#             */
+/*   Updated: 2014/12/27 07:30:49 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define HOTRACE_H
 # define MOD_SIZE 1024
 
-enum  e_hash_size
+enum	e_hash_size
 {
 	h1_size = 5500000000000,
 	h2_size = 100000,
