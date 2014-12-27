@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/11 18:13:52 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/27 07:35:45 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/12/27 10:25:06 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,6 @@ typedef struct	s_coord
 	int			x;
 	int			y;
 }				t_coord;
-
-/*
-** propriete d'un noeud
-*/
 
 typedef struct s_list t_list;
 
