@@ -6,26 +6,26 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 10:25:16 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/28 17:26:28 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/12/28 19:19:29 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 #include "debug.h"
 
-int		is_full(t_list *links)
+static int		is_full(t_list *links)
 {
 	while (links)
 	{
 		if (!links->nod->bool)
 			return (0);
-		links = links->next;	
+		links = links->next;
 	}
 	return (1);
 }
 
 
-void	add_path(t_nod *nod, t_lemin *lemin)
+static void		add_path(t_nod *nod, t_lemin *lemin)
 {
 	t_list	*tmp;
 	t_list	*tmp2;
@@ -49,7 +49,7 @@ void	add_path(t_nod *nod, t_lemin *lemin)
 	}
 }
 
-void	remove_path(t_lemin *lemin)
+static void		remove_path(t_lemin *lemin)
 {
 	t_list	*tmp;
 	t_list	*tmp2;
@@ -76,7 +76,7 @@ void	remove_path(t_lemin *lemin)
 	}
 }
 
-void	print_list(t_list *list)
+void			print_list(t_list *list)
 {
 	ft_putendl("LIST :: \n START");
 	if (list)
@@ -92,7 +92,7 @@ void	print_list(t_list *list)
 	ft_putendl(" END ");
 }
 
-t_list	*make_cpy(t_list *list2)
+static t_list	*make_cpy(t_list *list2)
 {
 	t_list	*tmp;
 	t_list	*list1;
@@ -124,13 +124,13 @@ t_list	*make_cpy(t_list *list2)
 	return (end);
 }
 
-t_nod	*pathfinder(t_nod *nod, t_lemin *lemin, t_nod *parent)
+t_nod	*pathfinder(t_nod *nod, t_lemin *lemin)
 {
 	t_list	*links;
 
 	links = nod->links;
 	add_path(nod, lemin);
-	if (nod == lemin->end || is_full(links)) //end of map or graph
+	if (nod == lemin->end || is_full(links))
 	{
 		if (nod == lemin->end)
 		{
@@ -143,14 +143,13 @@ t_nod	*pathfinder(t_nod *nod, t_lemin *lemin, t_nod *parent)
 		remove_path(lemin);
 		return (NULL);
 	}
-	parent = parent;
 	lemin->len_tmp++;
 	while (links)
 	{
 		if (!links->nod->bool)
 		{
 			links->nod->bool = 1;
-			pathfinder(links->nod, lemin, nod);
+			pathfinder(links->nod, lemin);
 			links->nod->bool = 0;
 		}
 		links = links->next;

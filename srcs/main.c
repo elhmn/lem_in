@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/10 17:09:51 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/28 17:27:09 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/12/28 19:04:57 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
 /*
 **	1- recuperer les donnees sur l'entree standard		DONE
 **	2- checker les cas sensibles d'erreur		DONE
-**	3- rechercher les chemins les plus rapides par branches (djikstra or A* algorithms)
-**		-stocker les chemins possibles dans l'ordre croissant (longueur)
-**		-identifier les chemins directes (pas necessaire pour le moment)
-**		(plutard)-reflechir a la priorite avec bouchon
+**	3- rechercher les chemins les plus rapides par branches (djikstra or A* algorithms)		DONE
+**		-stocker les chemins possibles dans l'ordre croissant (longueur)					SUPPRIMMER
+**		-identifier les chemins directes (pas necessaire pour le moment)					SUPPRIMER
+**		(plutard)-reflechir a la priorite avec bouchon										DEJA FAIT
 **	4- Find les coups a jouer (optimal). en determinant les F_nb pow(C_nb) ensembles de coups possible.
 **	5- affichage du resultat.
 */
@@ -39,11 +39,16 @@ int		main(int ac, char **av)
 		lemin->path_len = 0;
 		lemin->len_tmp = 0;
 		lemin->chemin = NULL;
-		pathfinder(lemin->start, lemin, lemin->start);
-//		print_list(lemin->path);
-		print_type("lemin->path_len", &(lemin->path_len), INT);
-//		ft_putendl("debug start :: "); /*****/
-//		debug_nod(lemin->start);
+		get_paths(lemin);
+/*
+** pour checker si il est possible de trouver un chemin il suffira de verifier que
+** lemin->paths != NULL ou existe
+*/
+//		pathfinder(lemin->start, lemin);
+	//	print_listsp(lemin->pathsp);
+//		print_type("lemin->path_len", &(lemin->path_len), INT);
+	//	ft_putendl("debug start :: "); /*****/
+	//	debug_nod(lemin->start);
 //		ft_putendl("debug end :: "); /*****/
 ///		debug_nod(lemin->end);
 //		print_hashtab(lemin->hashtab);

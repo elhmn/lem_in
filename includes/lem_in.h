@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/11 18:13:52 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/28 16:18:09 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/12/28 18:39:04 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,11 +88,14 @@ typedef struct			s_lemin
 	char		*end_name;
 	t_nod		*start;
 	t_list		*path;
+	t_listsp	*pathsp;
 	t_list		*chemin;
 	t_nod		*end;
 	int			data_type;
 	int			path_len;
 	int			len_tmp;
+	int			true;
+	int			false;
 }						t_lemin;
 
 /*
@@ -127,6 +130,14 @@ void					get_props(t_lemin *lemin, t_nod *nod);
 ** pathfinder.c
 */
 
-t_nod					*pathfinder(t_nod *nod, t_lemin *lemin, t_nod *parent);
+t_nod					*pathfinder(t_nod *nod, t_lemin *lemin);
 void					print_list(t_list *list);
+
+/*
+** find_path.c
+*/
+
+void	print_listsp(t_listsp *listsp);
+void	get_paths(t_lemin *lemin);
+
 #endif

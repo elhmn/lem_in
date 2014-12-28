@@ -6,7 +6,7 @@
 #    By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/12/09 11:28:14 by bmbarga           #+#    #+#              #
-#    Updated: 2014/12/27 11:46:05 by bmbarga          ###   ########.fr        #
+#    Updated: 2014/12/28 18:03:28 by bmbarga          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = lem-in
 
 SRC = main.c get_data.c lib_1.c check_errors.c fun_err_01.c \
 	    init_1.c debug_1.c hash.c  get_data_tools.c get_data_tools2.c \
-		lib_2.c pathfinder.c
+		lib_2.c pathfinder.c find_paths.c
 
 LIBSRC = ft_memset.c ft_memalloc.c ft_memmove.c \
 	 	 ft_strchr.c ft_strjoin.c ft_strsub.c ft_strcpy.c ft_strnew.c \
