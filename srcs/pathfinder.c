@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 10:25:16 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/28 13:56:36 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/12/28 17:26:28 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,35 +24,126 @@ int		is_full(t_list *links)
 	return (1);
 }
 
-t_list	*pathfinder(t_nod *nod, t_lemin *lemin, t_nod *parent)
+
+void	add_path(t_nod *nod, t_lemin *lemin)
+{
+	t_list	*tmp;
+	t_list	*tmp2;
+
+	tmp2 = lemin->chemin;
+	tmp = (t_list*)malloc(sizeof(t_list));
+	if (nod)
+	{
+		if (!tmp)
+			error("");
+		tmp->nod = nod;
+		tmp->next = NULL;
+		if (!tmp2)
+			lemin->chemin = tmp;
+		else
+		{
+			while (tmp2->next)
+				tmp2 = tmp2->next;
+			tmp2->next = tmp;
+		}
+	}
+}
+
+void	remove_path(t_lemin *lemin)
+{
+	t_list	*tmp;
+	t_list	*tmp2;
+
+	tmp = lemin->chemin;
+	tmp2 = tmp;
+	if (tmp)
+	{
+		if (!tmp->next)
+		{
+			free(tmp);
+			lemin->chemin = NULL;
+		}
+		if (tmp->next)
+		{
+			while (tmp->next)
+			{
+				tmp2 = tmp;
+				tmp = tmp->next;
+			}
+			free(tmp);
+			tmp2->next = NULL;
+		}
+	}
+}
+
+void	print_list(t_list *list)
+{
+	ft_putendl("LIST :: \n START");
+	if (list)
+	{
+		while (list)
+		{
+			ft_putstr(list->nod->name);
+			ft_putstr(" :: ");
+			list = list->next;
+		}
+		ft_putendl("");
+	}
+	ft_putendl(" END ");
+}
+
+t_list	*make_cpy(t_list *list2)
+{
+	t_list	*tmp;
+	t_list	*list1;
+	t_list	*end;
+
+	tmp = NULL;
+	if (list2)
+	{	
+		tmp = (t_list*)malloc(sizeof(t_list));
+		if (!tmp)
+			error("");
+		tmp->nod = list2->nod;
+		tmp->next = NULL;
+		list1 = tmp;
+		end = list1;
+		list2 = list2->next;
+		while (list2)
+		{
+			tmp = (t_list*)malloc(sizeof(t_list));
+			if (!tmp)
+				error("");
+			tmp->nod = list2->nod;
+			tmp->next = NULL;
+			list1->next = tmp;
+			list2 = list2->next;
+			list1 = list1->next;
+		}
+	}
+	return (end);
+}
+
+t_nod	*pathfinder(t_nod *nod, t_lemin *lemin, t_nod *parent)
 {
 	t_list	*links;
 
 	links = nod->links;
+	add_path(nod, lemin);
 	if (nod == lemin->end || is_full(links)) //end of map or graph
 	{
 		if (nod == lemin->end)
 		{
 			if (lemin->path_len > lemin->len_tmp || !lemin->path_len)
+			{
 				lemin->path_len = lemin->len_tmp;
-			parent = parent;
-			ft_putstr(parent->name);
-			ft_putstr(" :: ");
-			ft_putendl(nod->name);
-			ft_putendl("exit founded");
-			print_type("lemin->len_tmp", &(lemin->len_tmp), INT);
+				lemin->path = make_cpy(lemin->chemin);
+			}
 		}
-		if (is_full(links))
-		{
-//			ft_putstr(links->nod->name);
-//			ft_putendl(" ==> is full");
-		}
-		return (links);
+		remove_path(lemin);
+		return (NULL);
 	}
 	parent = parent;
-	ft_putstr(parent->name);
-	ft_putstr(" :: ");
-	ft_putendl(nod->name);
 	lemin->len_tmp++;
 	while (links)
 	{
@@ -65,7 +156,6 @@ t_list	*pathfinder(t_nod *nod, t_lemin *lemin, t_nod *parent)
 		links = links->next;
 	}
 	lemin->len_tmp--;
-//	ft_putstr("\nfin de parcours des liens du noeuds :: ");
-//	ft_putendl(nod->name);
+	remove_path(lemin);
 	return (NULL);
 }

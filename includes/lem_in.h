@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/11 18:13:52 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/28 13:01:00 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/12/28 16:18:09 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,8 @@ typedef struct			s_lemin
 	int			props;
 	char		*end_name;
 	t_nod		*start;
-	t_listsp	*path;
+	t_list		*path;
+	t_list		*chemin;
 	t_nod		*end;
 	int			data_type;
 	int			path_len;
@@ -126,5 +127,6 @@ void					get_props(t_lemin *lemin, t_nod *nod);
 ** pathfinder.c
 */
 
-t_list					*pathfinder(t_nod *nod, t_lemin *lemin, t_nod *parent);
+t_nod					*pathfinder(t_nod *nod, t_lemin *lemin, t_nod *parent);
+void					print_list(t_list *list);
 #endif

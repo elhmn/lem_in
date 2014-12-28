@@ -1,122 +1,249 @@
-1 :: 1
-1 :: 3
-3 :: 4
-4 :: 0
 exit founded
+[
+LIST :: 
+ START
+1 :: 3 :: 4 :: 0 :: 
+ END 
 	lemin->len_tmp = [3]
-4 :: 2
-2 :: 5
-5 :: 6
-6 :: 0
+]
 exit founded
+[
+LIST :: 
+ START
+1 :: 3 :: 4 :: 2 :: 5 :: 6 :: 0 :: 
+ END 
 	lemin->len_tmp = [6]
-2 :: 7
-7 :: 6
-6 :: 0
+]
 exit founded
+[
+LIST :: 
+ START
+1 :: 3 :: 4 :: 2 :: 7 :: 6 :: 0 :: 
+ END 
 	lemin->len_tmp = [6]
-4 :: 7
-7 :: 6
-6 :: 0
+]
 exit founded
-	lemin->len_tmp = [5]
-6 :: 5
-7 :: 2
-2 :: 5
-5 :: 6
-6 :: 0
-exit founded
-	lemin->len_tmp = [7]
-3 :: 5
-5 :: 2
-2 :: 4
-4 :: 0
-exit founded
-	lemin->len_tmp = [5]
-4 :: 7
-7 :: 6
-6 :: 0
-exit founded
-	lemin->len_tmp = [7]
-2 :: 7
-7 :: 6
-6 :: 0
-exit founded
-	lemin->len_tmp = [6]
-7 :: 4
-4 :: 0
-exit founded
-	lemin->len_tmp = [6]
-5 :: 6
-6 :: 0
-exit founded
+[
+LIST :: 
+ START
+1 :: 3 :: 4 :: 2 :: 0 :: 
+ END 
 	lemin->len_tmp = [4]
-6 :: 7
-7 :: 2
-2 :: 4
-4 :: 0
+]
 exit founded
-	lemin->len_tmp = [7]
-7 :: 4
-4 :: 0
-exit founded
-	lemin->len_tmp = [6]
-1 :: 2
-2 :: 5
-5 :: 3
-3 :: 4
-4 :: 0
-exit founded
+[
+LIST :: 
+ START
+1 :: 3 :: 4 :: 7 :: 6 :: 0 :: 
+ END 
 	lemin->len_tmp = [5]
-4 :: 7
-7 :: 6
-6 :: 0
+]
 exit founded
+[
+LIST :: 
+ START
+1 :: 3 :: 4 :: 7 :: 6 :: 5 :: 2 :: 0 :: 
+ END 
 	lemin->len_tmp = [7]
-5 :: 6
-6 :: 0
+]
 exit founded
-	lemin->len_tmp = [4]
-6 :: 7
-7 :: 4
-4 :: 0
+[
+LIST :: 
+ START
+1 :: 3 :: 4 :: 7 :: 2 :: 5 :: 6 :: 0 :: 
+ END 
+	lemin->len_tmp = [7]
+]
 exit founded
+[
+LIST :: 
+ START
+1 :: 3 :: 4 :: 7 :: 2 :: 0 :: 
+ END 
+	lemin->len_tmp = [5]
+]
+exit founded
+[
+LIST :: 
+ START
+1 :: 3 :: 5 :: 2 :: 4 :: 0 :: 
+ END 
+	lemin->len_tmp = [5]
+]
+exit founded
+[
+LIST :: 
+ START
+1 :: 3 :: 5 :: 2 :: 4 :: 7 :: 6 :: 0 :: 
+ END 
+	lemin->len_tmp = [7]
+]
+exit founded
+[
+LIST :: 
+ START
+1 :: 3 :: 5 :: 2 :: 7 :: 6 :: 0 :: 
+ END 
 	lemin->len_tmp = [6]
-2 :: 4
-4 :: 0
+]
 exit founded
+[
+LIST :: 
+ START
+1 :: 3 :: 5 :: 2 :: 7 :: 4 :: 0 :: 
+ END 
+	lemin->len_tmp = [6]
+]
+exit founded
+[
+LIST :: 
+ START
+1 :: 3 :: 5 :: 2 :: 0 :: 
+ END 
+	lemin->len_tmp = [4]
+]
+exit founded
+[
+LIST :: 
+ START
+1 :: 3 :: 5 :: 6 :: 0 :: 
+ END 
+	lemin->len_tmp = [4]
+]
+exit founded
+[
+LIST :: 
+ START
+1 :: 3 :: 5 :: 6 :: 7 :: 2 :: 4 :: 0 :: 
+ END 
+	lemin->len_tmp = [7]
+]
+exit founded
+[
+LIST :: 
+ START
+1 :: 3 :: 5 :: 6 :: 7 :: 2 :: 0 :: 
+ END 
+	lemin->len_tmp = [6]
+]
+exit founded
+[
+LIST :: 
+ START
+1 :: 3 :: 5 :: 6 :: 7 :: 4 :: 0 :: 
+ END 
+	lemin->len_tmp = [6]
+]
+exit founded
+[
+LIST :: 
+ START
+1 :: 3 :: 5 :: 6 :: 7 :: 4 :: 2 :: 0 :: 
+ END 
+	lemin->len_tmp = [7]
+]
+exit founded
+[
+LIST :: 
+ START
+1 :: 2 :: 5 :: 3 :: 4 :: 0 :: 
+ END 
+	lemin->len_tmp = [5]
+]
+exit founded
+[
+LIST :: 
+ START
+1 :: 2 :: 5 :: 3 :: 4 :: 7 :: 6 :: 0 :: 
+ END 
+	lemin->len_tmp = [7]
+]
+exit founded
+[
+LIST :: 
+ START
+1 :: 2 :: 5 :: 6 :: 0 :: 
+ END 
+	lemin->len_tmp = [4]
+]
+exit founded
+[
+LIST :: 
+ START
+1 :: 2 :: 5 :: 6 :: 7 :: 4 :: 0 :: 
+ END 
+	lemin->len_tmp = [6]
+]
+exit founded
+[
+LIST :: 
+ START
+1 :: 2 :: 4 :: 0 :: 
+ END 
 	lemin->len_tmp = [3]
-4 :: 3
-3 :: 5
-5 :: 6
-6 :: 0
+]
 exit founded
+[
+LIST :: 
+ START
+1 :: 2 :: 4 :: 3 :: 5 :: 6 :: 0 :: 
+ END 
 	lemin->len_tmp = [6]
-4 :: 7
-7 :: 6
-6 :: 0
+]
 exit founded
+[
+LIST :: 
+ START
+1 :: 2 :: 4 :: 7 :: 6 :: 0 :: 
+ END 
 	lemin->len_tmp = [5]
-6 :: 5
-2 :: 7
-7 :: 6
-6 :: 0
+]
 exit founded
+[
+LIST :: 
+ START
+1 :: 2 :: 7 :: 6 :: 0 :: 
+ END 
 	lemin->len_tmp = [4]
-6 :: 5
-5 :: 3
-3 :: 4
-4 :: 0
+]
 exit founded
+[
+LIST :: 
+ START
+1 :: 2 :: 7 :: 6 :: 5 :: 3 :: 4 :: 0 :: 
+ END 
 	lemin->len_tmp = [7]
-7 :: 4
-4 :: 0
+]
 exit founded
+[
+LIST :: 
+ START
+1 :: 2 :: 7 :: 4 :: 0 :: 
+ END 
 	lemin->len_tmp = [4]
-4 :: 3
-3 :: 5
-5 :: 6
-6 :: 0
+]
 exit founded
+[
+LIST :: 
+ START
+1 :: 2 :: 7 :: 4 :: 3 :: 5 :: 6 :: 0 :: 
+ END 
 	lemin->len_tmp = [7]
-	lemin->path_len = [3]
+]
+exit founded
+[
+LIST :: 
+ START
+1 :: 2 :: 0 :: 
+ END 
+	lemin->len_tmp = [2]
+]
+exit founded
+[
+LIST :: 
+ START
+1 :: 0 :: 
+ END 
+	lemin->len_tmp = [1]
+]
+	lemin->path_len = [1]
