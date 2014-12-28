@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 10:25:16 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/27 16:05:05 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/12/28 13:56:36 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,55 +24,48 @@ int		is_full(t_list *links)
 	return (1);
 }
 
-t_list	*pathfinder(t_nod *nod, t_lemin *lemin)
+t_list	*pathfinder(t_nod *nod, t_lemin *lemin, t_nod *parent)
 {
-	t_list	*tmp;
+	t_list	*links;
 
-	tmp = nod->links;
-	if (tmp) //end
-		return (NULL);
-	while (tmp)
+	links = nod->links;
+	if (nod == lemin->end || is_full(links)) //end of map or graph
 	{
-		pathfinder(tmp->nod, lemin);	
-		tmp = tmp->next;
-	}
-
-
-
-
-
-
-
-
-
-	/*
-	if (nod == lemin->end || !tmp || is_full(tmp)) //end of map or graph
-	{
-		ft_putendl("");
-//		print_type("tmp->nod->name", tmp->nod->name, CHAR);
-//		debug_nod(tmp->nod);
-		return (tmp);
-	}
-//	ft_putstr(nod->name);
-//	ft_putstr(" ==> \n[\n");
-	while (tmp)
-	{
-		if (!tmp->nod->bool)
+		if (nod == lemin->end)
 		{
-			ft_putstr(tmp->nod->name);
-//			ft_putstr(" || ");
-//			if (tmp->next)
-//				ft_putstr(tmp->next->nod->name);
+			if (lemin->path_len > lemin->len_tmp || !lemin->path_len)
+				lemin->path_len = lemin->len_tmp;
+			parent = parent;
+			ft_putstr(parent->name);
 			ft_putstr(" :: ");
-//			print_type("tmp->nod->name", tmp->nod->name, CHAR);
-//			debug_nod(tmp->nod);
-			tmp->nod->bool = 1;
-			pathfinder(tmp->nod, lemin);
-			tmp->nod->bool = 0;
+			ft_putendl(nod->name);
+			ft_putendl("exit founded");
+			print_type("lemin->len_tmp", &(lemin->len_tmp), INT);
 		}
-		tmp = tmp->next;
+		if (is_full(links))
+		{
+//			ft_putstr(links->nod->name);
+//			ft_putendl(" ==> is full");
+		}
+		return (links);
 	}
-	ft_putendl("]");
-	*/
+	parent = parent;
+	ft_putstr(parent->name);
+	ft_putstr(" :: ");
+	ft_putendl(nod->name);
+	lemin->len_tmp++;
+	while (links)
+	{
+		if (!links->nod->bool)
+		{
+			links->nod->bool = 1;
+			pathfinder(links->nod, lemin, nod);
+			links->nod->bool = 0;
+		}
+		links = links->next;
+	}
+	lemin->len_tmp--;
+//	ft_putstr("\nfin de parcours des liens du noeuds :: ");
+//	ft_putendl(nod->name);
 	return (NULL);
 }

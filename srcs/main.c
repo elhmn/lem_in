@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/10 17:09:51 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/27 13:14:24 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/12/28 13:07:50 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,10 @@ int		main(int ac, char **av)
 	{
 		get_data(lemin);
 		lemin->start->bool = 1;
-		pathfinder(lemin->start, lemin);
+		lemin->path_len = 0;
+		lemin->len_tmp = 0;
+		pathfinder(lemin->start, lemin, lemin->start);
+		print_type("lemin->path_len", &(lemin->path_len), INT);
 //		ft_putendl("debug start :: "); /*****/
 //		debug_nod(lemin->start);
 //		ft_putendl("debug end :: "); /*****/
