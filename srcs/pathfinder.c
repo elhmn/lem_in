@@ -81,13 +81,15 @@ void			print_list(t_list *list)
 	ft_putendl("LIST :: \n START");
 	if (list)
 	{
+		ft_putstr("[");
 		while (list)
 		{
 			ft_putstr(list->nod->name);
-			ft_putstr(" :: ");
+			if (list->next)
+				ft_putstr("] +--> [");
 			list = list->next;
 		}
-		ft_putendl("");
+		ft_putendl("]");
 	}
 	ft_putendl(" END ");
 }
@@ -134,6 +136,8 @@ t_nod	*pathfinder(t_nod *nod, t_lemin *lemin)
 	{
 		if (nod == lemin->end)
 		{
+//			ft_putendl("lemin->chemin :: ");
+//			print_list(lemin->chemin);
 			if (lemin->path_len > lemin->len_tmp || !lemin->path_len)
 			{
 				lemin->path_len = lemin->len_tmp;
@@ -146,6 +150,7 @@ t_nod	*pathfinder(t_nod *nod, t_lemin *lemin)
 	lemin->len_tmp++;
 	while (links)
 	{
+//		print_type("links->nod->bool", &(links->nod->bool), INT);
 		if (!links->nod->bool)
 		{
 			links->nod->bool = 1;

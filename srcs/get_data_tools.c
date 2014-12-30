@@ -124,6 +124,7 @@ void	get_room_data(char *str, t_lemin *lemin)
 	nod->coord.y = ft_atoi(car_x + 1);
 	nod->links = NULL;
 	nod->bool = 0;
+	nod->index = lemin->room_nbr;
 	get_props(lemin, nod);
 	lemin->room_nbr++;
 	hashtab_addelem(lemin, nod);

@@ -11,22 +11,7 @@
 /* ************************************************************************** */
 
 #include "lem_in.h"
-
-/*
-static void	listsp_addelem(t_listsp *begin, t_list *listsp2)
-{
-	if (!begin)
-	{
-		begin = listsp2;
-	}
-	if (begin)
-	{
-		while (begin->next)
-			listsp = listsp->next;
-		listsp->next = list;
-	}
-}
-*/
+#include "debug.h"
 
 void	print_listsp(t_listsp *listsp)
 {
@@ -35,6 +20,7 @@ void	print_listsp(t_listsp *listsp)
 	while (listsp)
 	{
 		print_list(listsp->list);
+		print_type("listsp->path_len", &(listsp->path_len), INT);
 		listsp = listsp->next;
 	}
 }
@@ -49,35 +35,32 @@ void	get_paths(t_lemin *lemin)
 	listsp = NULL;
 	while (links)
 	{
-		ft_putstr("lien :: ");
-		ft_putendl(links->nod->name);
-		if (!(listsp = (t_listsp*)malloc(sizeof(t_listsp))))
-			error("");
-		tmp = lemin->pathsp;
 		lemin->chemin = NULL;
 		lemin->path = NULL;
-		pathfinder(lemin->start, lemin);
-		print_list(lemin->path);
+		lemin->path_len = 0;
+		lemin->len_tmp = 0;
 		pathfinder(links->nod, lemin);
-		print_list(lemin->path);
-		if (links->next)
+		if (lemin->path)
 		{
-			ft_putstr("TEST BIG \n");
-			pathfinder(links->next->nod, lemin);
-		}
-		print_list(lemin->path);
-		listsp->list = lemin->path;
-		listsp->next = NULL;
-		if (!lemin->pathsp)
-		{
-			lemin->pathsp = listsp; 
-			lemin->pathsp->next = NULL;
-		}
-		else
-		{
-			while (tmp->next)
-				tmp = tmp->next;
-			tmp->next = listsp;
+			if (!(listsp = (t_listsp*)malloc(sizeof(t_listsp))))
+				error("");
+			tmp = lemin->pathsp;
+			listsp->list = lemin->path;
+			listsp->path_len = lemin->path_len;
+			listsp->next = NULL;
+			listsp->index = lemin->path_nbr;
+			if (!lemin->pathsp)
+			{
+				lemin->pathsp = listsp; 
+				lemin->pathsp->next = NULL;
+			}
+			else
+			{
+				while (tmp->next)
+					tmp = tmp->next;
+				tmp->next = listsp;
+			}
+			lemin->path_nbr++;
 		}
 		links = links->next;
 	}

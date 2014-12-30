@@ -57,6 +57,7 @@ typedef struct			s_coord
 
 typedef struct s_list	t_list;
 typedef struct s_listsp	t_listsp;
+typedef struct s_jam	t_jam;
 
 typedef struct			s_nod
 {
@@ -64,6 +65,7 @@ typedef struct			s_nod
 	t_coord				coord;
 	t_list				*links;
 	int					bool;
+	int					index;
 	int					props;
 }						t_nod;
 
@@ -73,29 +75,36 @@ struct					s_list
 	t_list				*next;
 };
 
+struct					s_jam
+{
+	t_nod				*nod;
+	t_listsp			*path;
+};
+
 struct					s_listsp
 {
 	t_list				*list;
+	int					path_len;
+	int					index;
 	t_listsp			*next;
 };
 
 typedef struct			s_lemin
 {
 	int			ant_nbr;
-	t_list		**hashtab;
 	int			room_nbr;
 	int			props;
+	int			data_type;
+	int			path_len;
+	int			len_tmp;
 	char		*end_name;
+	int			path_nbr;
+	t_list		**hashtab;
 	t_nod		*start;
 	t_list		*path;
 	t_listsp	*pathsp;
 	t_list		*chemin;
 	t_nod		*end;
-	int			data_type;
-	int			path_len;
-	int			len_tmp;
-	int			true;
-	int			false;
 }						t_lemin;
 
 /*
@@ -137,7 +146,19 @@ void					print_list(t_list *list);
 ** find_path.c
 */
 
-void	print_listsp(t_listsp *listsp);
-void	get_paths(t_lemin *lemin);
+void					print_listsp(t_listsp *listsp);
+void					get_paths(t_lemin *lemin);
+
+/*
+** avoid_traffic_jams.c
+*/
+
+void					avoid_trafjams(t_listsp *pathsp, t_lemin *lemin);
+
+/*
+** correct_path.c
+*/
+
+void					correct_path(t_lemin *lemin, t_jam *jam);
 
 #endif

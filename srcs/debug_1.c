@@ -84,6 +84,7 @@ void	debug_lemin(t_lemin *lemin)
 	print_type("lemin->room_nbr", &(lemin->room_nbr), INT);
 	print_type("lemin->data_type", &(lemin->data_type), INT);
 	print_type("lemin->props", &(lemin->props), INT);
+	print_type("lemin->path_nbr", &(lemin->path_nbr), INT);
 	ft_putendl("lemin->start :: ");
 	debug_nod(lemin->start);
 	ft_putendl("lemin->end :: ");
@@ -106,6 +107,7 @@ void	debug_nod(t_nod *nod)
 	ret = hash3(nod->name);
 	print_type("hash3(nod->name)", &ret, INT);
 	print_type("nod->bool", &(nod->bool), INT);
+	print_type("nod->index", &(nod->index), INT);
 	ft_putendl("\tDEBUG LINKS ::");
 	debug_links(nod);
 	ft_putendl("");

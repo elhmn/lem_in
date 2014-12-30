@@ -36,25 +36,35 @@ int		main(int ac, char **av)
 	{
 		get_data(lemin);
 		lemin->start->bool = 1;
-		lemin->path_len = 0;
-		lemin->len_tmp = 0;
-		lemin->chemin = NULL;
 		get_paths(lemin);
+		print_listsp(lemin->pathsp);
+		ft_putendl("\n\n\n\n\n");
+		avoid_trafjams(lemin->pathsp, lemin);	
+
+//		debug_lemin(lemin); /***************/
+
+
+//		pathfinder(lemin->start->links->nod, lemin);
+//		print_type("lemin->start->links->nod", lemin->start->links->nod->name, CHAR);
+//		print_list(lemin->path);
+//		print_type("lemin->start->links->next->nod", lemin->start->links->next->nod->name, CHAR);
+//		pathfinder(lemin->start->links->next->nod, lemin);
+//		print_list(lemin->path);
 /*
 ** pour checker si il est possible de trouver un chemin il suffira de verifier que
 ** lemin->paths != NULL ou existe
 */
 //		pathfinder(lemin->start, lemin);
-	//	print_listsp(lemin->pathsp);
+//		print_list(lemin->path);
+//		print_listsp(lemin->pathsp);
 //		print_type("lemin->path_len", &(lemin->path_len), INT);
-	//	ft_putendl("debug start :: "); /*****/
-	//	debug_nod(lemin->start);
+//		ft_putendl("debug start :: "); /*****/
+//		debug_nod(lemin->start);
 //		ft_putendl("debug end :: "); /*****/
 ///		debug_nod(lemin->end);
 //		print_hashtab(lemin->hashtab);
-//		debug_lemin(lemin); /***************/
-		//treat data
-		//print_data
+//		treat data
+//		print_data
 	}
 	return (0);
 }

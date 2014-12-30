@@ -37,8 +37,10 @@ t_lemin		*init_lemin(t_lemin *lemin)
 	lemin->start = NULL;
 	lemin->end = NULL;
 	lemin->props = -1;
-	lemin->false = 0;
-	lemin->true = lemin->false + 1;
+	lemin->path_len = 0;
+	lemin->path_nbr = 0;
+	lemin->len_tmp = 0;
+	lemin->chemin = NULL;
 	lemin->data_type = ANTS_NBR;
 	new_hashtab(lemin);
 	return (lemin);
