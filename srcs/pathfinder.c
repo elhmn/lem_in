@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 10:25:16 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/28 19:19:29 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/12/31 07:00:06 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,10 @@ static void		remove_path(t_lemin *lemin)
 
 void			print_list(t_list *list)
 {
-	ft_putendl("LIST :: \n START");
+	ft_putendl("LIST :: \n\tSTART\n");
 	if (list)
 	{
-		ft_putstr("[");
+		ft_putstr("\t\t[");
 		while (list)
 		{
 			ft_putstr(list->nod->name);
@@ -91,7 +91,7 @@ void			print_list(t_list *list)
 		}
 		ft_putendl("]");
 	}
-	ft_putendl(" END ");
+	ft_putendl("\tEND\n");
 }
 
 static t_list	*make_cpy(t_list *list2)

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   avoid_traffic_jams.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2014/12/31 06:39:53 by bmbarga           #+#    #+#             */
+/*   Updated: 2014/12/31 06:57:22 by bmbarga          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lem_in.h"
 #include "debug.h"
 
@@ -32,6 +44,7 @@ static void		find_jams(t_list *list, t_jam *bool, t_lemin *lemin, int path_len)
 				if (!(tmp2 = (t_listsp*)malloc(sizeof(t_listsp))))
 					error("");
 				tmp2->list = save;
+				tmp2->path_len = path_len;
 				tmp2->next = NULL;
 				tmp->next = tmp2;
 			//et peut etre path_len
@@ -78,14 +91,22 @@ static int		is_obstruction(t_jam *bool, int size)
 	return (0);
 }
 
-void	print_jam(t_jam *jam)
+static void		print_jam(t_jam *jam, int size)
 {
-	if (jam && jam->nod)
+	int	i;
+
+	i = -1;
+	while (++i < size)
 	{
-		ft_putendl("JAM :: ");
-		print_type("jam->nod->name", jam->nod->name, CHAR);
-		print_type("jam->nod->index", &(jam->nod->index), INT);
-		print_listsp(jam->path);
+		if ((jam + i) && jam[i].nod)
+		{
+			ft_putstr("JAM [");
+			ft_putnbr(i);
+			ft_putendl("] :: ");
+			print_type("jam->nod->name", jam[i].nod->name, CHAR);
+			print_type("jam->nod->index", &(jam[i].nod->index), INT);
+			print_listsp(jam[i].path);
+		}
 	}
 }
 
@@ -98,7 +119,8 @@ void			avoid_trafjams(t_listsp *pathsp, t_lemin *lemin)
 		jam_init(bool, lemin->room_nbr);
 		check_obstruction(bool, pathsp, lemin);
 		if (!is_obstruction(bool, lemin->room_nbr))
-			ft_putstr("");
+			ft_putstr("There is obstruction\n");
+		print_jam(bool, lemin->room_nbr);
 //			break;
 //		correct_path(bool);
 //	}
