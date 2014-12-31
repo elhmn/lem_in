@@ -6,12 +6,14 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/11 18:13:52 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/31 06:40:49 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/12/31 12:16:50 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LEM_IN_H
 # define LEM_IN_H
+# define TRUE 1
+# define FALSE 0
 
 # include <stdlib.h>
 # include <stdio.h>

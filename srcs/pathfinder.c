@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 10:25:16 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/31 07:00:06 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/12/31 12:17:17 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,9 +153,9 @@ t_nod	*pathfinder(t_nod *nod, t_lemin *lemin)
 //		print_type("links->nod->bool", &(links->nod->bool), INT);
 		if (!links->nod->bool)
 		{
-			links->nod->bool = 1;
+			links->nod->bool = TRUE;
 			pathfinder(links->nod, lemin);
-			links->nod->bool = 0;
+			links->nod->bool = FALSE;
 		}
 		links = links->next;
 	}
