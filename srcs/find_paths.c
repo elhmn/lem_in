@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/28 17:46:05 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/31 08:05:20 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/12/31 15:45:12 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ t_listsp	*new_listsp(t_list *path, int path_len, int index)
 	return (listsp);
 }
 
-static void	reset_data(t_lemin *lemin)
+void		reset_data(t_lemin *lemin)
 {
 	lemin->chemin = NULL;
 	lemin->path = NULL;
