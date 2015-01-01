@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/31 06:39:48 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/01/01 14:20:28 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/01/01 16:34:29 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,21 +33,21 @@ t_nod			*get_start_nod(t_list *list, t_nod *nod)
 {
 	t_nod	*tmp;
 
-	tmp = NULL;
 	if (list && nod)
 	{
+		tmp = list->nod;
 		while (list && list->nod != nod)
 		{
 			tmp = list->nod;
 			list = list->next;
 		}
-		if (list->nod == nod)
+		if (list && list->nod == nod)
 			return (tmp);
 	}
 	return (NULL);
 }
 
-void			modify_path(t_jam *jam, t_listsp *tmpsp, t_lemin *lemin)
+int			modify_path(t_jam *jam, t_listsp *tmpsp, t_lemin *lemin)
 {
 	t_nod *start;
 
@@ -67,9 +67,11 @@ void			modify_path(t_jam *jam, t_listsp *tmpsp, t_lemin *lemin)
 		add_new_path(&(tmpsp->list), start, lemin);
 		ft_putendl("This is the new path :: ");
 		print_list(tmpsp->list);
-		ft_putendl("This is the new pathsp :: ");
-		print_listsp(tmpsp);
+		return (1);
 	}
+	else
+		ft_putendl("Does not exist ##########");
+	return (0);
 }
 
 //modifier la longueur du bordel
@@ -77,9 +79,12 @@ void			modify_path(t_jam *jam, t_listsp *tmpsp, t_lemin *lemin)
 int				correct_path(t_lemin *lemin, t_jam *jam)
 {
 	t_listsp	*tmpsp;
+	t_listsp	*firstsp;
+	int			i;
 
 	if (lemin && jam)
 	{
+		i = 0;
 		if (!(jam = get_jam_to_change(jam, lemin->room_nbr)))
 			return (0); // no path to modify
 
@@ -88,24 +93,39 @@ int				correct_path(t_lemin *lemin, t_jam *jam)
 		print_type("jam->nod->index", &(jam->nod->index), INT);
 		print_listsp(jam->path);
 
-		print_listsp(jam->path);/**********************/
+//		print_listsp(jam->path);/**********************/
 		sort_listsp(jam->path);//classer le tableau en fonction de la longueur des chemins
 		ft_putendl("\n\n\n\n\n");/**********************/
 		ft_putendl("after sorted ::\n");/**********************/
 		print_listsp(jam->path);/**********************/
 		/*
-		 * WARNING :: si les chemins ont la meme longueur essayer
+		 * WARNING :: si les chemins ont la meme longueur
 		 * la modification arbitraire ne marche pas il pourrait arriver que
 		 * seul le chemin non choisit soit modifiable
+		 *
+		 * SOLUTION PROVISOIRE ::
+		 * si je n'ai pu modifier aucun chemin je modifie le chemin de depart.
 		 */
+		firstsp = jam->path;
 		tmpsp = jam->path->next;
-		ft_putendl("The path to change ::\n");/**********************/
-		print_listsp(tmpsp);/**********************/
 		while (tmpsp)
 		{
-			modify_path(jam, tmpsp, lemin);
+			ft_putendl("The path to change ::\n");/**********************/
+			print_listsp(tmpsp);/**********************/
+			i += modify_path(jam, tmpsp, lemin);
 			tmpsp = tmpsp->next;
 		}
+		if ((!i)
+			&& (firstsp->next->path_len == firstsp->path_len))
+		{
+			ft_putendl("modify path");
+			ft_putendl("The path to change ::\n");/**********************/
+			print_listsp(firstsp);/**********************/
+			modify_path(jam, firstsp, lemin);
+		}
+		ft_putendl("\n\n\n\n\n");
+		ft_putendl("This is the new pathsp :: ");
+		print_listsp(jam->path);
 	}
 	return (1);
 }

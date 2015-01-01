@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/11 18:13:52 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/01/01 14:07:58 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/01/01 15:36:57 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,7 +163,7 @@ void					avoid_trafjams(t_listsp *pathsp, t_lemin *lemin);
 */
 
 int						correct_path(t_lemin *lemin, t_jam *jam);
-void					modify_path(t_jam *jam, t_listsp *tmpsp, t_lemin *lemin);
+int						modify_path(t_jam *jam, t_listsp *tmpsp, t_lemin *lemin);
 t_nod					*get_start_nod(t_list *list, t_nod *nod);
 
 /*
