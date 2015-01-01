@@ -6,17 +6,38 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/01 11:31:16 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/01/01 11:56:03 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/01/01 14:07:08 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 #include "debug.h"
 
-void			add_path(t_list path)
+void			add_new_path(t_list **path, t_nod *start, t_lemin *lemin)
 {
-	path = path;
-	ft_putendl("je suis con et p8 kw ?");
+	t_list		*tmp;
+
+	tmp = *path;
+	if (lemin && path)
+	{
+		if (tmp->nod == start)
+		{
+			//free *path
+			*path = lemin->path;
+		}
+		else
+		{
+			while (tmp->next && tmp->next->nod != start)
+				tmp = tmp->next;
+			if (tmp->next && tmp->next->nod == start )
+			{
+				//free path->next
+				tmp->next = lemin->path;
+			}
+			else
+				tmp->next = lemin->path;
+		}
+	}
 }
 
 void			set_nod_state(t_list *list, t_nod *end)

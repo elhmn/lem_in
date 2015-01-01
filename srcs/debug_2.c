@@ -1,35 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   debug.h                                            :+:      :+:    :+:   */
+/*   debug_2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/12/27 07:31:22 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/01/01 13:10:25 by bmbarga          ###   ########.fr       */
+/*   Created: 2015/01/01 12:57:34 by bmbarga           #+#    #+#             */
+/*   Updated: 2015/01/01 13:04:19 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DEBUG_H
-# define DEBUG_H
-# define INT	1
-# define CHAR	2
-# include "lem_in.h"
+#include "lem_in.h"
+#include "debug.h"
 
-/*
-** debug_1.c
-*/
-
-void	debug_lemin(t_lemin *lemin);
-void	print_type(char *str, void *data, int type);
-void	debug_nod(t_nod *nod);
-void	print_hashtab(t_list **hashtab);
-void	debug_links(t_nod *nod);
-
-/*
-** debug_2.c
-*/
-
-void		print_list_nod(t_list *list);
-
-#endif
+void		print_list_nod(t_list *list)
+{
+	while (list)
+	{
+		ft_putendl("elem ::");
+		debug_nod(list->nod);
+		list = list->next;
+	}
+}

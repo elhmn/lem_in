@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/11 18:13:52 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/01/01 11:53:50 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/01/01 14:07:58 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,5 +174,6 @@ void					sort_listsp(t_listsp *listsp);
 void					swap_listsp(t_listsp *list1, t_listsp *list2);
 void					reset_nod_state(t_list *list, t_nod *end);
 void					set_nod_state(t_list *list, t_nod *end);
+void					add_new_path(t_list **path, t_nod *start, t_lemin *lemin);
 
 #endif
