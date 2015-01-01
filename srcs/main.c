@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/10 17:09:51 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/31 12:17:26 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/01/01 11:16:04 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int		main(int ac, char **av)
 		get_paths(lemin);
 		print_listsp(lemin->pathsp);
 		ft_putendl("\n\n\n\n\n");
-		avoid_trafjams(lemin->pathsp, lemin);	
+		avoid_trafjams(lemin->pathsp, lemin);
 //		debug_lemin(lemin); /***************/
 
 

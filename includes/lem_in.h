@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/11 18:13:52 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/31 15:49:01 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/01/01 11:53:50 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,6 +150,7 @@ void					print_list(t_list *list);
 
 void					print_listsp(t_listsp *listsp);
 void					get_paths(t_lemin *lemin);
+void					reset_data(t_lemin *lemin);
 
 /*
 ** avoid_traffic_jams.c
@@ -161,6 +162,17 @@ void					avoid_trafjams(t_listsp *pathsp, t_lemin *lemin);
 ** correct_path.c
 */
 
-void					correct_path(t_lemin *lemin, t_jam *jam);
+int						correct_path(t_lemin *lemin, t_jam *jam);
+void					modify_path(t_jam *jam, t_listsp *tmpsp, t_lemin *lemin);
+t_nod					*get_start_nod(t_list *list, t_nod *nod);
+
+/*
+** correct_path_tools.c
+*/
+
+void					sort_listsp(t_listsp *listsp);
+void					swap_listsp(t_listsp *list1, t_listsp *list2);
+void					reset_nod_state(t_list *list, t_nod *end);
+void					set_nod_state(t_list *list, t_nod *end);
 
 #endif

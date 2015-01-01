@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/28 17:46:05 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/31 15:45:12 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/01/01 12:31:05 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,6 @@ void	print_listsp(t_listsp *listsp)
 		print_list(listsp->list);
 		print_type("listsp->path_len", &(listsp->path_len), INT);
 		listsp = listsp->next;
-	}
-}
-
-void	set_nod_state(t_list *list, int bool, int nbr)
-{
-	int		i;
-
-	i = -1;
-	while (++i < nbr && list)
-	{
-		list->nod->bool = bool;
-		list = list->next;
 	}
 }
 

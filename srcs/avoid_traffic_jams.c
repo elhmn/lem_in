@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/31 06:39:53 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/31 15:41:13 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/01/01 12:03:59 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ static int		is_obstruction(t_jam *bool, int size)
 	}
 	return (0);
 }
-
+/*
 static void		print_jam(t_jam *jam, int size)
 {
 	int	i;
@@ -109,7 +109,7 @@ static void		print_jam(t_jam *jam, int size)
 		}
 	}
 }
-
+*/
 void			avoid_trafjams(t_listsp *pathsp, t_lemin *lemin)
 {
 	t_jam		bool[lemin->room_nbr];
@@ -118,10 +118,12 @@ void			avoid_trafjams(t_listsp *pathsp, t_lemin *lemin)
 //	{
 		jam_init(bool, lemin->room_nbr);
 		check_obstruction(bool, pathsp, lemin);
+		//revoir le fonctionnement de is_obstruction
 		if (!is_obstruction(bool, lemin->room_nbr))
-			ft_putstr("There is obstruction\n");
-		print_jam(bool, lemin->room_nbr);
+			ft_putstr("There is no obstruction\n");
 //			break;
-//		correct_path(bool);
+		correct_path(lemin, bool);
+		ft_putendl("\n\n\n\n\n");
+//		print_jam(bool, lemin->room_nbr);
 //	}
 }
