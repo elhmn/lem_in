@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/31 06:39:53 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/01/01 12:03:59 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/01/02 17:31:28 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,15 +83,15 @@ static int		is_obstruction(t_jam *bool, int size)
 	int		i;
 
 	i = -1;
-	while (++i < size)
+	while (bool && ++i < size)
 	{
-		if (bool[i].nod)
+		if (bool[i].nod && bool[i].path->next)
 			return (1);
 	}
 	return (0);
 }
-/*
-static void		print_jam(t_jam *jam, int size)
+
+void		print_jam(t_jam *jam, int size)
 {
 	int	i;
 
@@ -109,21 +109,34 @@ static void		print_jam(t_jam *jam, int size)
 		}
 	}
 }
-*/
+
 void			avoid_trafjams(t_listsp *pathsp, t_lemin *lemin)
 {
 	t_jam		bool[lemin->room_nbr];
+	t_jam		*jam;
 
-//	while (42)
-//	{
+	jam = bool;
+	while (42)// on la boucle s'arrette lorsqu'on ne peut peu plus modifier aucun chemin
+	{
 		jam_init(bool, lemin->room_nbr);
 		check_obstruction(bool, pathsp, lemin);
-		//revoir le fonctionnement de is_obstruction
-		if (!is_obstruction(bool, lemin->room_nbr))
-			ft_putstr("There is no obstruction\n");
-//			break;
-		correct_path(lemin, bool);
+		print_jam(bool, lemin->room_nbr);
 		ft_putendl("\n\n\n\n\n");
-//		print_jam(bool, lemin->room_nbr);
-//	}
+		//ajouter le fait de ne plus pouvoir modifier
+		if (jam == (bool + lemin->room_nbr) || !is_obstruction(bool, lemin->room_nbr))
+		{
+			ft_putstr("There is no obstruction\n");
+			break;
+		}
+		jam = bool;
+		while ((jam) != (bool + lemin->room_nbr)
+				&& !correct_path(lemin, &jam))
+		{
+		ft_putendl("JAM");/*********************************************/
+		jam++;
+		print_type("jam->nod->name", jam->nod->name, CHAR);/*********************************/
+		print_type("jam->nod->index", &(jam->nod->index), INT);/*********************/
+			ft_putendl("\n\n\n\n\n");
+		}
+	}
 }
