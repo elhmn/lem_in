@@ -162,7 +162,7 @@ void					avoid_trafjams(t_listsp *pathsp, t_lemin *lemin);
 ** correct_path.c
 */
 
-int						correct_path(t_lemin *lemin, t_jam *jam);
+int						correct_path(t_lemin *lemin, t_jam **jam);
 int						modify_path(t_jam *jam, t_listsp *tmpsp, t_lemin *lemin);
 t_nod					*get_start_nod(t_list *list, t_nod *nod);
 
