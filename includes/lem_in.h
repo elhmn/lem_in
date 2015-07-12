@@ -134,7 +134,7 @@ int						hashtab_chr(t_list **hashtab, void *data);
 
 void					add_link(t_nod *nod1, t_nod *nod2);
 void					nod_addelem(t_nod *nod1, t_nod *nod2);
-t_nod					*if_match(char *str, t_list **hashtab);
+t_nod					*if_match(char *str, t_list **hashtab, int nod);
 void					get_props(t_lemin *lemin, t_nod *nod);
 
 /*

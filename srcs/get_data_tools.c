@@ -23,10 +23,10 @@ int		hashtab_chr(t_list **hashtab, void *data)
 	str = (char*)data;
 	if (str && hashtab)
 	{
-		if ((nod1 = if_match(str, hashtab)))
+		if ((nod1 = if_match(str, hashtab, 1)))
 		{
 			len = ft_strlen(nod1->name);
-			if ((nod2 = if_match(str + len + 1, hashtab)))
+			if ((nod2 = if_match(str + len + 1, hashtab, 0)))
 			{
 				add_link(nod1, nod2);
 				return (1);

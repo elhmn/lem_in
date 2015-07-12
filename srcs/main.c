@@ -29,7 +29,7 @@ int		main(int ac, char **av)
 {
 	t_lemin		*lemin;
 
-	av = av;
+	(void)av;
 	lemin = NULL;
 	lemin = init_lemin(lemin);
 	if (ac)
@@ -39,7 +39,7 @@ int		main(int ac, char **av)
 		get_paths(lemin);
 		print_listsp(lemin->pathsp);
 		ft_putendl("\n\n\n\n\n");
-		avoid_trafjams(lemin->pathsp, lemin);
+//		avoid_trafjams(lemin->pathsp, lemin);
 //		debug_lemin(lemin); /***************/
 
 

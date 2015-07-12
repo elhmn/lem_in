@@ -13,7 +13,7 @@
 #include "lem_in.h"
 #include "debug.h"
 
-t_nod		*if_match(char *str, t_list **hashtab)
+t_nod		*if_match(char *str, t_list **hashtab, int nod)
 {
 	int		i;
 	int		len;
@@ -31,8 +31,16 @@ t_nod		*if_match(char *str, t_list **hashtab)
 				while (tmp)
 				{
 					len = ft_strlen(tmp->nod->name);
-					if (!ft_strncmp(tmp->nod->name, str, len))
-						return (tmp->nod);
+					if (nod)
+					{
+						if (!ft_strncmp(tmp->nod->name, str, len))
+							return (tmp->nod);
+					}
+					else
+					{
+						if (!ft_strcmp(tmp->nod->name, str))
+							return (tmp->nod);
+					}
 					tmp = tmp->next;
 				}
 			}
