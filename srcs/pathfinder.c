@@ -136,8 +136,8 @@ t_nod	*pathfinder(t_nod *nod, t_lemin *lemin)
 	{
 		if (nod == lemin->end)
 		{
-//			ft_putendl("lemin->chemin :: ");
-//			print_list(lemin->chemin);
+//			ft_putendl("lemin->chemin :: ");/*_DEBUG_*/
+//			print_list(lemin->chemin);/*_DEBUG_*/
 			if (lemin->path_len > lemin->len_tmp || !lemin->path_len)
 			{
 				lemin->path_len = lemin->len_tmp;
@@ -150,7 +150,7 @@ t_nod	*pathfinder(t_nod *nod, t_lemin *lemin)
 	lemin->len_tmp++;
 	while (links)
 	{
-//		print_type("links->nod->bool", &(links->nod->bool), INT);
+//		print_type("links->nod->bool", &(links->nod->bool), INT);/*_DEBUG_*/
 		if (!links->nod->bool)
 		{
 			links->nod->bool = TRUE;

@@ -25,6 +25,8 @@
 **	5- affichage du resultat.
 */
 
+//check_that end nod is different than start nod
+
 int		main(int ac, char **av)
 {
 	t_lemin		*lemin;
@@ -39,31 +41,31 @@ int		main(int ac, char **av)
 		get_paths(lemin);
 		print_listsp(lemin->pathsp);
 		ft_putendl("\n\n\n\n\n");
-//		avoid_trafjams(lemin->pathsp, lemin);
-//		debug_lemin(lemin); /***************/
+		avoid_trafjams(lemin->pathsp, lemin);
+//		debug_lemin(lemin); /*_DEBUG_*/
 
 
 //		pathfinder(lemin->start->links->nod, lemin);
-//		print_type("lemin->start->links->nod", lemin->start->links->nod->name, CHAR);
-//		print_list(lemin->path);
-//		print_type("lemin->start->links->next->nod", lemin->start->links->next->nod->name, CHAR);
+//		print_type("lemin->start->links->nod", lemin->start->links->nod->name, CHAR);/*_DEBUG_*/
+//		print_list(lemin->path);/*_DEBUG_*/
+//		print_type("lemin->start->links->next->nod", lemin->start->links->next->nod->name, CHAR);/*_DEBUG_*/
 //		pathfinder(lemin->start->links->next->nod, lemin);
-//		print_list(lemin->path);
+//		print_list(lemin->path);/*_DEBUG_*/
 /*
 ** pour checker si il est possible de trouver un chemin il suffira de verifier que
 ** lemin->paths != NULL ou existe
 */
 //		pathfinder(lemin->start, lemin);
-//		print_list(lemin->path);
-//		print_listsp(lemin->pathsp);
-//		print_type("lemin->path_len", &(lemin->path_len), INT);
-//		ft_putendl("debug start :: "); /*****/
-//		debug_nod(lemin->start);
-//		ft_putendl("debug end :: "); /*****/
-///		debug_nod(lemin->end);
-//		print_hashtab(lemin->hashtab);
-//		treat data
-//		print_data
+//		print_list(lemin->path);/*_DEBUG_*/
+//		print_listsp(lemin->pathsp);/*_DEBUG_*/
+//		print_type("lemin->path_len", &(lemin->path_len), INT);/*_DEBUG_*/
+//		ft_putendl("debug start :: "); /*_DEBUG_*//*_DEBUG_*/
+//		debug_nod(lemin->start);/*_DEBUG_*/
+//		ft_putendl("debug end :: "); /*_DEBUG_*//*_DEBUG_*/
+///		debug_nod(lemin->end);/*_DEBUG_*/
+//		print_hashtab(lemin->hashtab);/*_DEBUG_*/
+//		treat data/*_DEBUG_*/
+//		print_data/*_DEBUG_*/
 	}
 	return (0);
 }

@@ -116,27 +116,28 @@ void			avoid_trafjams(t_listsp *pathsp, t_lemin *lemin)
 	t_jam		*jam;
 
 	jam = bool;
-	while (42)// on la boucle s'arrette lorsqu'on ne peut peu plus modifier aucun chemin
+	int		i = -1;
+	while (++i < 1)//(42)// on la boucle s'arrette lorsqu'on ne peut peu plus modifier aucun chemin
 	{
 		jam_init(bool, lemin->room_nbr);
 		check_obstruction(bool, pathsp, lemin);
-		print_jam(bool, lemin->room_nbr);
-		ft_putendl("\n\n\n\n\n");
+		print_jam(bool, lemin->room_nbr);/*_DEBUG_*/
+		ft_putendl("\n\n\n\n\n");/*_DEBUG_*/
 		//ajouter le fait de ne plus pouvoir modifier
 		if (jam == (bool + lemin->room_nbr) || !is_obstruction(bool, lemin->room_nbr))
 		{
 			ft_putstr("There is no obstruction\n");
 			break;
 		}
-		jam = bool;
-		while ((jam) != (bool + lemin->room_nbr)
-				&& !correct_path(lemin, &jam))
-		{
-		ft_putendl("JAM");/*********************************************/
-		jam++;
-		print_type("jam->nod->name", jam->nod->name, CHAR);/*********************************/
-		print_type("jam->nod->index", &(jam->nod->index), INT);/*********************/
-			ft_putendl("\n\n\n\n\n");
-		}
+//		jam = bool;
+//		while ((jam) != (bool + lemin->room_nbr)
+//				&& !correct_path(lemin, &jam))
+//		{
+//		ft_putendl("JAM");/*_DEBUG_*/
+//		jam++;
+//		print_type("jam->nod->name", jam->nod->name, CHAR);/*_DEBUG_*/
+//		print_type("jam->nod->index", &(jam->nod->index), INT);/*_DEBUG_*/
+//			ft_putendl("\n\n\n\n\n");
+//		}
 	}
 }
