@@ -83,7 +83,7 @@ int		get_data(t_lemin *lemin)
 	int		ret;
 
 	str = NULL;
-	lemin = lemin;
+	(void)lemin;
 	while ((ret = get_next_line(0, &str)) && ret != -1)
 		treat_line(lemin, str);
 	if (ret == -1)

@@ -40,8 +40,9 @@ int		main(int ac, char **av)
 		lemin->start->bool = TRUE;
 		get_paths(lemin);
 		print_listsp(lemin->pathsp);
-		ft_putendl("\n\n\n\n\n");
-		avoid_trafjams(lemin->pathsp, lemin);
+		ft_putendl("\n\n\n\n\n");/*_DEBUG_*/
+
+//		avoid_trafjams(lemin->pathsp, lemin);
 //		debug_lemin(lemin); /*_DEBUG_*/
 
 
