@@ -35,9 +35,12 @@ static void		init_set(t_lemin *lemin)
 
 static int		share(t_lemin *lemin, int i_p, int a_n, int max)
 {
+	int		tmp;
+
+	tmp = 0;
 	if (!(lemin))
 		check_errors(NUL, __FILE__, "lemin");
-	if (i_p == lemin->path_nbr)
+	if (i_p >= lemin->path_nbr)
 	{
 		printf("calcul de couts :\n");/*_DEBUG_*/
 		printf("return 1 \n");/*_DEBUG_*/
@@ -45,19 +48,22 @@ static int		share(t_lemin *lemin, int i_p, int a_n, int max)
 //		keep();
 		return (0);
 	}
-//	if (i_p > 0 && lemin->set[i_p - 1].a < a_n)
-//	{
-//		printf("return 2\n");/*_DEBUG_*/
-//		return (0);
-//	}
+	tmp = lemin->set[i_p].a;
 	if (i_p)
 		lemin->set[i_p].a = max - lemin->set[i_p - 1].a;
 	else
 		lemin->set[i_p].a = max - a_n;
-	// if something
 	share(lemin, i_p + 1, a_n, lemin->set[i_p].a);
+//	if (i_p
+//		lemin->set[i_p].a
+//		<= lemin->set[i_p].a)
+//	{
+//		lemin->set[i_p - 1].a = tmp;
+//		share(lemin, i_p - 1, a_n, lemin->set[i_p - 1].a);
+//		printf("return 2 \n");/*_DEBUG_*/
+//	}
 	//else if something else
-	share(lemin, i_p, a_n, lemin->set[i_p].a);
+//	printf("return 2 \n");/*_DEBUG_*/
 	return (0);
 }
 
