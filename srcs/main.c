@@ -45,7 +45,12 @@ int		main(int ac, char **av)
 		get_data(lemin);
 		lemin->start->bool = TRUE;
 		get_paths(lemin);
+		if (!lemin->pathsp)
+			error("No paths founded !! :(\n");
 		print_listsp(lemin->pathsp);/*_DEBUG_*/
+		get_set(lemin);
+//		print_result(lemin->set);
+
 /*
 ** pour checker si il est possible de trouver un chemin il suffira de verifier que
 ** lemin->paths != NULL ou existe
@@ -54,5 +59,5 @@ int		main(int ac, char **av)
 //		treat data/*_DEBUG_*/
 //		print_data/*_DEBUG_*/
 	}
-	return (0);
+	return (EXIT_SUCCESS);
 }

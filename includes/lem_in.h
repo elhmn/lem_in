@@ -60,6 +60,7 @@ typedef struct			s_coord
 typedef struct s_list	t_list;
 typedef struct s_listsp	t_listsp;
 typedef struct s_jam	t_jam;
+typedef struct s_uplet	t_uplet;
 
 typedef struct			s_nod
 {
@@ -91,6 +92,30 @@ struct					s_listsp
 	t_listsp			*next;
 };
 
+
+
+/*
+** s_uplet declaration:
+** l --> longueur du chemin.
+** a --> nombre de fourmis envoyees sur le chemin.
+** p --> chemin emprunte.
+*/
+
+struct				s_uplet
+{
+	int				l;
+	int				a;
+	int				index; // use unknown
+	t_list			*p; // maybe use t_listsp
+};
+
+/*
+** lemin->set est l'ensemble solution definit comme suit:
+** lemin->set = {(A_i, P_i, L_i) / i E [0, +inf] nombre entier}
+** ou C_i est le i-eme chemin de longueur L_i et A_i
+** le i-eme nombre de fourmis envoyees sur le chemin P_i
+*/
+
 typedef struct			s_lemin
 {
 	int			ant_nbr;
@@ -106,8 +131,15 @@ typedef struct			s_lemin
 	t_list		*path;
 	t_listsp	*pathsp;
 	t_list		*chemin;
+	t_uplet		*set;
 	t_nod		*end;
 }						t_lemin;
+
+/*
+** get_set.c
+*/
+
+int						get_set(t_lemin *lemin);
 
 /*
 ** get_data.c

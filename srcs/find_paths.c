@@ -11,12 +11,13 @@
 /* ************************************************************************** */
 
 #include "lem_in.h"
+#include "check_errors.h"
 #include "debug.h"
 
 void	print_listsp(t_listsp *listsp)
 {
 	if (!listsp)
-		ft_putendl("list set to NULL");
+		error("listsp set to NULL");
 	while (listsp)
 	{
 		print_list(listsp->list);

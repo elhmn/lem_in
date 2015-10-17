@@ -23,7 +23,7 @@ static void	fun_error_init(t_ferr *f)
 	else
 	{
 		ft_putendl("Error : f :: check_errors.c :: set to NULL ");
-		exit(-1);
+		exit(EXIT_FAILURE);
 	}
 }
 
@@ -31,7 +31,7 @@ void		error(char *str)
 {
 	ft_putstr("ERROR");
 	ft_putendl(str);
-	exit(0);
+	exit(EXIT_FAILURE);
 }
 
 void		check_errors(int code, char *file_name, char *var_name)
@@ -49,5 +49,5 @@ void		check_errors(int code, char *file_name, char *var_name)
 	while (++i < (READ + 1))
 		if (i == code)
 			fun_error[i]();
-	exit(0);
+	exit(EXIT_FAILURE);
 }
