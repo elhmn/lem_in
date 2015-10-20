@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/31 06:39:48 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/01/02 17:32:57 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/10/20 08:35:03 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,9 @@ int				correct_path(t_lemin *lemin, t_jam **jam)
 	t_listsp	*firstsp;
 	int			i;
 
+	i = 0;
 	if (lemin && jam)
 	{
-		i = 0;
 		if (!(jam[0] = get_jam_to_change(jam[0], lemin->room_nbr)))
 			return (0);
 //		ft_putendl("JAM"); /*_DEBUG_*/

@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/11 20:23:53 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/27 07:07:11 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/10/20 08:32:29 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	get_ants(t_lemin *lemin, char *str)
 
 void	get_rooms(t_lemin *lemin, char *str)
 {
-	lemin = lemin;
 	if (!is_room(str, lemin))
 	{
 		if (!lemin->room_nbr)

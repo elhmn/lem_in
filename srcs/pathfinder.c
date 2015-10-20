@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 10:25:16 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/01/02 17:32:18 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/10/20 08:33:29 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ static t_list	*make_cpy(t_list *list2)
 	t_list	*list1;
 	t_list	*end;
 
+	end = NULL;
 	tmp = NULL;
 	if (list2)
 	{	
