@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/10 17:09:51 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/01/02 14:54:01 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/10/20 18:03:43 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ int		main(int ac, char **av)
 ** lemin->paths != NULL ou existe
 */
 
-//		treat data/*_DEBUG_*/
-//		print_data/*_DEBUG_*/
+//		treat data()/*_DEBUG_*/
+//		print_data()/*_DEBUG_*/
 	}
 	return (EXIT_SUCCESS);
 }

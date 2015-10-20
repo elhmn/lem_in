@@ -1,9 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_set.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2015/10/20 10:49:50 by bmbarga           #+#    #+#             */
+/*   Updated: 2015/10/20 10:53:23 by bmbarga          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lem_in.h"
 #include "check_errors.h"
 #include <stdio.h>/*_DEBUG_*/
 #include <unistd.h>/*_DEBUG_*/
-
-# define ABS(x) (x > 0) ? x : -x
 
 // TODO checker les conditions d arret de la
 // fonction share(t_lemin *lemin, int i_p,
