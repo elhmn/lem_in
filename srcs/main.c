@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/10 17:09:51 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/10/22 09:47:37 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/10/22 16:22:46 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,9 @@ int		main(int ac, char **av)
 		if (!lemin->pathsp)
 			error("No paths founded !! :(\n");
 
-		print_listsp(lemin->pathsp);/*_DEBUG_*/
-		get_set(lemin);
+		print_jams(lemin->jam);
+//		print_listsp(lemin->pathsp);/*_DEBUG_*/
+//		get_set(lemin);
 
 //		modifier get_set au besoin du pt 2 de l'algo.
 //		il devra trouver toutes les combinaisons de

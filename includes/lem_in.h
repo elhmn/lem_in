@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/11 18:13:52 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/10/22 15:39:59 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/10/22 16:22:40 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,6 +137,13 @@ typedef struct			s_lemin
 	t_nod		*end;
 	t_jam		*jam;
 }						t_lemin;
+
+/*
+** avoid_traffic_jams.c
+*/
+
+void		print_jam(t_jam *jam, int size);
+void		print_jams(t_jam *jam);
 
 /*
 ** get_set.c

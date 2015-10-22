@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/31 06:39:53 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/01/02 17:31:28 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/10/22 16:23:46 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ static int		is_obstruction(t_jam *bool, int size)
 
 void		print_jam(t_jam *jam, int size)
 {
-	int	i;
+	int		i;
 
 	i = -1;
 	while (++i < size)
@@ -107,6 +107,28 @@ void		print_jam(t_jam *jam, int size)
 			print_type("jam->nod->index", &(jam[i].nod->index), INT);
 			print_listsp(jam[i].path);
 		}
+	}
+}
+
+void		print_jams(t_jam *jam)
+{
+	t_jam	*tmp;
+
+	tmp = jam;
+	if (!tmp)
+		check_errors(NUL, __FILE__, "tmp");
+	while (tmp)
+	{
+		if (tmp && tmp->nod)
+		{
+			ft_putstr("JAM [");
+			ft_putnbr(i);
+			ft_putendl("] :: ");
+			print_type("jam->nod->name", tmp->nod->name, CHAR);
+			print_type("jam->nod->index", &(tmp->nod->index), INT);
+			print_listsp(tmp->path);
+		}
+		tmp = tmp->next;
 	}
 }
 
