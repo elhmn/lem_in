@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 10:25:16 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/10/20 10:49:06 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/10/22 15:51:21 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,38 @@ static t_list	*make_cpy(t_list *list2)
 	return (end);
 }
 
-t_nod	*pathfinder(t_nod *nod, t_lemin *lemin)
+static void	put_path(t_jam *jam)
+{
+	t_listsp	*tmp;
+
+	tmp = NULL;
+	if (!jam)
+		check_errors(NUL, __FILE__, "jam");
+	if (!jam->path)
+	{
+		jam->path = (t_listsp*)malloc(sizeof(t_listsp));
+		if (!jam->path)
+			check_errors(MALLOC, __FILE__, "jam->path");
+		jam->path->next = NULL;
+		tmp = jam->path;
+	}
+	else
+	{
+		tmp = jam->path;
+		while (tmp)
+			tmp = tmp->next;
+		tmp = (t_listsp*)malloc(sizeof(t_listsp));
+		if (!tmp)
+			check_errors(MALLOC, __FILE__, "tmp->path");
+		tmp->next = NULL;
+	}
+	tmp->path_len = lemin->len_tmp;
+	tmp->list = lemin->make_cpy(lemin->chemin);
+	tmp->a = 0;
+//	tmp->index = ;
+}
+
+t_nod	*pathfinder(t_nod *nod, t_lemin *lemin, t_jam *jam)
 {
 	t_list	*links;
 
@@ -137,13 +168,14 @@ t_nod	*pathfinder(t_nod *nod, t_lemin *lemin)
 	{
 		if (nod == lemin->end)
 		{
+			put_path(jam); 
 //			ft_putendl("lemin->chemin :: ");/*_DEBUG_*/
 //			print_list(lemin->chemin);/*_DEBUG_*/
-			if (lemin->path_len > lemin->len_tmp || !lemin->path_len)
-			{
-				lemin->path_len = lemin->len_tmp;
-				lemin->path = make_cpy(lemin->chemin);
-			}
+//			if (lemin->path_len > lemin->len_tmp || !lemin->path_len)
+//			{
+//				lemin->path_len = lemin->len_tmp;
+//				lemin->path = make_cpy(lemin->chemin);
+//			}
 		}
 		remove_path(lemin);
 		return (NULL);

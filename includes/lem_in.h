@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/11 18:13:52 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/10/20 18:51:55 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/10/22 15:39:59 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,12 +82,14 @@ struct					s_jam
 {
 	t_nod				*nod;
 	t_listsp			*path;
+	t_jam				*next;
 };
 
 struct					s_listsp
 {
 	t_list				*list;
 	int					path_len;
+	int					a;
 	int					index;
 	t_listsp			*next;
 };
@@ -133,6 +135,7 @@ typedef struct			s_lemin
 	t_list		*chemin;
 	t_uplet		*set;
 	t_nod		*end;
+	t_jam		*jam;
 }						t_lemin;
 
 /*
@@ -173,7 +176,7 @@ void					get_props(t_lemin *lemin, t_nod *nod);
 ** pathfinder.c
 */
 
-t_nod					*pathfinder(t_nod *nod, t_lemin *lemin);
+t_nod					*pathfinder(t_nod *nod, t_lemin *lemin, t_jam *jam);
 void					print_list(t_list *list);
 
 /*
