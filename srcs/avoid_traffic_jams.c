@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/31 06:39:53 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/10/22 16:23:46 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/10/22 17:15:09 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,9 @@ void		print_jam(t_jam *jam, int size)
 void		print_jams(t_jam *jam)
 {
 	t_jam	*tmp;
+	int		i;
 
+	i = 0;
 	tmp = jam;
 	if (!tmp)
 		check_errors(NUL, __FILE__, "tmp");
@@ -129,6 +131,7 @@ void		print_jams(t_jam *jam)
 			print_listsp(tmp->path);
 		}
 		tmp = tmp->next;
+		i++;
 	}
 }
 

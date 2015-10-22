@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/28 17:46:05 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/10/22 16:15:36 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/10/22 17:17:35 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void		reset_data(t_lemin *lemin)
 	lemin->len_tmp = 0;
 }
 
-static t_jam	*init_&_get_jam(t_lemin *lemin, t_list *links)
+static t_jam	*init_and_get_jam(t_lemin *lemin, t_list *links)
 {
 	t_jam	*tmp;
 
@@ -82,15 +82,15 @@ static t_jam	*init_&_get_jam(t_lemin *lemin, t_list *links)
 void	get_paths(t_lemin *lemin)
 {
 	t_list		*links;
-	t_listsp	*listsp;
-	t_listsp	*tmp;
+//	t_listsp	*listsp;
+//	t_listsp	*tmp;
 	t_jam		*jam;
 
 	links = lemin->start->links;
 	while (links)
 	{
 		reset_data(lemin);
-		jam = init_&_get_jam(lemin);
+		jam = init_and_get_jam(lemin, links);
 		if (jam)
 			pathfinder(links->nod, lemin, jam);
 //		if (lemin->path)

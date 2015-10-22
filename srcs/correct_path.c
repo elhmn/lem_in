@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/31 06:39:48 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/10/20 10:48:47 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/10/22 17:08:23 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int			modify_path(t_jam *jam, t_listsp *tmpsp, t_lemin *lemin)
 // 	ft_putendl("print start nod :: ");  /*_DEBUG_*/
 // 	debug_nod(start);  
 	reset_data(lemin); // for pathfinder
-	pathfinder(start, lemin);
+	pathfinder(start, lemin, lemin->jam);
 //	ft_putendl("This is the new path TMP :: ");  /*_DEBUG_*/
 //	print_list(lemin->path); /*_DEBUG_*/
 	reset_nod_state(tmpsp->list, jam->nod);
