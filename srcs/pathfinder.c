@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 10:25:16 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/10/22 17:23:35 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/10/22 17:25:52 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,7 +169,7 @@ t_nod	*pathfinder(t_nod *nod, t_lemin *lemin, t_jam *jam)
 		if (nod == lemin->end)
 		{
 			put_path(lemin, jam); 
-			print_jams(lemin->jam);
+//			print_jams(lemin->jam);
 //			printf("DEBUG \n");/*_DEBUG_*/
 //			ft_putendl("lemin->chemin :: ");/*_DEBUG_*/
 //			print_list(lemin->chemin);/*_DEBUG_*/
