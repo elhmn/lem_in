@@ -61,6 +61,7 @@ static t_jam	*init_and_get_jam(t_lemin *lemin, t_list *links)
 		if (!lemin->jam)
 			check_errors(NUL, __FILE__, "lemin->jam");
 		lemin->jam->nod = links->nod;
+		lemin->jam->path = NULL;
 		lemin->jam->next = NULL;
 		return (lemin->jam);
 	}
@@ -74,10 +75,29 @@ static t_jam	*init_and_get_jam(t_lemin *lemin, t_list *links)
 			check_errors(NUL, __FILE__, "tmp");
 		tmp = tmp->next;
 		tmp->next = NULL;
+		tmp->path = NULL;
 		tmp->nod = links->nod;
 		return (tmp);
 	}
 	return (NULL);
+}
+
+static void	remove_jam(t_lemin *lmin, t_jam *jam, t_jam *prec)
+{
+	if (!lmin)
+		check_errors(NUL, __FILE__, "lmin");
+	if (!prec)
+	{
+		if (jam)
+			free(jam);
+		lmin->jam = NULL;
+	}
+	else
+	{
+		if (jam)
+			free(jam);
+		prec->next = NULL;
+	}
 }
 
 void	get_paths(t_lemin *lemin)
@@ -86,8 +106,10 @@ void	get_paths(t_lemin *lemin)
 //	t_listsp	*listsp;
 //	t_listsp	*tmp;
 	t_jam		*jam;
+	t_jam		*j_prec;
 
 	links = lemin->start->links;
+	j_prec = NULL;
 	while (links)
 	{
 		links->nod->bool = TRUE;
@@ -95,7 +117,7 @@ void	get_paths(t_lemin *lemin)
 		jam = init_and_get_jam(lemin, links);
 		if (jam)
 			pathfinder(links->nod, lemin, jam);
-//		print_jams(jam);/*_DEBUG_*/
+		printf("nod = [%s]\n", links->nod->name);/*_DEBUG_*/
 //		if (lemin->path)
 //		{
 ////			tmp = lemin->pathsp;
@@ -114,6 +136,11 @@ void	get_paths(t_lemin *lemin)
 //			lemin->path_nbr++;
 //		}
 //		debug_nod(links->nod);
+		if (!jam->path)
+			remove_jam(lemin, jam, j_prec);
+		else
+			j_prec = jam;
+//		print_jams(jam);/*_DEBUG_*/
 		links->nod->bool = FALSE;
 		links = links->next;
 	}

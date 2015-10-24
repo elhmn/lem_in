@@ -14,6 +14,9 @@
 #include "init.h"
 #include "debug.h"
 
+/* TODO CHECKER ERREUR PARSING 1.lmin file */
+
+
 /*
 **	1- recuperer les donnees sur l'entree standard		DONE
 **	2- checker les cas sensibles d'erreur		DONE

@@ -153,7 +153,7 @@ static void	put_path(t_lemin *lemin, t_jam *jam)
 		tmp = tmp->next;
 		tmp->next = NULL;
 	}
-	tmp->path_len = lemin->len_tmp;
+	tmp->path_len = lemin->len_tmp + 1;
 	tmp->list = make_cpy(lemin->chemin);
 	tmp->a = 0;
 //	tmp->index = ;
