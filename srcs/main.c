@@ -61,11 +61,11 @@ int		main(int ac, char **av)
 //		modifier get_path au besoin du pt 1 de l'algo.
 //		il devra trouver tous les chemins possible.
 		get_paths(lemin);
+		print_jams(lemin->jam);/*_DEBUG_*/
 
-		if (!lemin->pathsp)
-			error("No paths founded !! :(\n");
+//		if (!lemin->pathsp)
+//			error("No paths founded !! :(\n");
 
-		print_jams(lemin->jam);
 //		print_listsp(lemin->pathsp);/*_DEBUG_*/
 //		get_set(lemin);
 

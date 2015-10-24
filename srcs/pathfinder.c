@@ -145,11 +145,12 @@ static void	put_path(t_lemin *lemin, t_jam *jam)
 	else
 	{
 		tmp = jam->path;
-		while (tmp)
+		while (tmp->next)
 			tmp = tmp->next;
-		tmp = (t_listsp*)malloc(sizeof(t_listsp));
-		if (!tmp)
+		tmp->next = (t_listsp*)malloc(sizeof(t_listsp));
+		if (!tmp->next)
 			check_errors(MALLOC, __FILE__, "tmp->path");
+		tmp = tmp->next;
 		tmp->next = NULL;
 	}
 	tmp->path_len = lemin->len_tmp;
@@ -169,7 +170,9 @@ t_nod	*pathfinder(t_nod *nod, t_lemin *lemin, t_jam *jam)
 		if (nod == lemin->end)
 		{
 			put_path(lemin, jam); 
-//			print_jams(lemin->jam);
+//			print_list(lemin->chemin);/*_DEBUG_*/
+//			usleep(100000);/*_DEBUG_*/
+//			print_jams(jam);/*_DEBUG_*/
 //			printf("DEBUG \n");/*_DEBUG_*/
 //			ft_putendl("lemin->chemin :: ");/*_DEBUG_*/
 //			print_list(lemin->chemin);/*_DEBUG_*/
@@ -185,8 +188,11 @@ t_nod	*pathfinder(t_nod *nod, t_lemin *lemin, t_jam *jam)
 	lemin->len_tmp++;
 	while (links)
 	{
-		printf("DEBUG \n");/*_DEBUG_*/
+//		printf("DEBUG \n");/*_DEBUG_*/
+//		print_list(lemin->chemin);/*_DEBUG_*/
+//		printf("nod = [%s]\n", links->nod->name);/*_DEBUG_*/
 //		print_type("links->nod->bool", &(links->nod->bool), INT);/*_DEBUG_*/
+//		usleep(100000);/*_DEBUG_*/
 		if (!links->nod->bool)
 		{
 			links->nod->bool = TRUE;

@@ -67,11 +67,12 @@ static t_jam	*init_and_get_jam(t_lemin *lemin, t_list *links)
 	else
 	{
 		tmp = lemin->jam;
-		while (tmp)
+		while (tmp->next)
 			tmp = tmp->next;
-		tmp = (t_jam*)malloc(sizeof(t_jam));
-		if (!tmp)
+		tmp->next =(t_jam*)malloc(sizeof(t_jam));
+		if (!tmp->next)
 			check_errors(NUL, __FILE__, "tmp");
+		tmp = tmp->next;
 		tmp->next = NULL;
 		tmp->nod = links->nod;
 		return (tmp);
@@ -89,10 +90,12 @@ void	get_paths(t_lemin *lemin)
 	links = lemin->start->links;
 	while (links)
 	{
+		links->nod->bool = TRUE;
 		reset_data(lemin);
 		jam = init_and_get_jam(lemin, links);
 		if (jam)
 			pathfinder(links->nod, lemin, jam);
+//		print_jams(jam);/*_DEBUG_*/
 //		if (lemin->path)
 //		{
 ////			tmp = lemin->pathsp;
@@ -110,6 +113,8 @@ void	get_paths(t_lemin *lemin)
 //			}
 //			lemin->path_nbr++;
 //		}
+//		debug_nod(links->nod);
+		links->nod->bool = FALSE;
 		links = links->next;
 	}
 }

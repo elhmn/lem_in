@@ -121,6 +121,7 @@ void		print_jams(t_jam *jam)
 		check_errors(NUL, __FILE__, "tmp");
 	while (tmp)
 	{
+		printf("---------------------------------------\n");
 		if (tmp && tmp->nod)
 		{
 			ft_putstr("JAM [");
@@ -132,6 +133,7 @@ void		print_jams(t_jam *jam)
 		}
 		tmp = tmp->next;
 		i++;
+		printf("---------------------------------------\n\n\n");
 	}
 }
 
