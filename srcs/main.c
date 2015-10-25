@@ -66,15 +66,10 @@ int		main(int ac, char **av)
 		get_paths(lemin);
 		print_jams(lemin->jam);/*_DEBUG_*/
 
-//		if (!lemin->pathsp)
-//			error("No paths founded !! :(\n");
-
-//		print_listsp(lemin->pathsp);/*_DEBUG_*/
-//		get_set(lemin);
-
 //		modifier get_set au besoin du pt 2 de l'algo.
 //		il devra trouver toutes les combinaisons de
 //		chemin possible.
+
 //		get_sets(lemin);
 
 //		trouver les combinaisons de chemins non secant.

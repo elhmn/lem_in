@@ -135,7 +135,9 @@ typedef struct			s_lemin
 	t_list		*chemin;
 	t_uplet		*set;
 	t_nod		*end;
+
 	t_jam		*jam;
+	t_jam		*comb;
 }						t_lemin;
 
 /*
