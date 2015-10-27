@@ -30,7 +30,7 @@
 //	return (sp_tmp);
 //}
 
-static void	combine(t_jam **comb)
+static int	combine(t_jam **comb, t_jam *comb_tmp, t_jam *jam, t_listsp *sp)
 {
 	t_jam		*j;
 	t_listsp	sp_tmp;
@@ -40,43 +40,50 @@ static void	combine(t_jam **comb)
 
 	// checks d'erreurs basique
 	// ---
-	if (comb)
+	if (!comb)
 		check_errors(NUL, __FILE__, "comb");
-	if (sp)
-		check_errors(NUL, __FILE__, "jam || sp");
+
 	//--
 
 	// conditions d'arret
 	//--
-
+	if (!jam)
+	{
+		return (1);
+	}
+	if (!sp)
+	{
+		//peut etre rajouter des trucs
+		return (1);
+	}
 	//--
 	
-	/* 1- creer nouvel combinaison de chemin */
 
 // do something here but what ?
-	
-	combine(comb, sp->next, jam);
 
-//	while (j && sp_tmp)
-//	{
-//		j = jam;
-//		while (j)
-//		{
-//			sp_tmp = ;
-//			j = j->next;
-//		}
-//	}
-	
+	//add sp to comb_tmp
+//	add_comb_tmp(comb_tmp, sp);
 
+	print_listsp(sp);
+	combine(comb, comb_tmp, jam, sp->next);
+	//add and copy comb_tmp in comb;
+//	add_and_copy_comb_tmp(comb);
+
+	//delete comb_tmp last elem
+//	remove_comb(comb_tmp);
+
+//	combine(comb, comb_tmp, jam->next, jam->next->sp); 
+	return (0);
 }
 
-static void	init_comb(t_jam **comb)
+static void	init_comb(t_jam **comb)//, t_listsp *sp)
 {
+//	(void)sp;
 	if (!comb)
 		check_errors(NUL, __FILE__, "comb");
-	if (!(*comb = (t_jam*)sizeof(t_jam)))
+	if (!(*comb = (t_jam*)malloc(sizeof(t_jam))))
 		check_errors(MALLOC, __FILE__, "*comb");
-	(*comb)->pathsp = NULL;
+	(*comb)->pathsp = NULL;	
 	(*comb)->nod = NULL;
 	(*comb)->next = NULL;
 }
@@ -84,22 +91,29 @@ static void	init_comb(t_jam **comb)
 void		get_comb_set(t_lemin *lemin)
 {
 	t_jam		*j_tmp;
+	t_jam		*comb_tmp;
 	t_listsp	*sp_tmp;
 
 	sp_tmp = NULL;
+	comb_tmp = NULL;
 	if (!lemin)
 		check_errors(NUL, __FILE__, "lemin");
 	if (!(j_tmp = lemin->jam))
 		check_errors(MALLOC, __FILE__, "lemin->jam");
 	init_comb(&lemin->comb);
+	init_comb(&comb_tmp);
+	printf("BEFORE SEGFAULT\n");/*_DEBUG_*/
 	while (j_tmp)
 	{
 		sp_tmp = j_tmp->pathsp;
 		while (sp_tmp)
 		{
 			//creer la combinaison a 1 element E = (sp_tmp, 0, 0, ..., 0)
-			combine(&lemin->comb, sp_tmp, j_tmp->next);
+//			init_comb(comb_tmp, sp_tmp);
+			combine(&lemin->comb, comb_tmp, j_tmp->next, j_tmp->next->pathsp);
+			ft_putstr("---------------------------------------------------------\n");/*_DEBUG_*/
 			sp_tmp = sp_tmp->next;
+//			delete_comb(comb_tmp);
 		}
 		j_tmp = j_tmp->next;
 	}

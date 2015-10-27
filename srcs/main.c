@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/10 17:09:51 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/10/27 15:04:18 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/10/27 21:03:16 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ int		main(int ac, char **av)
 //		il devra trouver tous les chemins possible.
 		get_paths(lemin);
 		print_jams(lemin->jam);/*_DEBUG_*/
+		ft_putstr("--------------------------------------------------\n\n");/*_DEBUG_*/
+		get_comb_set(lemin);
 
 //		modifier get_set au besoin du pt 2 de l'algo.
 //		il devra trouver toutes les combinaisons de
