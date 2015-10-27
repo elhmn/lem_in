@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/11 18:13:52 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/10/26 21:28:32 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/10/27 17:09:02 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,7 +137,7 @@ typedef struct			s_lemin
 	t_nod		*end;
 
 	t_jam		*jam;
-	t_listsp	*comb;
+	t_jam		*comb;
 }						t_lemin;
 
 /*
@@ -146,6 +146,12 @@ typedef struct			s_lemin
 
 void		print_jam(t_jam *jam, int size);
 void		print_jams(t_jam *jam);
+
+/*
+** get_comb_set.c
+*/
+
+void		get_comb_set(t_lemin *lemin);
 
 /*
 ** get_set.c
