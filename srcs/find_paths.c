@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/28 17:46:05 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/10/26 15:44:50 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/10/26 17:43:00 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static t_jam	*init_and_get_jam(t_lemin *lemin, t_list *links)
 		if (!lemin->jam)
 			check_errors(NUL, __FILE__, "lemin->jam");
 		lemin->jam->nod = links->nod;
-		lemin->jam->path = NULL;
+		lemin->jam->pathsp = NULL;
 		lemin->jam->next = NULL;
 		return (lemin->jam);
 	}
@@ -75,7 +75,7 @@ static t_jam	*init_and_get_jam(t_lemin *lemin, t_list *links)
 			check_errors(NUL, __FILE__, "tmp");
 		tmp = tmp->next;
 		tmp->next = NULL;
-		tmp->path = NULL;
+		tmp->pathsp = NULL;
 		tmp->nod = links->nod;
 		return (tmp);
 	}
@@ -136,7 +136,7 @@ void	get_paths(t_lemin *lemin)
 //			lemin->path_nbr++;
 //		}
 //		debug_nod(links->nod);
-		if (!jam->path)
+		if (!jam->pathsp)
 			remove_jam(lemin, jam, j_prec);
 		else
 			j_prec = jam;

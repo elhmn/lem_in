@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/11 18:13:52 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/10/26 15:44:46 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/10/26 21:28:32 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ struct					s_list
 struct					s_jam
 {
 	t_nod				*nod;
-	t_listsp			*path;
+	t_listsp			*pathsp;
 	t_jam				*next;
 };
 
@@ -137,7 +137,7 @@ typedef struct			s_lemin
 	t_nod		*end;
 
 	t_jam		*jam;
-	t_jam		*comb;
+	t_listsp	*comb;
 }						t_lemin;
 
 /*

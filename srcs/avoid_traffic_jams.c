@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/31 06:39:53 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/10/22 17:15:09 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/10/26 21:30:37 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,16 @@ static void		find_jams(t_list *list, t_jam *bool, t_lemin *lemin, int path_len)
 			if (!bool[index].nod)
 			{
 				bool[index].nod = list->nod;
-				if (!(bool[index].path = (t_listsp*)malloc(sizeof(t_listsp))))
+				if (!(bool[index].pathsp = (t_listsp*)malloc(sizeof(t_listsp))))
 					error("");
-				bool[index].path->list = save;
-				bool[index].path->next = NULL;
-				bool[index].path->path_len = path_len;
+				bool[index].pathsp->list = save;
+				bool[index].pathsp->next = NULL;
+				bool[index].pathsp->path_len = path_len;
 				//et peut etre path_len
 			}
 			else
 			{
-				tmp = bool[index].path;
+				tmp = bool[index].pathsp;
 				while (tmp->next)
 					tmp = tmp->next;
 				if (!(tmp2 = (t_listsp*)malloc(sizeof(t_listsp))))
@@ -62,7 +62,7 @@ static void		jam_init(t_jam *jam, int size)
 	while (++i < size)
 	{
 		jam[i].nod = NULL;
-		jam[i].path = NULL;
+		jam[i].pathsp = NULL;
 	}
 }
 
@@ -85,7 +85,7 @@ static int		is_obstruction(t_jam *bool, int size)
 	i = -1;
 	while (bool && ++i < size)
 	{
-		if (bool[i].nod && bool[i].path->next)
+		if (bool[i].nod && bool[i].pathsp->next)
 			return (1);
 	}
 	return (0);
@@ -105,7 +105,7 @@ void		print_jam(t_jam *jam, int size)
 			ft_putendl("] :: ");
 			print_type("jam->nod->name", jam[i].nod->name, CHAR);
 			print_type("jam->nod->index", &(jam[i].nod->index), INT);
-			print_listsp(jam[i].path);
+			print_listsp(jam[i].pathsp);
 		}
 	}
 }
@@ -129,7 +129,7 @@ void		print_jams(t_jam *jam)
 			ft_putendl("] :: ");
 			print_type("jam->nod->name", tmp->nod->name, CHAR);
 			print_type("jam->nod->index", &(tmp->nod->index), INT);
-			print_listsp(tmp->path);
+			print_listsp(tmp->pathsp);
 		}
 		tmp = tmp->next;
 		i++;

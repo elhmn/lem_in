@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/10 17:09:51 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/10/26 15:44:49 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/10/26 21:44:33 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@
 //check_that end nod is different than start nod
 
 int		main(int ac, char **av)
-{
+
 	t_lemin		*lemin;
 
 	(void)av;

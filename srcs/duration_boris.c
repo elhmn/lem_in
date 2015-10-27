@@ -1,3 +1,5 @@
+#include "lemin.h"
+
 typedef struct s_struct t_struct;
 struct s_struct
 {

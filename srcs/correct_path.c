@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/31 06:39:48 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/10/22 17:08:23 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/10/26 17:43:22 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static t_jam	*get_jam_to_change(t_jam *jam, int size)
 	i = -1;
 	while (++i < size)
 	{
-		if (jam[i].path && jam[i].path->next)
+		if (jam[i].pathsp && jam[i].pathsp->next)
 			return (jam + i);
 	}
 	return (NULL); // no jam exist
@@ -94,7 +94,7 @@ int				correct_path(t_lemin *lemin, t_jam **jam)
 //		print_type("jam[0].nod->index", &(jam[0]->nod->index), INT); /*_DEBUG_*/
 //		print_listsp(jam[0]->path); /*_DEBUG_*/
 
-		sort_listsp(jam[0]->path);//classer le tableau en fonction de la longueur des chemins
+		sort_listsp(jam[0]->pathsp);//classer le tableau en fonction de la longueur des chemins
 //		ft_putendl("\n\n\n\n\n"); /*_DEBUG_*/
 //		ft_putendl("after sorted ::\n"); /*_DEBUG_*/
 //		print_listsp(jam[0]->path); /*_DEBUG_*/
@@ -106,8 +106,8 @@ int				correct_path(t_lemin *lemin, t_jam **jam)
 		 * SOLUTION PROVISOIRE ::
 		 * si je n'ai pu modifier aucun chemin je modifie le chemin de depart.
 		 */
-		firstsp = jam[0]->path;
-		tmpsp = jam[0]->path->next;
+		firstsp = jam[0]->pathsp;
+		tmpsp = jam[0]->pathsp->next;
 		while (tmpsp)
 		{
 //			ft_putendl("The path to change ::\n"); /*_DEBUG_*/

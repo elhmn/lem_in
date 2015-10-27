@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 10:25:16 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/10/22 17:25:52 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/10/26 17:39:53 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,17 +134,17 @@ static void	put_path(t_lemin *lemin, t_jam *jam)
 	tmp = NULL;
 	if (!jam)
 		check_errors(NUL, __FILE__, "jam");
-	if (!jam->path)
+	if (!jam->pathsp)
 	{
-		jam->path = (t_listsp*)malloc(sizeof(t_listsp));
-		if (!jam->path)
+		jam->pathsp = (t_listsp*)malloc(sizeof(t_listsp));
+		if (!jam->pathsp)
 			check_errors(MALLOC, __FILE__, "jam->path");
-		jam->path->next = NULL;
-		tmp = jam->path;
+		jam->pathsp->next = NULL;
+		tmp = jam->pathsp;
 	}
 	else
 	{
-		tmp = jam->path;
+		tmp = jam->pathsp;
 		while (tmp->next)
 			tmp = tmp->next;
 		tmp->next = (t_listsp*)malloc(sizeof(t_listsp));
