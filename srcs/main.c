@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/10 17:09:51 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/10/27 21:03:16 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/10/27 23:21:22 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,8 @@
 #include "init.h"
 #include "debug.h"
 
-/* TODO CHECKER ERREUR PARSING 1.lmin file */
-
-
-/*
-**	1- recuperer les donnees sur l'entree standard		DONE
-**	2- checker les cas sensibles d'erreur		DONE
-**	3- rechercher les chemins les plus rapides par branches (djikstra or A* algorithms)		DONE
-**	4- Creer nouveau fichiers de test.
-**	5- Tester le lemin.
-**		-- Bug tubes declares avant ou entre deux declarations de noeuds
-**	6- Implementer l'algo
-**		-- algo
-**			-- Implementer la boucle.
-**			-- Calcul de couts. 
-**			-- Comparer couts_min avec couts_courant.
-**			-- Conserver l'ensemble correspondant.
-**		-- Generer la sortie.
-**	7- Mise a la norme.
-*/
+/* TODO CHECKER ERREUR PARSING 1.lmin && 3.lmin file */
+/* TODO GERER LES FUITES MEMOIRES */
 
 /*
 ** Nouvel algo:
@@ -67,6 +50,9 @@ int		main(int ac, char **av)
 		print_jams(lemin->jam);/*_DEBUG_*/
 		ft_putstr("--------------------------------------------------\n\n");/*_DEBUG_*/
 		get_comb_set(lemin);
+
+//		MEMORY LEAKS
+//		while (1);/*_DEBUG_*/
 
 //		modifier get_set au besoin du pt 2 de l'algo.
 //		il devra trouver toutes les combinaisons de

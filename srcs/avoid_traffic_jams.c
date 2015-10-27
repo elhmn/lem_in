@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/31 06:39:53 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/10/26 21:30:37 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/10/27 22:54:07 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,13 +122,16 @@ void		print_jams(t_jam *jam)
 	while (tmp)
 	{
 		printf("---------------------------------------\n");
-		if (tmp && tmp->nod)
+		if (tmp)
 		{
 			ft_putstr("JAM [");
 			ft_putnbr(i);
 			ft_putendl("] :: ");
-			print_type("jam->nod->name", tmp->nod->name, CHAR);
-			print_type("jam->nod->index", &(tmp->nod->index), INT);
+			if (tmp->nod)
+			{
+				print_type("jam->nod->name", tmp->nod->name, CHAR);
+				print_type("jam->nod->index", &(tmp->nod->index), INT);
+			}
 			print_listsp(tmp->pathsp);
 		}
 		tmp = tmp->next;
