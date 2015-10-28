@@ -45,7 +45,7 @@ static void		remove_sp_to_comb_tmp(t_jam *comb)
 	}
 }
 
-int				combine(t_jam **comb, t_jam *comb_tmp, t_jam *jam, t_listsp *sp)
+int				combine(t_jam **comb, t_jam *comb_tmp, t_jam *jam, t_listsp *sp, t_lemin *lemin)
 {
 	t_jam		*j;
 	t_listsp	sp_tmp;
@@ -85,7 +85,8 @@ int				combine(t_jam **comb, t_jam *comb_tmp, t_jam *jam, t_listsp *sp)
 
 
 //add and copy comb_tmp in comb;
-	add_copy_comb_tmp(comb, comb_tmp);
+//	add_copy_comb_tmp(comb, comb_tmp);
+	lemin->i_tmp += 1;
 
 
 //	printf("LORD \n");/*_DEBUG_*/
@@ -97,17 +98,17 @@ int				combine(t_jam **comb, t_jam *comb_tmp, t_jam *jam, t_listsp *sp)
 		if (sp->next)
 		{
 			remove_sp_to_comb_tmp(comb_tmp);
-			combine(comb, comb_tmp, jam->next, jam->next->pathsp);
+			combine(comb, comb_tmp, jam->next, jam->next->pathsp, lemin);
 			add_comb_tmp(comb_tmp, sp);
 		}
-		combine(comb, comb_tmp, jam->next, jam->next->pathsp);
+		combine(comb, comb_tmp, jam->next, jam->next->pathsp, lemin);
 	}
 	//delete comb_tmp last elem
 	
 	remove_sp_to_comb_tmp(comb_tmp);
 
 
-	combine(comb, comb_tmp, jam, sp->next);
+	combine(comb, comb_tmp, jam, sp->next, lemin);
 
 	return (0);
 }
@@ -255,6 +256,7 @@ void		get_comb_set(t_lemin *lemin)
 		check_errors(NUL, __FILE__, "lemin");
 	if (!(j_tmp = lemin->jam))
 		check_errors(MALLOC, __FILE__, "lemin->jam");
+	lemin->i_tmp = 0;
 	while (j_tmp)
 	{
 		sp_tmp = j_tmp->pathsp;
@@ -262,9 +264,10 @@ void		get_comb_set(t_lemin *lemin)
 		{
 			//creer la combinaison a 1 element E = (sp_tmp, 0, 0, ..., 0)
 			init_comb_from_list(&comb_tmp, sp_tmp);
-			add_copy_comb_tmp(&lemin->comb, comb_tmp);
+//			add_copy_comb_tmp(&lemin->comb, comb_tmp);
+			lemin->i_tmp += 1;
 			if (j_tmp->next)
-				combine(&lemin->comb, comb_tmp, j_tmp->next, j_tmp->next->pathsp);
+				combine(&lemin->comb, comb_tmp, j_tmp->next, j_tmp->next->pathsp, lemin);
 			sp_tmp = sp_tmp->next;
 			delete_comb_tmp(&comb_tmp);
 		}
@@ -272,5 +275,5 @@ void		get_comb_set(t_lemin *lemin)
 		j_tmp = j_tmp->next;
 	}
 //	print_jams(comb_tmp);
-	print_jams(lemin->comb);/*_DEBUG_*/
+//	print_jams(lemin->comb);/*_DEBUG_*/
 }

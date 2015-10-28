@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/11 18:13:52 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/10/28 15:08:44 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/10/28 20:51:23 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,6 @@ struct					s_listsp
 };
 
 
-
 /*
 ** s_uplet declaration:
 ** l --> longueur du chemin.
@@ -135,7 +134,7 @@ typedef struct			s_lemin
 	t_list		*chemin;
 	t_uplet		*set;
 	t_nod		*end;
-
+	int			i_tmp;
 	t_jam		*jam;
 	t_jam		*comb;
 }						t_lemin;

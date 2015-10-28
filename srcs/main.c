@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/10 17:09:51 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/10/28 16:27:10 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/10/28 20:49:55 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int		main(int ac, char **av)
 		print_jams(lemin->jam);/*_DEBUG_*/
 		ft_putstr("--------------------------------------------------\n\n");/*_DEBUG_*/
 		get_comb_set(lemin);
+		print_type("nombre de chemin", &lemin->i_tmp, INT);
 	
 //		MEMORY LEAKS
 //		while (1);/*_DEBUG_*/
