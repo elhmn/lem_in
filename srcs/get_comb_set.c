@@ -1,38 +1,6 @@
 #include "lem_in.h"
 #include "debug.h"/*_DEBUG_*/
 
-//static t_listsp	*copy_listsp(t_listsp *pathsp)
-//{
-//	t_listsp	*sp_tmp;
-//	t_listsp	*tmp_1;
-//	t_listsp	*tmp_2;
-//
-//	if (!pathsp)
-//		check_errors(MALLOC, __FILE__, "path_sp");
-//	if (!(sp_tmp = (t_listsp*)malloc(sizeof(t_listsp))))
-//		check_errors(MALLOC, __FILE__, "sp_tmp");
-//	tmp_1 = pathsp;
-//	tmp_2 = sp_tmp;
-//	while (tmp_1)
-//	{
-//		if (tmp_1->next)
-//		{
-//			if (!(tmp_2->next =
-//						(t_listsp*)malloc(sizeof(t_listsp))))
-//				check_errors(MALLOC, __FILE__, "sp_tmp");
-//		}
-//		else
-//			tmp_2->next = NULL;
-//		tmp_2->list = tmp_1->list;
-//		tmp_2->path_len = tmp_1->path_len;
-//		tmp_2->a = 0;
-//		tmp_1->next = tmp_1;
-//	}	
-//	return (sp_tmp);
-//}
-
-
-
 void		print_firstsp(t_listsp *sp)
 {
 	if (!sp)
@@ -42,12 +10,42 @@ void		print_firstsp(t_listsp *sp)
 	print_type("sp->a", &(sp->a), INT);
 }
 
-//static void		add_comb_tmp()
-//{
-//
-//}
+static void		add_comb_tmp(t_jam *comb, t_listsp *sp)
+{
+	t_listsp	*sp_tmp;
 
-/*static*/ int	combine(t_jam **comb, t_jam *comb_tmp, t_jam *jam, t_listsp *sp)
+	if (comb)
+	{
+		sp_tmp = comb->pathsp;
+		while (sp_tmp->next)
+			sp_tmp = sp_tmp->next;
+		sp_tmp->next = (sp) ? new_listsp_from_listsp(NULL, sp) : NULL;
+	}
+}
+
+static void		remove_sp_to_comb_tmp(t_jam *comb)
+{
+	t_listsp	*sp_tmp;
+
+	if (comb)
+	{
+		sp_tmp = comb->pathsp;
+		if (!sp_tmp->next)
+		{
+			free(sp_tmp);
+			comb->pathsp = NULL;
+		}
+		else
+		{
+			while (sp_tmp->next->next)
+				sp_tmp = sp_tmp->next;
+			free(sp_tmp->next);
+			sp_tmp->next = NULL;
+		}
+	}
+}
+
+int				combine(t_jam **comb, t_jam *comb_tmp, t_jam *jam, t_listsp *sp)
 {
 	t_jam		*j;
 	t_listsp	sp_tmp;
@@ -79,93 +77,108 @@ void		print_firstsp(t_listsp *sp)
 // do something here but what ?
 
 	//add sp to comb_tmp
-//	add_comb_tmp(comb_tmp, sp);
+//	printf("MAKE ME LAUGH \n");/*_DEBUG_*/
+	add_comb_tmp(comb_tmp, sp);
+//	printf("MAKE ME LAUGH LOL \n");/*_DEBUG_*/
 
-	print_firstsp(sp);
-	ft_putstr("-------------- MID ---------------\n");
-	combine(comb, comb_tmp, jam, sp->next);
-	//add and copy comb_tmp in comb;
-//	add_and_copy_comb_tmp(comb);
+//	print_firstsp(sp);
+//	ft_putstr("-------------- MID ---------------\n");
 
-	//delete comb_tmp last elem
-//	remove_comb(comb_tmp);
 
+//add and copy comb_tmp in comb;
+	add_copy_comb_tmp(comb, comb_tmp);
+
+
+//	printf("LORD \n");/*_DEBUG_*/
+	
 	// a checker et rajouter debug
 	if (jam->next)
 	{
+//		printf("DEBUG \n");/*_DEBUG_*/
+		if (jam->next)
+		{
+			remove_sp_to_comb_tmp(comb_tmp);
+			combine(comb, comb_tmp, jam->next, jam->next->pathsp);
+			add_comb_tmp(comb_tmp, sp);
+		}
 		combine(comb, comb_tmp, jam->next, jam->next->pathsp);
 	}
+	//delete comb_tmp last elem
+	
+	remove_sp_to_comb_tmp(comb_tmp);
+
+
+	combine(comb, comb_tmp, jam, sp->next);
+
 	return (0);
 }
 
 //new_listsp_from_list(&(j_tmp->pathsp), sp);
-/*
-static t_jam	*copy_comb_tmp(t_jam *comb_tmp)
-{
-	t_jam		*j_tmp;
-	t_jam		*j_tmp2;
-	t_listsp	*sp_tmp;
-	t_listsp	*j_sptmp;
 
+static t_listsp		*copy_comb_tmp_sp(t_jam *comb_tmp)
+{
+	t_listsp	*sp;
+	t_listsp	*tmp;
+	t_listsp	*tmp2;
+	t_listsp	*sp_tmp;
+
+	sp = NULL;
 	if (!comb_tmp)
 		check_errors(NUL, __FILE__, "comb_tmp");
 	if (comb_tmp)
 	{
-		if (!(j_tmp = (t_jam*)malloc(sizeof(t_jam))))
-			check_errors(MALLOC, __FILE__, "comb_tmp");	
-		sp_tmp = comb_tmp->pathsp;
-
-		j_tmp->pathsp = new_listsp_from_list(NULL, sp_tmp);
-		j_tmp->pathsp->next = (sp_tmp->next) ? new_listsp_from_list(NULL, sp_tmp->next) : NULL;
-		j_sptmp = j_tmp->pathsp->next;
-		j_sptmp = 
+		if (!(sp_tmp = comb_tmp->pathsp))
+			return (NULL);
+		else
+			sp = new_listsp_from_listsp(NULL, sp_tmp);
+		tmp = sp;
+		sp_tmp = sp_tmp->next;
 		while (sp_tmp)
 		{
-			j_tmp2->pathsp = new_listsp_from_list(NULL, sp_tmp);
-			j_tmp2->pathsp->next = new_listsp_from_list(NULL, sp_tmp->next);
-
+			tmp2 = new_listsp_from_listsp(NULL, sp_tmp); 
+			tmp->next = tmp2;
 			sp_tmp = sp_tmp->next;
-			j_tmp2 = j_tmp2->next;
+			tmp = tmp->next;
 		}
-		j_tmp->nod = NULL;
-		j_tmp->next = NULL;
 	}
-	return (tmp);
+	return (sp);
 }
 
-static void	add_copy_comb_tmp(t_jam **comb, t_jam *comb_tmp)
+void		add_copy_comb_tmp(t_jam **comb, t_jam *comb_tmp)
 {
 	t_jam	*j_tmp;
 
-	if (comb)
+	if (!comb)
 		check_errors(NUL, __FILE__, "comb");
-	j_tmp = *comb;
-	if (!*comb)
+	if (comb_tmp)
 	{
-		if (!(*comb = (t_jam*)malloc(sizeof(t_jam))))
-			check_errors(MALLOC, __FILE__, "*comb");
 		j_tmp = *comb;
-	}
-	else
-	{
-		while (j_tmp->next)
+		if (!*comb)
+		{
+			if (!(*comb = (t_jam*)malloc(sizeof(t_jam))))
+				check_errors(MALLOC, __FILE__, "*comb");
+			j_tmp = *comb;
+		}
+		else
+		{
+			while (j_tmp->next)
+				j_tmp = j_tmp->next;
+			if (!(j_tmp->next = (t_jam*)malloc(sizeof(t_jam))))
+				check_errors(MALLOC, __FILE__, "j_tmp->next");
 			j_tmp = j_tmp->next;
-	 	if (!(j_tmp->next = (t_jam*)malloc(sizeof())))
-			check_errors(MALLOC, __FILE__, "j_tmp->next");
-		j_tmp = j_tmp->next;
+		}
+		j_tmp->pathsp = (comb_tmp) ? copy_comb_tmp_sp(comb_tmp) : NULL; //copy_comb
+		j_tmp->nod = NULL;
+		j_tmp->next = NULL;
 	}
-	j_tmp->pathsp = (comb_tmp) ? comb_tmp->pathsp : NULL;
-	j_tmp->nod = NULL;
-	j_tmp->next = NULL;
 }
-*/
 
-static t_listsp *new_listsp_from_list(t_listsp **sp, t_listsp *listsp)
+t_listsp *new_listsp_from_listsp(t_listsp **sp, t_listsp *listsp)
 {
 	t_listsp	*sp_tmp;
 
 	if (!(sp_tmp = (t_listsp*)malloc(sizeof(t_listsp))))
-		check_errors(MALLOC, __FILE__, "*pathsp");
+		check_errors(MALLOC, __FILE__, "sp_tmp");
 	sp_tmp->list = (listsp) ? listsp->list : NULL;
 	sp_tmp->path_len = (listsp) ? listsp->path_len : 0;
 	sp_tmp->a = 0;
@@ -191,29 +204,44 @@ static void	init_comb_from_list(t_jam **comb, t_listsp *sp)
 			check_errors(MALLOC, __FILE__, "*comb");
 		j_tmp = *comb;
 	}
-	else
-	{
-		while (j_tmp->next)
-			j_tmp = j_tmp->next;
-		if (!(j_tmp->next = (t_jam*)malloc(sizeof(t_jam))))
-			check_errors(MALLOC, __FILE__, "j_tmp->next");
-		j_tmp = j_tmp->next;
-	}
-	new_listsp_from_list(&(j_tmp->pathsp), sp);
+	else/*_DEBUG_*/
+	{/*_DEBUG_*/
+		ft_putstr("je fous la merde\n");/*_DEBUG_*/
+	}/*_DEBUG_*/
+	new_listsp_from_listsp(&(j_tmp->pathsp), sp);
 	j_tmp->nod = NULL;
 	j_tmp->next = NULL;
 }
 
-static void	init_comb(t_jam **comb)
+static void		delete_comb_tmp(t_jam **comb_tmp)
 {
-	if (!comb)
-		check_errors(NUL, __FILE__, "comb");
-	if (!(*comb = (t_jam*)malloc(sizeof(t_jam))))
-		check_errors(MALLOC, __FILE__, "*comb");
-	(*comb)->pathsp = NULL;
-	(*comb)->nod = NULL;
-	(*comb)->next = NULL;
+	t_listsp	*sp_tmp;
+	t_listsp	*sp;
+
+	if (comb_tmp && *comb_tmp)
+	{
+		sp = (*comb_tmp)->pathsp;
+		sp_tmp = sp;
+		while (sp_tmp)
+		{
+			free(sp_tmp);
+			sp_tmp = sp_tmp->next;
+		}
+		free(*comb_tmp);
+		*comb_tmp = NULL;
+	}
 }
+
+//static void	init_comb(t_jam **comb)
+//{
+//	if (!comb)
+//		check_errors(NUL, __FILE__, "comb");
+//	if (!(*comb = (t_jam*)malloc(sizeof(t_jam))))
+//		check_errors(MALLOC, __FILE__, "*comb");
+//	(*comb)->pathsp = NULL;
+//	(*comb)->nod = NULL;
+//	(*comb)->next = NULL;
+//}
 
 void		get_comb_set(t_lemin *lemin)
 {
@@ -228,29 +256,22 @@ void		get_comb_set(t_lemin *lemin)
 		check_errors(NUL, __FILE__, "lemin");
 	if (!(j_tmp = lemin->jam))
 		check_errors(MALLOC, __FILE__, "lemin->jam");
-	init_comb(&lemin->comb);
-//	init_comb(&comb_tmp);
-//	printf("BEFORE SEGFAULT\n");/*_DEBUG_*/
 	while (j_tmp)
 	{
 		sp_tmp = j_tmp->pathsp;
-		print_type("i", (void*)&i, INT);
-//		print_jams(comb_tmp);
 		while (sp_tmp)
 		{
 			//creer la combinaison a 1 element E = (sp_tmp, 0, 0, ..., 0)
-//			init_comb_from_list(&comb_tmp, sp_tmp);
 			init_comb_from_list(&comb_tmp, sp_tmp);
+			add_copy_comb_tmp(&lemin->comb, comb_tmp);
 			if (j_tmp->next)
-			{
-//				combine(&lemin->comb, comb_tmp, j_tmp->next, j_tmp->next->pathsp);
-//				ft_putstr("------------------------------ AFTER COMBINE ---------------------------\n");/*_DEBUG_*/
-			}
+				combine(&lemin->comb, comb_tmp, j_tmp->next, j_tmp->next->pathsp);
 			sp_tmp = sp_tmp->next;
-//			delete_comb(comb_tmp);
+			delete_comb_tmp(&comb_tmp);
 		}
 		i++;
 		j_tmp = j_tmp->next;
 	}
-	print_jams(comb_tmp);
+//	print_jams(comb_tmp);
+	print_jams(lemin->comb);/*_DEBUG_*/
 }

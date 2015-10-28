@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/11 18:13:52 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/10/28 01:33:58 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/10/28 15:08:44 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,7 +151,9 @@ void		print_jams(t_jam *jam);
 ** get_comb_set.c
 */
 
+void		add_copy_comb_tmp(t_jam **comb, t_jam *comb_tmp);
 void		get_comb_set(t_lemin *lemin);
+t_listsp	*new_listsp_from_listsp(t_listsp **sp, t_listsp *listsp);
 void		print_firstsp(t_listsp *sp);
 
 /*
