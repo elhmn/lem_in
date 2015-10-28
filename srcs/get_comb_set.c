@@ -94,7 +94,7 @@ int				combine(t_jam **comb, t_jam *comb_tmp, t_jam *jam, t_listsp *sp)
 	if (jam->next)
 	{
 //		printf("DEBUG \n");/*_DEBUG_*/
-		if (jam->next)
+		if (sp->next)
 		{
 			remove_sp_to_comb_tmp(comb_tmp);
 			combine(comb, comb_tmp, jam->next, jam->next->pathsp);
