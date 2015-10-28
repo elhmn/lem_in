@@ -82,7 +82,6 @@ int				combine(t_jam **comb, t_jam *comb_tmp, t_jam *jam, t_listsp *sp)
 //	printf("MAKE ME LAUGH LOL \n");/*_DEBUG_*/
 
 //	print_firstsp(sp);
-//	ft_putstr("-------------- MID ---------------\n");
 
 
 //add and copy comb_tmp in comb;
