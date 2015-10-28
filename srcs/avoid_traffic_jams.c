@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/31 06:39:53 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/10/27 22:54:07 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/10/28 01:35:15 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,6 +132,7 @@ void		print_jams(t_jam *jam)
 				print_type("jam->nod->name", tmp->nod->name, CHAR);
 				print_type("jam->nod->index", &(tmp->nod->index), INT);
 			}
+//			print_firstsp(tmp->pathsp);
 			print_listsp(tmp->pathsp);
 		}
 		tmp = tmp->next;

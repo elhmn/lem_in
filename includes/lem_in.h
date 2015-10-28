@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/11 18:13:52 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/10/27 23:20:03 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/10/28 01:33:58 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,6 +152,7 @@ void		print_jams(t_jam *jam);
 */
 
 void		get_comb_set(t_lemin *lemin);
+void		print_firstsp(t_listsp *sp);
 
 /*
 ** get_set.c

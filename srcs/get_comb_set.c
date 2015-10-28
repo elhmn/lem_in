@@ -31,12 +31,21 @@
 //	return (sp_tmp);
 //}
 
-static void	print_firstsp(t_listsp *sp)
+
+
+void		print_firstsp(t_listsp *sp)
 {
 	if (!sp)
 		check_errors(NUL, __FILE__, "sp");
 	print_list(sp->list);
+	print_type("sp->path_len", &(sp->path_len), INT);
+	print_type("sp->a", &(sp->a), INT);
 }
+
+//static void		add_comb_tmp()
+//{
+//
+//}
 
 /*static*/ int	combine(t_jam **comb, t_jam *comb_tmp, t_jam *jam, t_listsp *sp)
 {
@@ -89,13 +98,84 @@ static void	print_firstsp(t_listsp *sp)
 	return (0);
 }
 
-static void new_listsp_from_list(t_listsp **sp, t_list *list)
+//new_listsp_from_list(&(j_tmp->pathsp), sp);
+/*
+static t_jam	*copy_comb_tmp(t_jam *comb_tmp)
 {
-	if (!sp)
-		check_errors(MALLOC, __FILE__, "sp");
-	if (!(*sp = (t_listsp*)malloc(sizeof(t_listsp))))
+	t_jam		*j_tmp;
+	t_jam		*j_tmp2;
+	t_listsp	*sp_tmp;
+	t_listsp	*j_sptmp;
+
+	if (!comb_tmp)
+		check_errors(NUL, __FILE__, "comb_tmp");
+	if (comb_tmp)
+	{
+		if (!(j_tmp = (t_jam*)malloc(sizeof(t_jam))))
+			check_errors(MALLOC, __FILE__, "comb_tmp");	
+		sp_tmp = comb_tmp->pathsp;
+
+		j_tmp->pathsp = new_listsp_from_list(NULL, sp_tmp);
+		j_tmp->pathsp->next = (sp_tmp->next) ? new_listsp_from_list(NULL, sp_tmp->next) : NULL;
+		j_sptmp = j_tmp->pathsp->next;
+		j_sptmp = 
+		while (sp_tmp)
+		{
+			j_tmp2->pathsp = new_listsp_from_list(NULL, sp_tmp);
+			j_tmp2->pathsp->next = new_listsp_from_list(NULL, sp_tmp->next);
+
+			sp_tmp = sp_tmp->next;
+			j_tmp2 = j_tmp2->next;
+		}
+		j_tmp->nod = NULL;
+		j_tmp->next = NULL;
+	}
+	return (tmp);
+}
+
+static void	add_copy_comb_tmp(t_jam **comb, t_jam *comb_tmp)
+{
+	t_jam	*j_tmp;
+
+	if (comb)
+		check_errors(NUL, __FILE__, "comb");
+	j_tmp = *comb;
+	if (!*comb)
+	{
+		if (!(*comb = (t_jam*)malloc(sizeof(t_jam))))
+			check_errors(MALLOC, __FILE__, "*comb");
+		j_tmp = *comb;
+	}
+	else
+	{
+		while (j_tmp->next)
+			j_tmp = j_tmp->next;
+	 	if (!(j_tmp->next = (t_jam*)malloc(sizeof())))
+			check_errors(MALLOC, __FILE__, "j_tmp->next");
+		j_tmp = j_tmp->next;
+	}
+	j_tmp->pathsp = (comb_tmp) ? comb_tmp->pathsp : NULL;
+	j_tmp->nod = NULL;
+	j_tmp->next = NULL;
+}
+*/
+
+static t_listsp *new_listsp_from_list(t_listsp **sp, t_listsp *listsp)
+{
+	t_listsp	*sp_tmp;
+
+	if (!(sp_tmp = (t_listsp*)malloc(sizeof(t_listsp))))
 		check_errors(MALLOC, __FILE__, "*pathsp");
-	(*sp)->list = list;
+	sp_tmp->list = (listsp) ? listsp->list : NULL;
+	sp_tmp->path_len = (listsp) ? listsp->path_len : 0;
+	sp_tmp->a = 0;
+	sp_tmp->next = NULL;
+	if (sp)
+		*sp = sp_tmp;
+	return (sp_tmp);
+	//or do that : is'nt good cus i need to
+	//put sp->next to something else than NULL
+	//	*sp = listsp;
 }
 
 static void	init_comb_from_list(t_jam **comb, t_listsp *sp)
@@ -119,7 +199,7 @@ static void	init_comb_from_list(t_jam **comb, t_listsp *sp)
 			check_errors(MALLOC, __FILE__, "j_tmp->next");
 		j_tmp = j_tmp->next;
 	}
-	new_listsp_from_list(&(j_tmp->pathsp), sp->list);
+	new_listsp_from_list(&(j_tmp->pathsp), sp);
 	j_tmp->nod = NULL;
 	j_tmp->next = NULL;
 }
@@ -150,7 +230,7 @@ void		get_comb_set(t_lemin *lemin)
 		check_errors(MALLOC, __FILE__, "lemin->jam");
 	init_comb(&lemin->comb);
 //	init_comb(&comb_tmp);
-	printf("BEFORE SEGFAULT\n");/*_DEBUG_*/
+//	printf("BEFORE SEGFAULT\n");/*_DEBUG_*/
 	while (j_tmp)
 	{
 		sp_tmp = j_tmp->pathsp;

@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/28 17:46:05 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/10/27 22:54:01 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/10/28 01:29:45 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	print_listsp(t_listsp *listsp)
 	{
 		print_list(listsp->list);
 		print_type("listsp->path_len", &(listsp->path_len), INT);
+		print_type("listsp->a", &(listsp->a), INT);
 		listsp = listsp->next;
 	}
 }

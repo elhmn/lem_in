@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 10:25:16 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/10/26 17:39:53 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/10/28 01:13:09 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ static int		is_full(t_list *links)
 	}
 	return (1);
 }
-
 
 static void		add_path(t_nod *nod, t_lemin *lemin)
 {
