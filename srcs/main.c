@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/10 17:09:51 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/10/29 18:38:58 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/10/29 20:35:04 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,49 +44,20 @@ int		main(int ac, char **av)
 	{
 		get_data(lemin);
 		lemin->start->bool = TRUE;
-//		modifier get_path au besoin du pt 1 de l'algo.
-//		il devra trouver tous les chemins possible.
 		get_paths(lemin);
 		print_jams(lemin->jam);/*_DEBUG_*/
 		ft_putstr("--------------------------------------------------\n\n");/*_DEBUG_*/
 		get_comb_set(lemin);
+//		ft_putstr("--------------------------------------------------\n\n");/*_DEBUG_*/
+//		print_jams(lemin->comb);
+//		ft_putstr("--------------------------------------------------\n\n");/*_DEBUG_*/
 		print_type("nombre de chemin", &lemin->i_tmp, INT);
 		print_type("nombre de fourmis", &lemin->ant_nbr, INT);
 		print_type("nombre de coups", &lemin->size, INT);
 		print_listsp(lemin->sp_tmp);
-	
+			
 //		MEMORY LEAKS
 //		while (1);/*_DEBUG_*/
-
-//		modifier get_set au besoin du pt 2 de l'algo.
-//		il devra trouver toutes les combinaisons de
-//		chemin possible.
-
-//		get_sets(lemin);
-
-//		trouver les combinaisons de chemins non secant.
-//		get_nosecpaths(lemin);
-
-//		calculer puis comparer le T des combiasons trouvees.
-//		get_finalset(lemin);
-
-//		if (nosecpath founded)
-//			Traiter chacune des combinaisons pour eliminer
-//			les chemin superflu.
-//			treat_setpaths(lemin);
-
-//		calculer puis comparer le T des combiasons trouvees.
-//		get_finalset(lemin);
-
-//		print_result(lemin->set);
-
-/*
-** pour checker si il est possible de trouver un chemin il suffira de verifier que
-** lemin->paths != NULL ou existe
-*/
-
-//		treat data()/*_DEBUG_*/
-//		print_data()/*_DEBUG_*/
 	}
 	return (EXIT_SUCCESS);
 }

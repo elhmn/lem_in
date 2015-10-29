@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/11 18:13:52 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/10/29 18:34:36 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/10/29 19:51:39 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <fcntl.h>
 # include <sys/types.h>
 # include <sys/uio.h>
+# include <limits.h>
 # include "lib.h"
 # include "check_errors.h"
 # include "get_next_line.h"
@@ -200,6 +201,7 @@ int		check_path(t_listsp *p1, t_listsp *p2);
 ** get_comb_set.c
 */
 
+void		get_final_pathsp(t_lemin *lemin, t_jam *comb_tmp);
 t_listsp		*copy_comb_tmp_sp(t_jam *comb_tmp);
 void		add_copy_comb_tmp(t_jam **comb, t_jam *comb_tmp);
 void		get_comb_set(t_lemin *lemin);

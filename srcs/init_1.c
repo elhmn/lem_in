@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 07:03:18 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/10/29 17:45:21 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/10/29 19:21:02 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ t_lemin		*init_lemin(t_lemin *lemin)
 	lemin->jam = NULL;
 	lemin->comb = NULL;
 	lemin->sp_tmp = NULL;
-//	lemin->size = INT_MAX;
+	lemin->size = INT_MAX;
 	lemin->data_type = ANTS_NBR;
 	new_hashtab(lemin);
 	return (lemin);
