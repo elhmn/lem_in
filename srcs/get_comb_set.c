@@ -92,6 +92,7 @@ int				combine(t_jam **comb, t_jam *comb_tmp, t_jam *jam, t_listsp *sp, t_lemin 
 		if (calc(comb_tmp->pathsp, lemin->ant_nbr) < lemin->size)
 		{
 			lemin->size = calc(comb_tmp->pathsp, lemin->ant_nbr);
+			//delete old lemin->sp_tmp
 			lemin->sp_tmp = copy_comb_tmp_sp(comb_tmp);
 		}
 	}
@@ -188,7 +189,7 @@ t_listsp *new_listsp_from_listsp(t_listsp **sp, t_listsp *listsp)
 		check_errors(MALLOC, __FILE__, "sp_tmp");
 	sp_tmp->list = (listsp) ? listsp->list : NULL;
 	sp_tmp->path_len = (listsp) ? listsp->path_len : 0;
-	sp_tmp->a = 0;
+	sp_tmp->a = (listsp) ? listsp->a : 0;
 	sp_tmp->next = NULL;
 	if (sp)
 		*sp = sp_tmp;
@@ -270,14 +271,14 @@ void		get_comb_set(t_lemin *lemin)
 		while (sp_tmp)
 		{
 			//creer la combinaison a 1 element E = (sp_tmp, 0, 0, ..., 0)
-			init_comb_from_list(&comb_tmp, sp_tmp);
-		
+			init_comb_from_list(&comb_tmp, sp_tmp);	
 			add_copy_comb_tmp(&lemin->comb, comb_tmp);
 			if (!lemin->sp_tmp)
 			{
 				sort(&(comb_tmp->pathsp));
 				lemin->size = calc(comb_tmp->pathsp, lemin->ant_nbr);
 				lemin->sp_tmp = copy_comb_tmp_sp(comb_tmp);
+//				calc(lemin->sp_tmp, lemin->ant_nbr);
 			}
 			else
 			{
@@ -287,7 +288,9 @@ void		get_comb_set(t_lemin *lemin)
 					if (calc(comb_tmp->pathsp, lemin->ant_nbr) < lemin->size)
 					{
 						lemin->size = calc(comb_tmp->pathsp, lemin->ant_nbr);
+						//delete ancien lemin->sp_tmp;
 						lemin->sp_tmp = copy_comb_tmp_sp(comb_tmp);
+//						calc(lemin->sp_tmp, lemin->ant_nbr);
 					}
 				}
 			}
