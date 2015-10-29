@@ -65,29 +65,39 @@ int			combine(t_jam **comb, t_jam *comb_tmp, t_jam *jam, t_listsp *sp, t_lemin *
 {
 	if (!comb)
 		check_errors(NUL, __FILE__, "comb");
-	if (!jam)
-		return (1);
 	if (!sp)
+	{
+//		remove_sp_to_comb_tmp(comb_tmp);
 		return (1);
+	}
+	if (!jam)
+	{
+//		remove_sp_to_comb_tmp(comb_tmp);
+		return (1);
+	}
 	add_comb_tmp(comb_tmp, sp);
 	ft_putstr("--------------------------------------------------\n\n");/*_DEBUG_*/
 	print_listsp(comb_tmp->pathsp);
 	ft_putstr("--------------------------------------------------\n\n");/*_DEBUG_*/
-	get_final_pathsp(lemin, comb_tmp);
+//	get_final_pathsp(lemin, comb_tmp);
 //	add_copy_comb_tmp(&lemin->comb, comb_tmp);
 	lemin->i_tmp += 1;
 	if (jam->next)
 	{
-		if (sp->next)
-		{
-			remove_sp_to_comb_tmp(comb_tmp);
-			combine(comb, comb_tmp, jam->next, jam->next->pathsp, lemin);
-			add_comb_tmp(comb_tmp, sp);
-		}
+//		if (sp->next)
+//		{
+//			remove_sp_to_comb_tmp(comb_tmp);
+//			combine(comb, comb_tmp, jam->next, jam->next->pathsp, lemin);
+//			add_comb_tmp(comb_tmp, sp);
+//		}
+		ft_putstr("IN :: combine(comb, comb_tmp, jam->next, jam->next->pathsp, lemin)\n");
 		combine(comb, comb_tmp, jam->next, jam->next->pathsp, lemin);
+		ft_putstr("OUT :: combine(comb, comb_tmp, jam->next, jam->next->pathsp, lemin)\n");
 	}
 	remove_sp_to_comb_tmp(comb_tmp);
+	ft_putstr("IN :: combine(comb, comb_tmp, jam, sp->next, lemin)\n");
 	combine(comb, comb_tmp, jam, sp->next, lemin);
+	ft_putstr("OUT :: combine(comb, comb_tmp, jam, sp->next, lemin)\n");
 	return (0);
 }
 
@@ -256,7 +266,7 @@ void		get_comb_set(t_lemin *lemin)
 	print_listsp(comb_tmp->pathsp);
 	ft_putstr("--------------------------------------------------\n\n");/*_DEBUG_*/
 //			add_copy_comb_tmp(&lemin->comb, comb_tmp);
-			get_final_pathsp(lemin, comb_tmp);
+//			get_final_pathsp(lemin, comb_tmp);
 			lemin->i_tmp += 1;
 			if (j_tmp->next)
 				combine(&lemin->comb, comb_tmp, j_tmp->next, j_tmp->next->pathsp, lemin);
