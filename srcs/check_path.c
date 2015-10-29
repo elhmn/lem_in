@@ -6,28 +6,32 @@
 /*   By: mnguyen <mnguyen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/28 18:22:15 by mnguyen           #+#    #+#             */
-/*   Updated: 2015/10/29 16:54:37 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/10/29 18:12:50 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lemin.h"
+#include "lem_in.h"
 
-/*
-** check_comb return 1 if comb valide 0 sinon 
-*/
-
-int		check_comb(t_jam *comb)
+int		check_comb(t_listsp *pathsp)
 {
-	t_listsp	*sp_tmp;
+	t_listsp *p1;
+	t_listsp *p2;
 
-	if (!comb)
-		check_errors(NUL, __FILE__, "comb");
-	sp_tmp = comb->pathsp;
-	while (sp_tmp->next)
+/*	if (!pathsp)
+		error;*/
+	p1 = pathsp;
+	while (p1->next)
 	{
-		sp_tmp = sp_tmp->next;
-	};
-	return (0);
+		p2 = p1->next;
+		while (p2)
+		{
+			if (!check_path(p1, p2))
+				return (0);
+			p2 = p2->next;
+		}
+		p1 = p1->next;
+	}
+	return (1);
 }
 
 int		check_path(t_listsp *p1, t_listsp *p2)

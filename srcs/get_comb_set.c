@@ -86,6 +86,24 @@ int				combine(t_jam **comb, t_jam *comb_tmp, t_jam *jam, t_listsp *sp, t_lemin 
 
 //add and copy comb_tmp in comb;
 //	add_copy_comb_tmp(comb, comb_tmp);
+	if (!lemin->sp_tmp)
+	{
+		sort(&(comb_tmp->pathsp));
+		lemin->size = calc(comb_tmp->pathsp, lemin->ant_nbr);
+		lemin->sp_tmp = new_listsp_from_listsp(NULL, comb_tmp->pathsp);
+	}
+	else
+	{
+		if (check_comb(comb_tmp->pathsp) == 1)
+		{
+			sort(&(comb_tmp->pathsp));
+			if (calc(comb_tmp->pathsp, lemin->ant_nbr) > lemin->size)
+			{
+				lemin->size = calc(comb_tmp->pathsp, lemin->ant_nbr);
+				lemin->sp_tmp = new_listsp_from_listsp(NULL, comb_tmp->pathsp);
+			}
+		}
+	}
 	lemin->i_tmp += 1;
 
 
@@ -103,10 +121,8 @@ int				combine(t_jam **comb, t_jam *comb_tmp, t_jam *jam, t_listsp *sp, t_lemin 
 		}
 		combine(comb, comb_tmp, jam->next, jam->next->pathsp, lemin);
 	}
-	//delete comb_tmp last elem
-	
+	//delete comb_tmp last elem	
 	remove_sp_to_comb_tmp(comb_tmp);
-
 
 	combine(comb, comb_tmp, jam, sp->next, lemin);
 
@@ -266,17 +282,33 @@ void		get_comb_set(t_lemin *lemin)
 			init_comb_from_list(&comb_tmp, sp_tmp);
 		
 			add_copy_comb_tmp(&lemin->comb, comb_tmp);
-			// comparer la longueur
-			/*
 			if (!sp_tmp)
-				lemin->sp_tmp = new_listsp_from_listsp(NULL, comb_tmp);
+			{
+				sort(&(comb_tmp->pathsp));
+				lemin->size = calc(comb_tmp->pathsp, lemin->ant_nbr);
+				lemin->sp_tmp = new_listsp_from_listsp(NULL, comb_tmp->pathsp);
+			}
 			else
 			{
-				if (check_path(comb_tmp->pathsp, ))
-
-
+				if (check_comb(comb_tmp->pathsp) == 1)
+				{
+					sort(&(comb_tmp->pathsp));
+					if (calc(comb_tmp->pathsp, lemin->ant_nbr) > lemin->size)
+					{
+						lemin->size = calc(comb_tmp->pathsp, lemin->ant_nbr);
+						lemin->sp_tmp = new_listsp_from_listsp(NULL, comb_tmp->pathsp);
+					}
+				}
 			}
-			*/
+			// verifier que la combinaison est valide check_comb()
+			// si elle est valide
+			// -- sort la combinaison
+			// -- calculer le temps
+			// -- comparer le temps de calcul
+			// -- conserver le chemin valide dans
+			// la combinaison final lemin->sp
+			// sinon continuer le test
+			// sinon
 			lemin->i_tmp += 1;
 			if (j_tmp->next)
 				combine(&lemin->comb, comb_tmp, j_tmp->next, j_tmp->next->pathsp, lemin);

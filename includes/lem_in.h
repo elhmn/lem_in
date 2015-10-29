@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/11 18:13:52 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/10/29 14:16:35 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/10/29 18:13:17 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,6 +140,48 @@ typedef struct			s_lemin
 	int			size;
 	t_listsp	*sp_tmp;
 }						t_lemin;
+
+/*
+** check_path.c
+*/
+
+int		check_comb(t_listsp *pathsp);
+
+/*
+** calc.c
+*/
+
+typedef struct	s_struct t_struct;
+struct			s_struct
+{
+    int f_t;
+    int s_t;
+    int n;
+};
+
+int				calc(t_listsp *pathsp, int a_t);
+void			calc_f1(t_listsp *pathsp, t_struct *c);
+void			calc_a(t_listsp *pathsp, t_struct *c, int a_t);
+void			add(t_listsp *pathsp, int i);
+void			sous(t_listsp *pathsp);
+
+/*
+** sort.c
+*/
+
+int				list_len(t_listsp *pathsp);
+void			sort(t_listsp **pathsp);
+t_listsp		*swap(t_listsp *last, t_listsp *s1, t_listsp *s2, t_listsp **pathsp);
+
+/*
+** aff.c
+*/
+
+void			aff_moove(int f, char *s, int *bool);
+void			aff_path(t_list *path, int a, int b, int *bool);
+void			aff_line(t_listsp *pathsp, int *a);
+void			set_index(t_listsp *pathsp);
+void			aff(t_listsp *pathsp, int t_a);
 
 /*
 ** avoid_traffic_jams.c
