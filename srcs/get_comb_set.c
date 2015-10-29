@@ -264,7 +264,19 @@ void		get_comb_set(t_lemin *lemin)
 		{
 			//creer la combinaison a 1 element E = (sp_tmp, 0, 0, ..., 0)
 			init_comb_from_list(&comb_tmp, sp_tmp);
-//			add_copy_comb_tmp(&lemin->comb, comb_tmp);
+		
+			add_copy_comb_tmp(&lemin->comb, comb_tmp);
+			// comparer la longueur
+			/*
+			if (!sp_tmp)
+				lemin->sp_tmp = new_listsp_from_listsp(NULL, comb_tmp);
+			else
+			{
+				if (check_path(comb_tmp->pathsp, ))
+
+
+			}
+			*/
 			lemin->i_tmp += 1;
 			if (j_tmp->next)
 				combine(&lemin->comb, comb_tmp, j_tmp->next, j_tmp->next->pathsp, lemin);
