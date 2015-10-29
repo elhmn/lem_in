@@ -86,22 +86,13 @@ int				combine(t_jam **comb, t_jam *comb_tmp, t_jam *jam, t_listsp *sp, t_lemin 
 
 //add and copy comb_tmp in comb;
 //	add_copy_comb_tmp(comb, comb_tmp);
-	if (!lemin->sp_tmp)
+	if (check_comb(comb_tmp->pathsp))
 	{
 		sort(&(comb_tmp->pathsp));
-		lemin->size = calc(comb_tmp->pathsp, lemin->ant_nbr);
-		lemin->sp_tmp = new_listsp_from_listsp(NULL, comb_tmp->pathsp);
-	}
-	else
-	{
-		if (check_comb(comb_tmp->pathsp) == 1)
+		if (calc(comb_tmp->pathsp, lemin->ant_nbr) < lemin->size)
 		{
-			sort(&(comb_tmp->pathsp));
-			if (calc(comb_tmp->pathsp, lemin->ant_nbr) > lemin->size)
-			{
-				lemin->size = calc(comb_tmp->pathsp, lemin->ant_nbr);
-				lemin->sp_tmp = new_listsp_from_listsp(NULL, comb_tmp->pathsp);
-			}
+			lemin->size = calc(comb_tmp->pathsp, lemin->ant_nbr);
+			lemin->sp_tmp = copy_comb_tmp_sp(comb_tmp);
 		}
 	}
 	lemin->i_tmp += 1;
@@ -131,7 +122,7 @@ int				combine(t_jam **comb, t_jam *comb_tmp, t_jam *jam, t_listsp *sp, t_lemin 
 
 //new_listsp_from_list(&(j_tmp->pathsp), sp);
 
-static t_listsp		*copy_comb_tmp_sp(t_jam *comb_tmp)
+t_listsp		*copy_comb_tmp_sp(t_jam *comb_tmp)
 {
 	t_listsp	*sp;
 	t_listsp	*tmp;
@@ -282,21 +273,21 @@ void		get_comb_set(t_lemin *lemin)
 			init_comb_from_list(&comb_tmp, sp_tmp);
 		
 			add_copy_comb_tmp(&lemin->comb, comb_tmp);
-			if (!sp_tmp)
+			if (!lemin->sp_tmp)
 			{
 				sort(&(comb_tmp->pathsp));
 				lemin->size = calc(comb_tmp->pathsp, lemin->ant_nbr);
-				lemin->sp_tmp = new_listsp_from_listsp(NULL, comb_tmp->pathsp);
+				lemin->sp_tmp = copy_comb_tmp_sp(comb_tmp);
 			}
 			else
 			{
 				if (check_comb(comb_tmp->pathsp) == 1)
 				{
 					sort(&(comb_tmp->pathsp));
-					if (calc(comb_tmp->pathsp, lemin->ant_nbr) > lemin->size)
+					if (calc(comb_tmp->pathsp, lemin->ant_nbr) < lemin->size)
 					{
 						lemin->size = calc(comb_tmp->pathsp, lemin->ant_nbr);
-						lemin->sp_tmp = new_listsp_from_listsp(NULL, comb_tmp->pathsp);
+						lemin->sp_tmp = copy_comb_tmp_sp(comb_tmp);
 					}
 				}
 			}
