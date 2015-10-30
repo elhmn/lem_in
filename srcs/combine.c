@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/30 12:04:38 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/10/30 12:12:13 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/10/30 12:42:49 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int			combine(t_jam *comb_tmp, t_jam *jam, t_listsp *sp, t_lemin *lemin)
 		return (1);
 	add_comb_tmp(comb_tmp, sp);
 	get_final_pathsp(lemin, comb_tmp);
-	lemin->i_tmp += 1;
 	if (jam->next)
 	{
 		if (sp->next)

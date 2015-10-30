@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/30 00:30:27 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/10/30 12:12:50 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/10/30 12:42:37 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,11 +99,11 @@ void			get_comb_set(t_lemin *lemin)
 	t_jam		*comb_tmp;
 	t_listsp	*sp_tmp;
 
+	comb_tmp = NULL;
 	if (!lemin)
 		check_errors(NUL, __FILE__, "lemin");
 	if (!(j_tmp = lemin->jam))
 		check_errors(MALLOC, __FILE__, "lemin->jam");
-	lemin->i_tmp = 0;
 	while (j_tmp)
 	{
 		sp_tmp = j_tmp->pathsp;
@@ -111,9 +111,9 @@ void			get_comb_set(t_lemin *lemin)
 		{
 			init_comb_from_list(&comb_tmp, sp_tmp);
 			get_final_pathsp(lemin, comb_tmp);
-			lemin->i_tmp += 1;
 			if (j_tmp->next)
-				combine(comb_tmp, j_tmp->next, j_tmp->next->pathsp, lemin);
+				combine(comb_tmp, j_tmp->next,
+							j_tmp->next->pathsp, lemin);
 			sp_tmp = sp_tmp->next;
 			delete_comb_tmp(&comb_tmp);
 		}
