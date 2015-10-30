@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 07:31:22 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/10/30 03:26:32 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/10/30 14:10:10 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@
 ** debug_1.c
 */
 
-void	debug_lemin(t_lemin *lemin);
-void	print_type(char *str, void *data, int type);
-void	debug_nod(t_nod *nod);
-void	print_hashtab(t_list **hashtab);
-void	debug_links(t_nod *nod);
+void		debug_lemin(t_lemin *lemin);
+void		print_type(char *str, void *data, int type);
+void		debug_nod(t_nod *nod);
+void		print_hashtab(t_list **hashtab);
+void		debug_links(t_nod *nod);
 
 /*
 ** debug_2.c
