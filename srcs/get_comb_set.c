@@ -6,21 +6,11 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/30 00:30:27 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/10/30 00:30:28 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/10/30 02:54:30 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
-#include "debug.h"/*_DEBUG_*/
-
-void		print_firstsp(t_listsp *sp)
-{
-	if (!sp)
-		check_errors(NUL, __FILE__, "sp");
-	print_list(sp->list);
-	print_type("sp->path_len", &(sp->path_len), INT);
-	print_type("sp->a", &(sp->a), INT);
-}
 
 static void		add_comb_tmp(t_jam *comb, t_listsp *sp)
 {

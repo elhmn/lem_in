@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/28 17:46:05 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/10/30 00:30:00 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/10/30 02:17:43 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,7 @@
 #include "check_errors.h"
 #include "debug.h"
 
-void	print_listsp(t_listsp *listsp)
-{
-	if (!listsp)
-		error("listsp set to NULL");
-	while (listsp)
-	{
-		print_list(listsp->list);
-		print_type("listsp->path_len", &(listsp->path_len), INT);
-		print_type("listsp->a", &(listsp->a), INT);
-		listsp = listsp->next;
-	}
-}
+
 
 t_listsp	*new_listsp(t_list *path, int path_len, int index)
 {
@@ -104,8 +93,6 @@ static void	remove_jam(t_lemin *lmin, t_jam *jam, t_jam *prec)
 void	get_paths(t_lemin *lemin)
 {
 	t_list		*links;
-//	t_listsp	*listsp;
-//	t_listsp	*tmp;
 	t_jam		*jam;
 	t_jam		*j_prec;
 
@@ -118,30 +105,10 @@ void	get_paths(t_lemin *lemin)
 		jam = init_and_get_jam(lemin, links);
 		if (jam)
 			pathfinder(links->nod, lemin, jam);
-		printf("nod = [%s]\n", links->nod->name);/*_DEBUG_*/
-//		if (lemin->path)
-//		{
-////			tmp = lemin->pathsp;
-////			listsp = new_listsp(lemin->path, lemin->path_len, lemin->path_nbr);
-//			if (!lemin->pathsp)
-//			{
-//				lemin->pathsp = listsp; 
-//				lemin->pathsp->next = NULL;
-//			}
-//			else
-//			{
-//				while (tmp->next)
-//					tmp = tmp->next;
-//				tmp->next = listsp;
-//			}
-//			lemin->path_nbr++;
-//		}
-//		debug_nod(links->nod);
 		if (!jam->pathsp)
 			remove_jam(lemin, jam, j_prec);
 		else
 			j_prec = jam;
-//		print_jams(jam);/*_DEBUG_*/
 		links->nod->bool = FALSE;
 		links = links->next;
 	}

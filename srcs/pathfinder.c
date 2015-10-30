@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 10:25:16 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/10/28 01:13:09 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/10/30 03:04:20 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,7 +155,6 @@ static void	put_path(t_lemin *lemin, t_jam *jam)
 	tmp->path_len = lemin->len_tmp + 1;
 	tmp->list = make_cpy(lemin->chemin);
 	tmp->a = 0;
-//	tmp->index = ;
 }
 
 t_nod	*pathfinder(t_nod *nod, t_lemin *lemin, t_jam *jam)
@@ -167,31 +166,13 @@ t_nod	*pathfinder(t_nod *nod, t_lemin *lemin, t_jam *jam)
 	if (nod == lemin->end || is_full(links))
 	{
 		if (nod == lemin->end)
-		{
 			put_path(lemin, jam); 
-//			print_list(lemin->chemin);/*_DEBUG_*/
-//			usleep(100000);/*_DEBUG_*/
-//			print_jams(jam);/*_DEBUG_*/
-//			printf("DEBUG \n");/*_DEBUG_*/
-//			ft_putendl("lemin->chemin :: ");/*_DEBUG_*/
-//			print_list(lemin->chemin);/*_DEBUG_*/
-//			if (lemin->path_len > lemin->len_tmp || !lemin->path_len)
-//			{
-//				lemin->path_len = lemin->len_tmp;
-//				lemin->path = make_cpy(lemin->chemin);
-//			}
-		}
 		remove_path(lemin);
 		return (NULL);
 	}
 	lemin->len_tmp++;
 	while (links)
 	{
-//		printf("DEBUG \n");/*_DEBUG_*/
-//		print_list(lemin->chemin);/*_DEBUG_*/
-//		printf("nod = [%s]\n", links->nod->name);/*_DEBUG_*/
-//		print_type("links->nod->bool", &(links->nod->bool), INT);/*_DEBUG_*/
-//		usleep(100000);/*_DEBUG_*/
 		if (!links->nod->bool)
 		{
 			links->nod->bool = TRUE;

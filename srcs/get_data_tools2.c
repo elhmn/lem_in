@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 07:04:30 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/27 14:00:08 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/10/30 02:46:07 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,11 @@ t_nod		*if_match(char *str, t_list **hashtab, int nod)
 	int		i;
 	int		len;
 	t_list	*tmp;
+	t_nod	*n_tmp;
 
 	len = 0;
 	i = -1;
+	n_tmp = NULL;
 	if (hashtab)
 	{
 		while (++i < MOD_SIZE)
@@ -28,21 +30,8 @@ t_nod		*if_match(char *str, t_list **hashtab, int nod)
 			if (hashtab[i])
 			{
 				tmp = hashtab[i];
-				while (tmp)
-				{
-					len = ft_strlen(tmp->nod->name);
-					if (nod)
-					{
-						if (!ft_strncmp(tmp->nod->name, str, len))
-							return (tmp->nod);
-					}
-					else
-					{
-						if (!ft_strcmp(tmp->nod->name, str))
-							return (tmp->nod);
-					}
-					tmp = tmp->next;
-				}
+				if ((n_tmp = aux_if_match(tmp, str, &len, nod)))
+					return (n_tmp);
 			}
 		}
 	}

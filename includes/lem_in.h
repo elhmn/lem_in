@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/11 18:13:52 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/10/29 19:51:39 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/10/30 02:46:55 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,12 +184,6 @@ void			aff_line(t_listsp *pathsp, int *a);
 void			set_index(t_listsp *pathsp);
 void			aff(t_listsp *pathsp, int t_a);
 
-/*
-** avoid_traffic_jams.c
-*/
-
-void		print_jam(t_jam *jam, int size);
-void		print_jams(t_jam *jam);
 
 /*
 ** check_path.c
@@ -206,13 +200,6 @@ t_listsp		*copy_comb_tmp_sp(t_jam *comb_tmp);
 void		add_copy_comb_tmp(t_jam **comb, t_jam *comb_tmp);
 void		get_comb_set(t_lemin *lemin);
 t_listsp	*new_listsp_from_listsp(t_listsp **sp, t_listsp *listsp);
-void		print_firstsp(t_listsp *sp);
-
-/*
-** get_set.c
-*/
-
-int						get_set(t_lemin *lemin);
 
 /*
 ** get_data.c
@@ -243,11 +230,16 @@ t_nod					*if_match(char *str, t_list **hashtab, int nod);
 void					get_props(t_lemin *lemin, t_nod *nod);
 
 /*
+** get_data_tools3.c
+*/
+
+t_nod					*aux_if_match(t_list *tmp, char *str, int *len, int nod);
+
+/*
 ** pathfinder.c
 */
 
 t_nod					*pathfinder(t_nod *nod, t_lemin *lemin, t_jam *jam);
-void					print_list(t_list *list);
 
 /*
 ** find_path.c

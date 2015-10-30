@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/10 17:09:51 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/10/30 00:36:07 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/10/30 03:06:24 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,11 @@
 #include "init.h"
 #include "debug.h"
 
-/* TODO CHECKER ERREUR PARSING 1.lmin && 3.lmin file */
-/* TODO GERER LES FUITES MEMOIRES */
+/*
+** TODO CHECKER ERREUR PARSING 1.lmin && 3.lmin file
+** TODO GERER LES FUITES MEMOIRES
+** AFFICHER fichier
+*/
 
 /*
 ** Nouvel algo:
@@ -31,7 +34,9 @@
 ** ---- Trouver puis comparer le temps de chacunes des combinaisons trouvees.
 */
 
-//check_that end nod is different than start nod
+/*
+** check_that end nod is different than start nod
+*/
 
 int		main(int ac, char **av)
 {
@@ -45,17 +50,8 @@ int		main(int ac, char **av)
 		get_data(lemin);
 		lemin->start->bool = TRUE;
 		get_paths(lemin);
-//		print_jams(lemin->jam);/*_DEBUG_*/
-		ft_putstr("--------------------------------------------------\n\n");/*_DEBUG_*/
 		get_comb_set(lemin);
-//		print_type("nombre de chemin", &lemin->i_tmp, INT);
-//		print_type("nombre de fourmis", &lemin->ant_nbr, INT);
-//		print_type("nombre de coups", &lemin->size, INT);
-//		print_listsp(lemin->sp_tmp);
-//		ft_putstr("--------------------------------------------------\n\n");/*_DEBUG_*/
-		aff(lemin->sp_tmp, lemin->ant_nbr);
-//		MEMORY LEAKS
-//		while (1);/*_DEBUG_*/
+		aff(lemin->sp_tmp, lemin->size);
 	}
 	return (EXIT_SUCCESS);
 }

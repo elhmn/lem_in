@@ -6,7 +6,7 @@
 /*   By: mnguyen <mnguyen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/28 18:22:15 by mnguyen           #+#    #+#             */
-/*   Updated: 2015/10/29 20:43:24 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/10/30 02:49:46 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 int		check_comb(t_listsp *pathsp)
 {
-	t_listsp *p1;
-	t_listsp *p2;
+	t_listsp	*p1;
+	t_listsp	*p2;
 
-/*	if (!pathsp)
-		error;*/
+	if (!pathsp)
+		check_errors(NUL, __FILE__, "pathsp");
 	p1 = pathsp;
 	while (p1->next)
 	{
@@ -39,9 +39,8 @@ int		check_path(t_listsp *p1, t_listsp *p2)
 	t_list		*l1;
 	t_list		*l2;
 
-/*	if (!p1 || !p2 || !p1->list || !p2->list)
-		error;
-*/
+	if (!p1 || !p2 || !p1->list || !p2->list)
+		check_errors(NUL, __FILE__, "!p1 | ....");
 	l1 = p1->list;
 	while (l1->next)
 	{

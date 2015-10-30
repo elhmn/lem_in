@@ -1,0 +1,17 @@
+/*
+   while (tmp)
+   {
+   len = ft_strlen(tmp->nod->name);
+   if (nod)
+   {
+   if (!ft_strncmp(tmp->nod->name, str, len))
+   return (tmp->nod);
+   }
+   else
+   {
+   if (!ft_strcmp(tmp->nod->name, str))
+   return (tmp->nod);
+   }
+   tmp = tmp->next;
+   }
+ */
