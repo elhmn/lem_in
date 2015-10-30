@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/11 18:13:52 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/10/30 03:34:59 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/10/30 12:12:30 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,10 +196,24 @@ int		check_path(t_listsp *p1, t_listsp *p2);
 */
 
 void		get_final_pathsp(t_lemin *lemin, t_jam *comb_tmp);
-t_listsp		*copy_comb_tmp_sp(t_jam *comb_tmp);
-void		add_copy_comb_tmp(t_jam **comb, t_jam *comb_tmp);
 void		get_comb_set(t_lemin *lemin);
 t_listsp	*new_listsp_from_listsp(t_listsp **sp, t_listsp *listsp);
+
+/*
+** get_comb_set_tools1.c
+*/
+
+void		remove_sp_to_comb_tmp(t_jam *comb);
+void		remove_sp(t_listsp *sp_tmp);
+void		add_comb_tmp(t_jam *comb, t_listsp *sp);
+t_listsp	*copy_tmp_sp(t_listsp *psp);
+t_listsp	*copy_comb_tmp_sp(t_jam *comb_tmp);
+
+/*
+** combine.c
+*/
+
+int			combine(t_jam *comb_tmp, t_jam *jam, t_listsp *sp, t_lemin *lemin);
 
 /*
 ** get_data.c

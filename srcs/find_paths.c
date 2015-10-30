@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/28 17:46:05 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/10/30 02:17:43 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/10/30 11:53:11 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 #include "check_errors.h"
 #include "debug.h"
 
-
-
-t_listsp	*new_listsp(t_list *path, int path_len, int index)
+t_listsp		*new_listsp(t_list *path, int path_len, int index)
 {
 	t_listsp	*listsp;
 
@@ -30,7 +28,7 @@ t_listsp	*new_listsp(t_list *path, int path_len, int index)
 	return (listsp);
 }
 
-void		reset_data(t_lemin *lemin)
+void			reset_data(t_lemin *lemin)
 {
 	lemin->chemin = NULL;
 	lemin->path = NULL;
@@ -47,32 +45,27 @@ static t_jam	*init_and_get_jam(t_lemin *lemin, t_list *links)
 		check_errors(NUL, __FILE__, "lemin");
 	if (!lemin->jam)
 	{
-		lemin->jam = (t_jam*)malloc(sizeof(t_jam));
-		if (!lemin->jam)
+		if (!(lemin->jam = (t_jam*)malloc(sizeof(t_jam))))
 			check_errors(NUL, __FILE__, "lemin->jam");
 		lemin->jam->nod = links->nod;
-		lemin->jam->pathsp = NULL;
-		lemin->jam->next = NULL;
-		return (lemin->jam);
+		tmp = lemin->jam;
 	}
 	else
 	{
 		tmp = lemin->jam;
 		while (tmp->next)
 			tmp = tmp->next;
-		tmp->next =(t_jam*)malloc(sizeof(t_jam));
-		if (!tmp->next)
+		if (!(tmp->next = (t_jam*)malloc(sizeof(t_jam))))
 			check_errors(NUL, __FILE__, "tmp");
 		tmp = tmp->next;
-		tmp->next = NULL;
-		tmp->pathsp = NULL;
 		tmp->nod = links->nod;
-		return (tmp);
 	}
-	return (NULL);
+	tmp->next = NULL;
+	tmp->pathsp = NULL;
+	return (tmp);
 }
 
-static void	remove_jam(t_lemin *lmin, t_jam *jam, t_jam *prec)
+static void		remove_jam(t_lemin *lmin, t_jam *jam, t_jam *prec)
 {
 	if (!lmin)
 		check_errors(NUL, __FILE__, "lmin");
@@ -90,7 +83,7 @@ static void	remove_jam(t_lemin *lmin, t_jam *jam, t_jam *prec)
 	}
 }
 
-void	get_paths(t_lemin *lemin)
+void			get_paths(t_lemin *lemin)
 {
 	t_list		*links;
 	t_jam		*jam;

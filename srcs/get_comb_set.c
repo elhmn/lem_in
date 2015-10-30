@@ -6,170 +6,13 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/30 00:30:27 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/10/30 02:54:30 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/10/30 12:12:50 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-static void		add_comb_tmp(t_jam *comb, t_listsp *sp)
-{
-	t_listsp	*sp_tmp;
-
-	if (comb)
-	{
-		sp_tmp = comb->pathsp;
-		while (sp_tmp->next)
-			sp_tmp = sp_tmp->next;
-		sp_tmp->next = (sp) ? new_listsp_from_listsp(NULL, sp) : NULL;
-	}
-}
-
-static void		remove_sp(t_listsp *sp_tmp)
-{
-	if (sp_tmp)
-	{
-		if (!sp_tmp->next)
-			free(sp_tmp);
-		else
-		{
-			while (sp_tmp->next->next)
-				sp_tmp = sp_tmp->next;
-			free(sp_tmp->next);
-			sp_tmp->next = NULL;
-		}
-	}
-}
-
-static void		remove_sp_to_comb_tmp(t_jam *comb)
-{
-	t_listsp	*sp_tmp;
-
-	if (comb)
-	{
-		sp_tmp = comb->pathsp;
-		if (!sp_tmp->next)
-		{
-			free(sp_tmp);
-			comb->pathsp = NULL;
-		}
-		else
-		{
-			while (sp_tmp->next->next)
-				sp_tmp = sp_tmp->next;
-			free(sp_tmp->next);
-			sp_tmp->next = NULL;
-		}
-	}
-}
-
-int			combine(t_jam **comb, t_jam *comb_tmp, t_jam *jam, t_listsp *sp, t_lemin *lemin)
-{
-	if (!comb)
-		check_errors(NUL, __FILE__, "comb");
-	if (!sp || !jam)
-		return (1);
-	add_comb_tmp(comb_tmp, sp);
-	get_final_pathsp(lemin, comb_tmp);
-	lemin->i_tmp += 1;
-	if (jam->next)
-	{
-		if (sp->next)
-		{
-			remove_sp_to_comb_tmp(comb_tmp);
-			combine(comb, comb_tmp, jam->next, jam->next->pathsp, lemin);
-			add_comb_tmp(comb_tmp, sp);
-		}
-		combine(comb, comb_tmp, jam->next, jam->next->pathsp, lemin);
-	}
-	remove_sp_to_comb_tmp(comb_tmp);
-	combine(comb, comb_tmp, jam, sp->next, lemin);
-	return (0);
-}
-
-t_listsp		*copy_tmp_sp(t_listsp *psp)
-{
-	t_listsp	*sp;
-	t_listsp	*tmp;
-	t_listsp	*tmp2;
-	t_listsp	*sp_tmp;
-
-	sp = NULL;
-	if (!(sp_tmp = psp))
-		return (NULL);
-	else
-		sp = new_listsp_from_listsp(NULL, sp_tmp);
-	tmp = sp;
-	sp_tmp = sp_tmp->next;
-	while (sp_tmp)
-	{
-		tmp2 = new_listsp_from_listsp(NULL, sp_tmp); 
-		tmp->next = tmp2;
-		sp_tmp = sp_tmp->next;
-		tmp = tmp->next;
-	}
-	return (sp);
-}
-
-t_listsp		*copy_comb_tmp_sp(t_jam *comb_tmp)
-{
-	t_listsp	*sp;
-	t_listsp	*tmp;
-	t_listsp	*tmp2;
-	t_listsp	*sp_tmp;
-
-	sp = NULL;
-	if (!comb_tmp)
-		check_errors(NUL, __FILE__, "comb_tmp");
-	if (comb_tmp)
-	{
-		if (!(sp_tmp = comb_tmp->pathsp))
-			return (NULL);
-		else
-			sp = new_listsp_from_listsp(NULL, sp_tmp);
-		tmp = sp;
-		sp_tmp = sp_tmp->next;
-		while (sp_tmp)
-		{
-			tmp2 = new_listsp_from_listsp(NULL, sp_tmp); 
-			tmp->next = tmp2;
-			sp_tmp = sp_tmp->next;
-			tmp = tmp->next;
-		}
-	}
-	return (sp);
-}
-
-void		add_copy_comb_tmp(t_jam **comb, t_jam *comb_tmp)
-{
-	t_jam	*j_tmp;
-
-	if (!comb)
-		check_errors(NUL, __FILE__, "comb");
-	if (comb_tmp)
-	{
-		j_tmp = *comb;
-		if (!*comb)
-		{
-			if (!(*comb = (t_jam*)malloc(sizeof(t_jam))))
-				check_errors(MALLOC, __FILE__, "*comb");
-			j_tmp = *comb;
-		}
-		else
-		{
-			while (j_tmp->next)
-				j_tmp = j_tmp->next;
-			if (!(j_tmp->next = (t_jam*)malloc(sizeof(t_jam))))
-				check_errors(MALLOC, __FILE__, "j_tmp->next");
-			j_tmp = j_tmp->next;
-		}
-		j_tmp->pathsp = (comb_tmp) ? copy_comb_tmp_sp(comb_tmp) : NULL;
-		j_tmp->nod = NULL;
-		j_tmp->next = NULL;
-	}
-}
-
-t_listsp *new_listsp_from_listsp(t_listsp **sp, t_listsp *listsp)
+t_listsp		*new_listsp_from_listsp(t_listsp **sp, t_listsp *listsp)
 {
 	t_listsp	*sp_tmp;
 
@@ -184,7 +27,7 @@ t_listsp *new_listsp_from_listsp(t_listsp **sp, t_listsp *listsp)
 	return (sp_tmp);
 }
 
-static void	init_comb_from_list(t_jam **comb, t_listsp *sp)
+static void		init_comb_from_list(t_jam **comb, t_listsp *sp)
 {
 	t_jam	*j_tmp;
 
@@ -221,13 +64,13 @@ static void		delete_comb_tmp(t_jam **comb_tmp)
 	}
 }
 
-void		get_final_pathsp(t_lemin *lemin, t_jam *comb_tmp)
+void			get_final_pathsp(t_lemin *lemin, t_jam *comb_tmp)
 {
 	int			ret;
 	t_listsp	*tmp;
 
 	ret = 0;
-	tmp = copy_comb_tmp_sp(comb_tmp); 
+	tmp = copy_comb_tmp_sp(comb_tmp);
 	if (!lemin->sp_tmp)
 	{
 		sort(&(tmp));
@@ -247,17 +90,15 @@ void		get_final_pathsp(t_lemin *lemin, t_jam *comb_tmp)
 			}
 		}
 	}
-	remove_sp(tmp);	
+	remove_sp(tmp);
 }
 
-void		get_comb_set(t_lemin *lemin)
+void			get_comb_set(t_lemin *lemin)
 {
 	t_jam		*j_tmp;
 	t_jam		*comb_tmp;
 	t_listsp	*sp_tmp;
 
-	sp_tmp = NULL;
-	comb_tmp = NULL;
 	if (!lemin)
 		check_errors(NUL, __FILE__, "lemin");
 	if (!(j_tmp = lemin->jam))
@@ -268,11 +109,11 @@ void		get_comb_set(t_lemin *lemin)
 		sp_tmp = j_tmp->pathsp;
 		while (sp_tmp)
 		{
-			init_comb_from_list(&comb_tmp, sp_tmp);	
+			init_comb_from_list(&comb_tmp, sp_tmp);
 			get_final_pathsp(lemin, comb_tmp);
 			lemin->i_tmp += 1;
 			if (j_tmp->next)
-				combine(&lemin->comb, comb_tmp, j_tmp->next, j_tmp->next->pathsp, lemin);
+				combine(comb_tmp, j_tmp->next, j_tmp->next->pathsp, lemin);
 			sp_tmp = sp_tmp->next;
 			delete_comb_tmp(&comb_tmp);
 		}
