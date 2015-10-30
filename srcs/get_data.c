@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/11 20:23:53 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/10/20 08:32:29 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/10/30 14:44:01 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,11 @@ int		get_data(t_lemin *lemin)
 	str = NULL;
 	(void)lemin;
 	while ((ret = get_next_line(0, &str)) && ret != -1)
+	{
+		ft_putendl(str);
 		treat_line(lemin, str);
+	}
+	ft_putendl("");
 	if (ret == -1)
 		error(" :: ret = -1");
 	if (!lemin->start || !lemin->end)
