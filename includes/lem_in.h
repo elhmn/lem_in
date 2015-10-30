@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/11 18:13:52 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/10/30 02:46:55 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/10/30 03:34:59 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -240,6 +240,14 @@ t_nod					*aux_if_match(t_list *tmp, char *str, int *len, int nod);
 */
 
 t_nod					*pathfinder(t_nod *nod, t_lemin *lemin, t_jam *jam);
+
+/*
+** pathfinder_tools.c
+*/
+
+int			is_full(t_list *links);
+void		add_path(t_nod *nod, t_lemin *lemin);
+void		remove_path(t_lemin *lemin);
 
 /*
 ** find_path.c

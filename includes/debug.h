@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 07:31:22 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/10/30 02:17:24 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/10/30 03:26:32 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,11 @@ void		print_list_nod(t_list *list);
 void		print_firstsp(t_listsp *sp);
 void		print_jam(t_jam *jam, int size);
 void		print_jams(t_jam *jam);
+
+/*
+** debug_3.c
+*/
+
 void		print_list(t_list *list);
 
 #endif
