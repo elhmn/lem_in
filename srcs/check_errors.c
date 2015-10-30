@@ -27,10 +27,9 @@ static void	fun_error_init(t_ferr *f)
 	}
 }
 
-void		error(char *str)
+void		error(void)
 {
-	ft_putstr("ERROR");
-	ft_putendl(str);
+	ft_putendl("ERROR");
 	exit(EXIT_FAILURE);
 }
 

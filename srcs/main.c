@@ -48,9 +48,11 @@ int		main(int ac, char **av)
 	if (ac)
 	{
 		get_data(lemin);
-		ft_putendl("");
+		if (!lemin->start || !lemin->end)
+			error(" :: no start or end");
 		lemin->start->bool = TRUE;
 		get_paths(lemin);
+		ft_putendl("");
 		get_comb_set(lemin);
 		aff(lemin->sp_tmp, lemin->size);
 	}

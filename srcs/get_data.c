@@ -55,16 +55,7 @@ int		treat_line(t_lemin *lemin, char *str)
 		return (-1);
 	if (*str == '#')
 	{
-		if (*(str + 1) == '#')
-		{
-			if (!ft_strcmp(str + 2, "end") && lemin->props == -1)
-				lemin->props = END;
-			else if (!ft_strcmp(str + 2, "start") && lemin->props == -1)
-				lemin->props = START;
-			else
-				return (-2);
-		}
-		else
+		if (aux_treat_line2(lemin, str) == -2)
 			return (-2);
 	}
 	else if (lemin->data_type == ANTS_NBR)
@@ -73,50 +64,23 @@ int		treat_line(t_lemin *lemin, char *str)
 				return (-3);
 	}
 	else
-	{
-		if (lemin->data_type == ROOMS)
-			if (get_rooms(lemin, str) < 0)
-				return (-3);
-		if (lemin->data_type == TUBES)
-			if (get_tubes(lemin, str) < 0)
-				return (-3);
-	}
+		if (aux_treat_line(lemin, str) == -3)
+			return (-3);
 	return (0);
 }
 
 int		get_data(t_lemin *lemin)
 {
 	char	*str;
-	char	*tmp;
 	int		ret;
-	int		ret2;
 
 	str = NULL;
-	(void)lemin;
-	ret2 = 0;
 	while ((ret = get_next_line(0, &str)) && ret != -1)
 	{
-		tmp = ft_strsub(str, 0, ft_strlen(str));
-		if ((ret2 = treat_line(lemin, str)) == -1)
-		{
-			if (tmp)
-				free(tmp);
-			break ;
-		}
-		if (ret2 == -3)
-		{
-			if (tmp)
-				free(tmp);
+		if (aux_get_data(str, lemin) == -1)
 			return (0);
-		}
-		if (ret2 != -2)
-			ft_putendl(tmp);
-		if (tmp)
-			free(tmp);
 	}
 	if (ret == -1)
 		error(" :: ret = -1");
-	if (!lemin->start || !lemin->end)
-		error(" :: no start or end");
 	return (0);
 }

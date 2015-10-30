@@ -250,6 +250,9 @@ void					get_props(t_lemin *lemin, t_nod *nod);
 
 t_nod					*aux_if_match(t_list *tmp,
 						char *str, int *len, int nod);
+int						aux_treat_line(t_lemin *lemin, char *str);
+int						aux_treat_line2(t_lemin *lemin, char *str);
+int						aux_get_data(char *str, t_lemin *lemin);
 
 /*
 ** pathfinder.c
