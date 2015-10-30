@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/11 18:13:52 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/10/30 14:32:43 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/10/30 16:13:20 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -219,7 +219,7 @@ int						combine(t_jam *comb_tmp, t_jam *jam,
 ** get_data.c
 */
 
-void					treat_line(t_lemin *lemin, char *str);
+int						treat_line(t_lemin *lemin, char *str);
 int						get_data(t_lemin *lemin);
 void					get_rooms(t_lemin *lemin, char *str);
 void					get_ants(t_lemin *lemin, char *str);

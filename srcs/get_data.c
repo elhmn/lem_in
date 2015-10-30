@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/11 20:23:53 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/10/30 14:44:01 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/10/30 16:21:20 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,12 @@ void	get_tubes(t_lemin *lemin, char *str)
 	lemin->data_type = TUBES;
 }
 
-void	treat_line(t_lemin *lemin, char *str)
+int		treat_line(t_lemin *lemin, char *str)
 {
 	if (!lemin)
 		error(" :: lemin");
 	if (str && *str == '\0')
-		error(" :: ligne vide || str set to NULL");
+		return (-1);
 	if (*str == '#')
 	{
 		if (*(str + 1) == '#')
@@ -62,8 +62,10 @@ void	treat_line(t_lemin *lemin, char *str)
 			else if (!ft_strcmp(str + 2, "start") && lemin->props == -1)
 				lemin->props = START;
 			else
-				error(" :: command not found");
+				return (-2);
 		}
+		else
+			return (-2);
 	}
 	else if (lemin->data_type == ANTS_NBR)
 		get_ants(lemin, str);
@@ -74,19 +76,24 @@ void	treat_line(t_lemin *lemin, char *str)
 		if (lemin->data_type == TUBES)
 			get_tubes(lemin, str);
 	}
+	return (0);
 }
 
 int		get_data(t_lemin *lemin)
 {
 	char	*str;
 	int		ret;
+	int		ret2;
 
 	str = NULL;
 	(void)lemin;
+	ret2 = 0;
 	while ((ret = get_next_line(0, &str)) && ret != -1)
 	{
-		ft_putendl(str);
-		treat_line(lemin, str);
+		if ((ret2 = treat_line(lemin, str)) == -1)
+			break ;
+		if (ret2 != -2)
+			ft_putendl(str);
 	}
 	ft_putendl("");
 	if (ret == -1)
