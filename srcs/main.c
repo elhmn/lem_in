@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/10 17:09:51 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/10/30 03:22:54 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/10/30 17:07:25 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int		main(int ac, char **av)
 	if (ac)
 	{
 		get_data(lemin);
+		ft_putendl("");
 		lemin->start->bool = TRUE;
 		get_paths(lemin);
 		get_comb_set(lemin);

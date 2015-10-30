@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 07:04:24 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/10/30 16:05:56 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/10/30 16:57:08 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int		hashtab_chr(t_list **hashtab, void *data)
 		if ((nod1 = if_match(str, hashtab, 1)))
 		{
 			len = ft_strlen(nod1->name);
+			if (str[len - 1] == '-')
+				return (0);
 			if ((nod2 = if_match(str + len + 1, hashtab, 0)))
 			{
 				add_link(nod1, nod2);
