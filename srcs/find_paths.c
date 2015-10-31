@@ -20,7 +20,7 @@ t_listsp		*new_listsp(t_list *path, int path_len, int index)
 
 	listsp = NULL;
 	if (!(listsp = (t_listsp*)malloc(sizeof(t_listsp))))
-		error("");
+		error();
 	listsp->list = path;
 	listsp->path_len = path_len;
 	listsp->next = NULL;
@@ -42,11 +42,11 @@ static t_jam	*init_and_get_jam(t_lemin *lemin, t_list *links)
 
 	tmp = NULL;
 	if (!lemin)
-		check_errors(NUL, __FILE__, "lemin");
+		error();
 	if (!lemin->jam)
 	{
 		if (!(lemin->jam = (t_jam*)malloc(sizeof(t_jam))))
-			check_errors(NUL, __FILE__, "lemin->jam");
+			error();
 		lemin->jam->nod = links->nod;
 		tmp = lemin->jam;
 	}
@@ -56,7 +56,7 @@ static t_jam	*init_and_get_jam(t_lemin *lemin, t_list *links)
 		while (tmp->next)
 			tmp = tmp->next;
 		if (!(tmp->next = (t_jam*)malloc(sizeof(t_jam))))
-			check_errors(NUL, __FILE__, "tmp");
+			error();
 		tmp = tmp->next;
 		tmp->nod = links->nod;
 	}
@@ -68,7 +68,7 @@ static t_jam	*init_and_get_jam(t_lemin *lemin, t_list *links)
 static void		remove_jam(t_lemin *lmin, t_jam *jam, t_jam *prec)
 {
 	if (!lmin)
-		check_errors(NUL, __FILE__, "lmin");
+		error();
 	if (!prec)
 	{
 		if (jam)

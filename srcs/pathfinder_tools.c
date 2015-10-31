@@ -34,7 +34,7 @@ void		add_path(t_nod *nod, t_lemin *lemin)
 	if (nod)
 	{
 		if (!tmp)
-			error("");
+			error();
 		tmp->nod = nod;
 		tmp->next = NULL;
 		if (!tmp2)

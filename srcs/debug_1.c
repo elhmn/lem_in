@@ -77,7 +77,7 @@ void	print_hashtab(t_list **hashtab)
 void	debug_lemin(t_lemin *lemin)
 {
 	if (!lemin)
-		error(" :: print lemin");
+		error();
 	ft_putendl(" DEBUG LEMIN :: ");
 	print_type("lemin->ant_nbr", &(lemin->ant_nbr), INT);
 	print_type("lemin->data_type", &(lemin->data_type), INT);
@@ -98,7 +98,7 @@ void	debug_nod(t_nod *nod)
 	int	ret;
 
 	if (!nod)
-		error(" :: print node");
+		error();
 	ft_putendl(" DEBUG NODE :: ");
 	print_type("nod->name", nod->name, CHAR);
 	print_type("nod->coord.x", &(nod->coord.x), INT);

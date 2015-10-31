@@ -16,7 +16,7 @@
 void		print_listsp(t_listsp *listsp)
 {
 	if (!listsp)
-		error("listsp set to NULL");
+		error();
 	while (listsp)
 	{
 		print_list(listsp->list);
@@ -39,7 +39,7 @@ void		print_list_nod(t_list *list)
 void		print_firstsp(t_listsp *sp)
 {
 	if (!sp)
-		check_errors(NUL, __FILE__, "sp");
+		error();
 	print_list(sp->list);
 	print_type("sp->path_len", &(sp->path_len), INT);
 	print_type("sp->a", &(sp->a), INT);
@@ -53,7 +53,7 @@ void		print_jams(t_jam *jam)
 	i = 0;
 	tmp = jam;
 	if (!tmp)
-		check_errors(NUL, __FILE__, "tmp");
+		error();
 	while (tmp)
 	{
 		if (tmp)

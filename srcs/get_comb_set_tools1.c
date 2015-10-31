@@ -96,7 +96,7 @@ t_listsp		*copy_comb_tmp_sp(t_jam *comb_tmp)
 
 	sp = NULL;
 	if (!comb_tmp)
-		check_errors(NUL, __FILE__, "comb_tmp");
+		error();
 	if (comb_tmp)
 	{
 		if (!(sp_tmp = comb_tmp->pathsp))

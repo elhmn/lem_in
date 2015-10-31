@@ -16,7 +16,7 @@
 static void		aux_make_cpy(t_list **tmp, t_nod *nod)
 {
 	if (!(*tmp = (t_list*)malloc(sizeof(t_list))))
-		error("");
+		error();
 	(*tmp)->nod = nod;
 	(*tmp)->next = NULL;
 }
@@ -53,11 +53,11 @@ static void		put_path(t_lemin *lemin, t_jam *jam)
 
 	tmp = NULL;
 	if (!jam)
-		check_errors(NUL, __FILE__, "jam");
+		error();
 	if (!jam->pathsp)
 	{
 		if (!(jam->pathsp = (t_listsp*)malloc(sizeof(t_listsp))))
-			check_errors(MALLOC, __FILE__, "jam->path");
+			error();
 		jam->pathsp->next = NULL;
 		tmp = jam->pathsp;
 	}
@@ -67,7 +67,7 @@ static void		put_path(t_lemin *lemin, t_jam *jam)
 		while (tmp->next)
 			tmp = tmp->next;
 		if (!(tmp->next = (t_listsp*)malloc(sizeof(t_listsp))))
-			check_errors(MALLOC, __FILE__, "tmp->path");
+			error();
 		tmp = tmp->next;
 		tmp->next = NULL;
 	}

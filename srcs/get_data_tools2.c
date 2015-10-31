@@ -61,7 +61,7 @@ void		nod_addelem(t_nod *nod1, t_nod *nod2)
 
 	tmp = NULL;
 	if (!(elem = (t_list*)malloc(sizeof(t_list))))
-		error(" :: malloc elem");
+		error();
 	elem->nod = nod2;
 	elem->next = NULL;
 	if (!nod1->links)
@@ -81,7 +81,7 @@ void		add_link(t_nod *nod1, t_nod *nod2)
 		nod_addelem(nod2, nod1);
 	}
 	else
-		error("");
+		error();
 }
 
 void		get_props(t_lemin *lemin, t_nod *nod)
@@ -90,9 +90,9 @@ void		get_props(t_lemin *lemin, t_nod *nod)
 	if (lemin->props != -1)
 	{
 		if (lemin->props == START && lemin->start)
-			error(" :: cant get more than one start");
+			error();
 		if (lemin->props == END && lemin->end)
-			error(" :: cant get more than one end");
+			error();
 		if (lemin->props == START)
 			lemin->start = nod;
 		if (lemin->props == END)

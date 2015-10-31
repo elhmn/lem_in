@@ -49,7 +49,7 @@ int		main(int ac, char **av)
 	{
 		get_data(lemin);
 		if (!lemin->start || !lemin->end)
-			error(" :: no start or end");
+			error();
 		lemin->start->bool = TRUE;
 		get_paths(lemin);
 		ft_putendl("");

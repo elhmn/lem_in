@@ -50,7 +50,7 @@ int		get_tubes(t_lemin *lemin, char *str)
 int		treat_line(t_lemin *lemin, char *str)
 {
 	if (!lemin)
-		error(" :: lemin");
+		error();
 	if (str && *str == '\0')
 		return (-1);
 	if (*str == '#')
@@ -81,6 +81,6 @@ int		get_data(t_lemin *lemin)
 			return (0);
 	}
 	if (ret == -1)
-		error(" :: ret = -1");
+		error();
 	return (0);
 }

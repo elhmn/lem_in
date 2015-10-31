@@ -72,7 +72,7 @@ int		is_room(char *str, t_lemin *lemin)
 	else
 		return (0);
 	if (*tmp1 == 'L')
-		error(" :: cant start with L");
+		error();
 	return (1);
 }
 
@@ -84,7 +84,7 @@ void	hashtab_addelem(t_lemin *lemin, t_nod *nod)
 	int			i;
 
 	if (!(elem = (t_list*)malloc(sizeof(t_list))))
-		error(" :: elem malloc");
+		error();
 	elem->nod = nod;
 	elem->next = NULL;
 	hash = hash3(nod->name);
@@ -115,7 +115,7 @@ void	get_room_data(char *str, t_lemin *lemin)
 	nod = NULL;
 	tmp = str;
 	if (!(nod = (t_nod*)malloc(sizeof(t_nod))))
-		error(" :: malloc");
+		error();
 	tmp[lemin->end_name - tmp] = '\0';
 	nod->name = tmp;
 	car_x = ft_strchr(lemin->end_name + 1, ' ');

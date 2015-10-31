@@ -17,7 +17,7 @@ t_listsp		*new_listsp_from_listsp(t_listsp **sp, t_listsp *listsp)
 	t_listsp	*sp_tmp;
 
 	if (!(sp_tmp = (t_listsp*)malloc(sizeof(t_listsp))))
-		check_errors(MALLOC, __FILE__, "sp_tmp");
+		error();
 	sp_tmp->list = (listsp) ? listsp->list : NULL;
 	sp_tmp->path_len = (listsp) ? listsp->path_len : 0;
 	sp_tmp->a = (listsp) ? listsp->a : 0;
@@ -32,12 +32,12 @@ static void		init_comb_from_list(t_jam **comb, t_listsp *sp)
 	t_jam	*j_tmp;
 
 	if (!comb)
-		check_errors(NUL, __FILE__, "comb");
+		error();
 	j_tmp = *comb;
 	if (!*comb)
 	{
 		if (!(*comb = (t_jam*)malloc(sizeof(t_jam))))
-			check_errors(MALLOC, __FILE__, "*comb");
+			error();
 		j_tmp = *comb;
 	}
 	new_listsp_from_listsp(&(j_tmp->pathsp), sp);
@@ -101,9 +101,9 @@ void			get_comb_set(t_lemin *lemin)
 
 	comb_tmp = NULL;
 	if (!lemin)
-		check_errors(NUL, __FILE__, "lemin");
+		error();
 	if (!(j_tmp = lemin->jam))
-		check_errors(MALLOC, __FILE__, "lemin->jam");
+		error();
 	while (j_tmp)
 	{
 		sp_tmp = j_tmp->pathsp;

@@ -18,7 +18,7 @@ int		check_comb(t_listsp *pathsp)
 	t_listsp	*p2;
 
 	if (!pathsp)
-		check_errors(NUL, __FILE__, "pathsp");
+		error();
 	p1 = pathsp;
 	while (p1->next)
 	{
@@ -40,7 +40,7 @@ int		check_path(t_listsp *p1, t_listsp *p2)
 	t_list		*l2;
 
 	if (!p1 || !p2 || !p1->list || !p2->list)
-		check_errors(NUL, __FILE__, "!p1 | ....");
+		error();
 	l1 = p1->list;
 	while (l1->next)
 	{
