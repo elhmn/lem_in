@@ -93,7 +93,7 @@ void			get_final_pathsp(t_lemin *lemin, t_jam *comb_tmp)
 	remove_sp(tmp);
 }
 
-void			get_comb_set(t_lemin *lemin)
+int				get_comb_set(t_lemin *lemin)
 {
 	t_jam		*j_tmp;
 	t_jam		*comb_tmp;
@@ -119,4 +119,5 @@ void			get_comb_set(t_lemin *lemin)
 		}
 		j_tmp = j_tmp->next;
 	}
+	return (0);
 }
