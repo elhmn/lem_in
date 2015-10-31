@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/11 20:23:53 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/10/30 17:07:07 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/10/31 14:11:23 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,11 @@ int		treat_line(t_lemin *lemin, char *str)
 	}
 	else if (lemin->data_type == ANTS_NBR)
 	{
-			if (get_ants(lemin, str) < 0)
-				return (-3);
-	}
-	else
-		if (aux_treat_line(lemin, str) == -3)
+		if (get_ants(lemin, str) < 0)
 			return (-3);
+	}
+	else if (aux_treat_line(lemin, str) == -3)
+		return (-3);
 	return (0);
 }
 

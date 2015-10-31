@@ -6,14 +6,14 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/30 02:45:21 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/10/30 16:07:19 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/10/31 14:10:34 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 #include "debug.h"
 
-int		aux_treat_line(t_lemin *lemin, char *str)
+int			aux_treat_line(t_lemin *lemin, char *str)
 {
 	if (lemin->data_type == ROOMS)
 	{
@@ -48,8 +48,7 @@ t_nod		*aux_if_match(t_list *tmp, char *str, int *len, int nod)
 	return (NULL);
 }
 
-
-int		aux_treat_line2(t_lemin *lemin, char *str)
+int			aux_treat_line2(t_lemin *lemin, char *str)
 {
 	if (*(str + 1) == '#')
 	{
@@ -65,7 +64,7 @@ int		aux_treat_line2(t_lemin *lemin, char *str)
 	return (0);
 }
 
-int		aux_get_data(char *str, t_lemin *lemin)
+int			aux_get_data(char *str, t_lemin *lemin)
 {
 	int		ret2;
 	char	*tmp;
